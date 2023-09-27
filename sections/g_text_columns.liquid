@@ -1,0 +1,1429 @@
+{% for block in section.blocks %}
+  {% case block.type %}
+	{% when 'text1' %}
+    {%- case block.settings.left_css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class_left = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class_left = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class_left = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class_left = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class_left = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class_left = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class_left = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class_left = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class_left = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class_left = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+
+    {%- case block.settings.right_css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class_right = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class_right = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class_right = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class_right = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class_right = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class_right = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class_right = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class_right = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class_right = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class_right = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+    <div class="custom-block-column wow fadeIn" style="{% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}{% if block.settings.padding != blank %}padding: {{ block.settings.padding }};{% endif %}{% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12 {{ css_animations_class_left }}">
+            {% if block.settings.heading != blank %}
+            <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+            {% endif %}
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 {{ css_animations_class_right }}">
+            {% if block.settings.text != blank %}
+            {{ block.settings.text }}
+            {% endif %}
+            {% if block.settings.name != blank %}
+            <div class="name-black">{{ block.settings.name }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <style>
+        {% if block.settings.text_color != blank %}
+        .custom-block-column p {
+          color: {{ block.settings.text_color }};
+        }
+        {% endif %}
+        {% if block.settings.bg_after_headding != blank %}
+        .custom-block-column h2:after {
+        	background-color: {{ block.settings.bg_after_headding }};
+        }
+        {% endif %}
+      </style>
+    </div>
+    {% when 'text2' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+	<div class="g-text-wellcome {{ css_animations_class }}" {% if block.settings.margin != blank %}style="margin: {{ block.settings.margin }};"{% endif %}>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-7 col-xs-12">
+            {% if block.settings.title != blank %}
+            <h5>{{ block.settings.title }}</h5>
+            {% endif %}
+            {% if block.settings.heading != blank %}
+            <h2>{{ block.settings.heading }}</h2>
+            {% endif %}
+          </div>
+          <div class="col-sm-5 col-xs-12">
+            {% if block.settings.text != blank %}
+            <p>{{ block.settings.text }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+	</div>
+	{% when 'text3' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+
+    {%- case block.settings.use_width -%}
+    {% when '1' %}
+    {%- assign width_class = 'g-fullwwidth' -%}
+    {% when '2' %}
+    {%- assign width_class = 'container-full' -%}
+    {% when '3' %}
+    {%- assign width_class = 'container' -%}
+    {%- endcase -%}
+
+    {%- case block.settings.style -%}
+    {% when '1' %}
+    {%- assign style_class = 'pull-left text-left' -%}
+    {% when '2' %}
+    {%- assign style_class = 'pull-right text-right' -%}
+    {%- endcase -%}
+	<div class="g-list-choose-collection cover-background lazy {{ css_animations_class }} clearfix" {% if block.settings.image != blank %}data-src="{{ block.settings.image | img_url: '1920x' | split:'?' | first }}"{% endif %} style="{% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}{% if block.settings.padding != blank %}padding: {{ block.settings.padding }};{% endif %}{% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}">
+      <div class="{{ width_class }}">
+        <ul {% if block.settings.content_color != blank %}style="color: {{ block.settings.content_color }};"{% endif %} class="{{ style_class }}">
+          {%- for link in linklists[block.settings.menu].links -%}
+          <li><a href="{{ link.url }}" {% if block.settings.content_color != blank %}style="color: {{ block.settings.content_color }};"{% endif %}>{{ link.title }}</a></li>
+          {%- else -%}
+          {% capture theme_settings_footer_linklist_path %}<strong>Collections</strong> > <strong>List Links</strong>{% endcapture %}
+          {{ 'layout.footer.instructions_for_linklist_html' | t: theme_settings_link: theme_settings_link, theme_settings_footer_linklist_path: theme_settings_footer_linklist_path }}
+          {%- endfor -%}
+        </ul>
+      </div>
+      {% if block.settings.show_scroll_down %}
+      <a href="#slider-content-below" class="scroll-arrow-down">{{ block.settings.text_scroll_down }}</a>
+      {% endif %}
+	</div>
+	{% when 'text4' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+	<div class="g-testimonials-image {{ css_animations_class }}" style="{% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}{% if block.settings.padding != blank %}padding: {{ block.settings.padding }};{% endif %}{% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <div class="content-testimonials-image">
+              {% if block.settings.text != blank %}
+              <div class="text-testimonials-support">{{ block.settings.text }}</div>
+              {% endif %}
+              {% if block.settings.name != blank %}
+              <div class="name-black">{{ block.settings.name }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="image pull-right">	
+              {% if block.settings.image != blank %}
+              <img data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="lazy" />
+              {% else %}
+              {{ 'image' | placeholder_svg_tag }}
+              {% endif %}   
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+	{% when 'text5' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+	<div class="g-text5-bg {{ css_animations_class }}" style="{% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}{% if block.settings.padding != blank %}padding: {{ block.settings.padding }};{% endif %}{% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}{% if block.settings.use_bg_gradient %}background-image: linear-gradient(90deg, {{ block.settings.bg_gradient_left }}, {{ block.settings.bg_gradient_right }});{% endif %}">
+      <div class="container">
+        <div class="content-text5-bg">
+          {% if block.settings.title != blank %}
+          <h2 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</h2>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <div {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</div>
+          {% endif %}
+          {% if block.settings.name != blank %}
+          <div class="name-black" {% if block.settings.name_color != blank %}style="color: {{ block.settings.name_color }};"{% endif %}>{{ block.settings.name }}</div>
+          {% endif %}
+        </div>
+      </div>
+	</div>
+	{% when 'text6' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+	<div class="g-text6-video-email {{ css_animations_class }}" {% if block.settings.margin != blank %}style="margin: {{ block.settings.margin }};";{% endif %}>
+      <div class="container">
+        <div class="row">
+          {% if block.settings.show_video_popup %}
+          <div class="col-sm-6 col-xs-12">
+            <div class="link-video-slider">
+              <a href="{{ block.settings.link_video_popup }}" class="video_popup"><div class="icon"><i class="fa fa-play"></i></div>{{ block.settings.text_video_popup }}</a>
+            </div>
+          </div>
+          {% endif %}
+          {% if block.settings.show_mailto %}
+          <div class="col-sm-6 col-xs-12 text-right">
+            <a href="mailto:{{ block.settings.email }}" class="mail-to">{{ block.settings.email }}</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+	</div>
+	{% when 'text7' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+
+    {%- case block.settings.use_width -%}
+    {% when '1' %}
+    {%- assign width_class = 'g-fullwwidth' -%}
+    {% when '2' %}
+    {%- assign width_class = 'container-full' -%}
+    {% when '3' %}
+    {%- assign width_class = 'container' -%}
+    {%- endcase -%}
+
+	<div class="g-list-choose-collection g-list-choose-collection-2 cover-background lazy {{ css_animations_class }} clearfix" {% if block.settings.image != blank %}data-src="{{ block.settings.image | img_url: '1920x' | split:'?' | first }}"{% endif %} style="{% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}{% if block.settings.padding != blank %}padding: {{ block.settings.padding }};{% endif %}{% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}">
+      <div class="{{ width_class }}">
+        <div class="row">
+          <div class="col-sm-8 col-xs-12">
+            <ul {% if block.settings.content_color != blank %}style="color: {{ block.settings.content_color }};"{% endif %}>
+              {%- for link in linklists[block.settings.menu].links -%}
+              <li><a href="{{ link.url }}" {% if block.settings.content_color != blank %}style="color: {{ block.settings.content_color }};"{% endif %}>{{ link.title }}</a></li>
+              {%- else -%}
+              {% capture theme_settings_footer_linklist_path %}<strong>Collections</strong> > <strong>List Links</strong>{% endcapture %}
+              {{ 'layout.footer.instructions_for_linklist_html' | t: theme_settings_link: theme_settings_link, theme_settings_footer_linklist_path: theme_settings_footer_linklist_path }}
+              {%- endfor -%}
+            </ul>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            {% if block.settings.image_right != blank %}
+            <img data-src="{{ block.settings.image_right | img_url: 'master' }}" alt="{{ block.settings.image_right.alt }}" class="lazy" />
+            {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+            {% endif %}   
+          </div>
+        </div>
+      </div>
+      {% if block.settings.show_scroll_down %}
+      <a href="#slider-content-below" class="scroll-arrow-down">{{ block.settings.text_scroll_down }}</a>
+      {% endif %}
+	</div>
+    {% when 'text8' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+	<div class="g-text-image-h-48 {{ css_animations_class }}" {% if block.settings.margin != blank %}style="margin: {{ block.settings.margin }};"{% endif %}>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            {% if block.settings.title != blank %}
+            <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            {% if block.settings.text != blank %}
+            <p>{{ block.settings.text }}</p>
+            {% endif %}
+          </div>
+        </div>
+        {% if block.settings.image != blank %}
+        <div class="single-image text-center">
+          <img data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="lazy" /> 
+        </div>
+        {% endif %}
+      </div>
+	</div>
+	{% when 'text9' %}
+    {%- case block.settings.left_css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class_left = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class_left = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class_left = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class_left = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class_left = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class_left = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class_left = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class_left = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class_left = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class_left = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+
+    {%- case block.settings.right_css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class_right = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class_right = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class_right = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class_right = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class_right = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class_right = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class_right = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class_right = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class_right = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class_right = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+    <div class="custom-block-product wow fadeIn lazy" {% if block.settings.image != blank %}data-src="{{ block.settings.image | img_url: '1920x' | split:'?' | first }}"{% endif %} style="{% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}{% if block.settings.padding != blank %}padding: {{ block.settings.padding }};{% endif %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12 {{ css_animations_class_left }}">
+            {% if block.settings.heading != blank %}
+            <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+            {% endif %}
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 {{ css_animations_class_right }}">
+            {% if block.settings.heading_right != blank %}
+            <h3>{{ block.settings.heading_right }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <p>{{ block.settings.text }}</p>
+            {% endif %}
+            {% if block.settings.list_text != blank %}
+            {{ block.settings.list_text }}
+            {% endif %}
+            {% if block.settings.price != blank %}
+            <div class="price">{{ block.settings.price }}</div>
+            {% endif %}
+            {% if block.settings.button_name != blank %}
+            <a href="{{ block.settings.button_link }}" class="btn-border-radius btn-large">{{ block.settings.button_name }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <style>
+        {% if block.settings.text_color != blank %}
+        .custom-block-product,
+        .custom-block-product p,
+        .custom-block-product ul li,
+        .custom-block-product h3,
+        .custom-block-product .btn-border-radius.btn-large {
+          color: {{ block.settings.text_color }};
+        }
+        {% endif %}
+        {% if block.settings.bg_after_headding != blank %}
+        .custom-block-product h2:after {
+        	background-color: {{ block.settings.bg_after_headding }};
+        }
+        {% endif %}
+      </style>
+    </div>
+	{% when 'text10' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+
+	<div class="g-bg-image-text cover-background lazy {{ css_animations_class }} clearfix" {% if block.settings.image != blank %}data-src="{{ block.settings.image | img_url: '1920x' | split:'?' | first }}"{% endif %} style="{% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}{% if block.settings.padding != blank %}padding: {{ block.settings.padding }};{% endif %}{% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}">
+      <div class="container">
+        <div class="max-width-600 text-center">
+          {% if block.settings.heading != blank %}
+          <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <p {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+          {% endif %}
+        </div>
+      </div>
+	</div>
+	{% when 'text11' %}
+    {%- case block.settings.css_animations -%}
+    {% when '1' %}
+    {%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    {%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    {%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    {%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    {%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    {%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    {%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    {%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    {%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    {%- assign css_animations_class = 'wow fadeInUpBig' -%}
+    {%- endcase -%}
+	<div class="g-image-text-11 {{ css_animations_class }}" {% if block.settings.margin != blank %}style="margin: {{ block.settings.margin }};"{% endif %}>
+      <div class="container">
+        <div class="content-text5-bg">
+          {% if block.settings.image != blank %}
+          <img data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="lazy" /> 
+          {% endif %}
+          {% if block.settings.title != blank %}
+          <h2>{{ block.settings.title }}</h2>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <div>{{ block.settings.text }}</div>
+          {% endif %}
+          {% if block.settings.name != blank %}
+          <div class="name-black">{{ block.settings.name }}</div>
+          {% endif %}
+        </div>
+      </div>
+	</div>
+    {% endcase %}
+{% endfor %}
+<div name="slider-content-below" id="slider-content-below"></div>
+<div class="clearfix"></div>
+{% schema %}
+  {
+    "name": "Custom text columns",
+    "class": "globo_text_columns",
+    "blocks": [
+      {
+        "type": "text1",
+        "name": "Text block columns",
+        "settings": [
+          {
+            "type": "select",
+            "id": "left_css_animations",
+            "label": "Left CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "5"
+          },
+          {
+            "type": "select",
+            "id": "right_css_animations",
+            "label": "Right CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "7"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#fff799"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "header",
+            "content": "Left content"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+			"default": "N<span>e<\/span>.SOS Fashion"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "color",
+            "id": "bg_after_headding",
+            "label": "Background heading after"
+          },
+          {
+            "type": "header",
+            "content": "Right content"
+          },
+          {
+            "type": "html",
+            "id": "text",
+            "label": "Text",
+			"default": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula hendrerit ac nisi<\/p><p>Hendrerit ac nisi Lorem ipsum dolor sit amet. Tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit.<\/p>"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name",
+            "default": "<span>JONT HENRRY<\/span> - CEO NESOS"
+          }
+        ]
+      },
+      {
+        "type": "text2",
+        "name": "Text wellcome",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "# ABOUT US"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Wellcome to NeSOS"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>Consectetur adipiscing commodo<\/i> tristique ante <span>commodo<\/span>"
+          }
+        ]
+      },
+      {
+        "type": "text3",
+        "name": "List Collections",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "select",
+            "id": "use_width",
+            "label": "Width",
+            "options": [
+              { "value": "1", "label": "Use full width" },
+              { "value": "2", "label": "Use padding" },
+              { "value": "3", "label": "Use container" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "select",
+            "id": "style",
+            "label": "Style",
+            "options": [
+              { "value": "1", "label": "Left" },
+              { "value": "2", "label": "Right" }
+            ],
+            "default": "1"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#5674b9"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "color",
+            "id": "content_color",
+            "label": "Content color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Add menu"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_scroll_down",
+            "label": "Use scroll down",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "text_scroll_down",
+            "label": "Text scroll down",
+            "default": "SCROLL DISCOVER"
+          }
+        ]
+      },
+      {
+        "type": "text4",
+        "name": "Testimonials & Image",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "&laquo; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo tristique<\/i> &raquo;"
+          },
+          {
+            "type": "textarea",
+            "id": "name",
+            "label": "Name",
+            "default": "<span>JONT HENRRY</span> - CEO NESOS"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image right"
+          }
+        ]
+      },
+      {
+        "type": "text5",
+        "name": "Text content background",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_bg_gradient",
+            "label": "Use background gradient",
+			"default": true
+          },
+          {
+            "type": "color",
+            "id": "bg_gradient_left",
+            "label": "Background gradient left",
+			"default": "#a56421"
+          },
+          {
+            "type": "color",
+            "id": "bg_gradient_right",
+            "label": "Background gradient right",
+			"default": "#613a13"
+          },
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title",
+            "default": "<span>NeSos Handmade</span><br>Bag Store"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color",
+			"default": "#ffffff"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula hendrerit ac nisi<\/p><p>Hendrerit ac nisi Lorem ipsum dolor sit amet. Tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit.<\/p>"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+			"default": "#d7d7d7"
+          },
+          {
+            "type": "textarea",
+            "id": "name",
+            "label": "Name",
+            "default": "<span>JONT HENRRY</span> - CEO NESOS"
+          },
+          {
+            "type": "color",
+            "id": "name_color",
+            "label": "Name color",
+			"default": "#ffffff"
+          }
+        ]
+      },
+      {
+        "type": "text6",
+        "name": "Video & Email",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+	      {
+            "type": "header",
+            "content": "Video popup"
+          },
+	      {
+            "type": "checkbox",
+            "id": "show_video_popup",
+            "label": "Show video popup",
+            "default": true
+          },
+	      {
+            "type": "text",
+            "id": "text_video_popup",
+            "label": "Text",
+            "default": "WATCH Introding"
+          },
+          {
+            "type": "text",
+            "id": "link_video_popup",
+            "label": "Link video",
+            "default": "https:\/\/www.youtube.com\/embed\/2df62ekI9UY?autoplay=1",
+            "info": "Ex: https:\/\/www.youtube.com\/embed\/2df62ekI9UY?autoplay=1, https:\/\/player.vimeo.com/\video\/172601404?autoplay=1"
+          },
+	      {
+            "type": "header",
+            "content": "Email"
+          },
+	      {
+            "type": "checkbox",
+            "id": "show_mailto",
+            "label": "Show email",
+            "default": true
+          },
+	      {
+            "type": "text",
+            "id": "email",
+            "label": "Email name",
+            "default": "contact@globosoftware.net"
+          }
+        ]
+      },
+      {
+        "type": "text7",
+        "name": "List Collections & Image",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "select",
+            "id": "use_width",
+            "label": "Width",
+            "options": [
+              { "value": "1", "label": "Use full width" },
+              { "value": "2", "label": "Use padding" },
+              { "value": "3", "label": "Use container" }
+            ],
+            "default": "3"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "color",
+            "id": "content_color",
+            "label": "Content color",
+            "default": "#000000"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Add left menu"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_right",
+            "label": "Image right"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_scroll_down",
+            "label": "Use scroll down",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "text_scroll_down",
+            "label": "Text scroll down",
+            "default": "SCROLL DISCOVER"
+          }
+        ]
+      },
+      {
+        "type": "text8",
+        "name": "Text & Image",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Quality Bike NeSos"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+			"default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique Vestibulum imperdiet nibh vel magna lacinia ultrices."
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image bottom"
+          }
+        ]
+      },
+      {
+        "type": "text9",
+        "name": "Text & product",
+        "settings": [
+          {
+            "type": "select",
+            "id": "left_css_animations",
+            "label": "Left CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "5"
+          },
+          {
+            "type": "select",
+            "id": "right_css_animations",
+            "label": "Right CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "7"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "header",
+            "content": "Left content"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+			"default": "N<span>e<\/span>.SOS Tech"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "color",
+            "id": "bg_after_headding",
+            "label": "Background heading after"
+          },
+          {
+            "type": "header",
+            "content": "Right content"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text content color"
+          },
+          {
+            "type": "text",
+            "id": "heading_right",
+            "label": "Heading",
+			"default": "Great Smart Speaker"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+			"default": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula hendrerit ac nisi"
+          },
+          {
+            "type": "html",
+            "id": "list_text",
+            "label": "List text",
+			"default": "<ul><li>Enjoy Music ANd Entertainment<\/li><li>Google cast integration<\/li><li>Manage everyday Tasks<\/li><\/ul>"
+          },
+          {
+            "type": "text",
+            "id": "price",
+            "label": "Price",
+			"default": "$137.00"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+			"default": "Shop Now"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }
+        ]
+      },
+      {
+        "type": "text10",
+        "name": "Background image & Text",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#8035c9"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+			"default": "One Touch, One Style<br>Designed for Simplicity life"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+			"default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo</i> tristique Vestibulum imperdiet nibh vel magna lacinia ultrices."
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          }
+        ]
+      },
+      {
+        "type": "text11",
+        "name": "Image top & content text",
+        "settings": [
+          {
+            "type": "select",
+            "id": "css_animations",
+            "label": "CSS Animation",
+            "options": [
+              { "value": "1", "label": "None" },
+              { "value": "2", "label": "fadeIn" },
+              { "value": "3", "label": "fadeInDown" },
+              { "value": "4", "label": "fadeInDownBig" },
+              { "value": "5", "label": "fadeInLeft" },
+              { "value": "6", "label": "fadeInLeftBig" },
+              { "value": "7", "label": "fadeInRight" },
+              { "value": "8", "label": "fadeInRightBig" },
+              { "value": "9", "label": "fadeInUp" },
+              { "value": "10", "label": "fadeInUpBig" }
+            ],
+            "default": "2"
+          },
+          {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image top"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula hendrerit ac nisi<\/p><p>Hendrerit ac nisi Lorem ipsum dolor sit amet. Tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit.<\/p>"
+          },
+          {
+            "type": "textarea",
+            "id": "name",
+            "label": "Name",
+            "default": "<span>JONT HENRRY</span> - CEO NESOS"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom text columns",
+        "category": "Text",
+        "blocks": [
+          { 
+            "type": "text1"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,26 @@
+<div class="grid-item">
+  <div class="product_item--inner">
+    <div class="product_item--thumbnail">
+      <div class="product_item--thumbnail-holder">
+        <a href="/" class="product__link" tabindex="0">
+          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+          {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          <span class="label-product new">{{ 'products.product.new' | t }}</span>
+        </a>
+      </div>
+    </div>
+    <div class="product_item--info">
+      <div class="product_item--info-inner text-center">
+        <h2 class="product_item--title">
+          <a href="/" tabindex="0">Product Title</a>
+        </h2>
+        <span class="price">
+          <del><span class="amount">$56.00</span></del>
+          <ins><span class="amount">$34.00</span></ins>
+        </span>
+      </div>
+    </div>
+  </div>  
+</div>
+
+

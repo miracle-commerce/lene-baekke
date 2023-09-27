@@ -1,0 +1,156 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+<div class="g-new-collection-2 wow fadeIn" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="container">
+    <div class="row">
+      {% for block in section.blocks %}
+      <div class="col-md-6 col-sm-6 col-xs-12 col-item-new-collection {{ css_animations_class }}" {% if forloop.index == 2 %}data-wow-delay="0.2s"{% elsif forloop.index == 3  %}data-wow-delay="0.4s"{% elsif forloop.index == 4  %}data-wow-delay="0.6s"{% endif %}>
+        <div class="item-new-collection">
+          <div class="image">	
+            {% if block.settings.image != blank %}
+            	<img data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="lazy" />
+            {% else %}
+            	{{ 'image' | placeholder_svg_tag }}
+            {% endif %}   
+          </div>
+          <div class="text">
+            {% if block.settings.title != blank %}
+            	<h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.subtitle != blank %}
+            	<div class="subtitle">{{ block.settings.subtitle }}</div>
+            {% endif %}
+            {% if block.settings.button_name != blank %}
+            	<a href="{{ block.settings.button_link }}">{{ block.settings.button_name }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% if section.settings.text_view_all_products != blank %}
+      <a href="{{ section.settings.link_view_all_products }}" class="view-all-products">{{ section.settings.text_view_all_products }} <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Block new collection 2",
+    "class": "globo_new_collection_2",
+	"max_blocks": 4,
+  	"presets": [
+      {
+        "name": "Block new collection 2",
+        "category": "Categories & Banner",
+        "blocks": [
+          {
+            "type": "block_new_collection_2"
+          },
+          {
+            "type": "block_new_collection_2"
+          },
+          {
+            "type": "block_new_collection_2"
+          },
+          {
+            "type": "block_new_collection_2"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "select",
+        "id": "css_animations",
+        "label": "CSS Animation",
+        "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "9"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "text_view_all_products",
+        "label": "View all products",
+        "default": "View All Products"
+      },
+      {
+        "type": "url",
+        "id": "link_view_all_products",
+        "label": "Link"
+      }
+    ],
+  	"blocks": [
+      {
+        "type": "block_new_collection_2",
+        "name": "Block new collection 2",
+        "settings": [
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Hebes Chair Collection"
+         },
+         {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Vestibulum imperdiet ni bh vel magna"
+         },
+         {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+            "default": "Shop Now"
+         },
+         {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+         }
+        ]
+      }
+    ]
+  }
+{% endschema %}

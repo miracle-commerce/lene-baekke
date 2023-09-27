@@ -1,0 +1,261 @@
+{%- case section.settings.left_css_animations -%}
+{% when '1' %}
+{%- assign css_animations_class_left = '' -%}
+{% when '2' %}
+{%- assign css_animations_class_left = 'wow fadeIn' -%}
+{% when '3' %}
+{%- assign css_animations_class_left = 'wow fadeInDown' -%}
+{% when '4' %}
+{%- assign css_animations_class_left = 'wow fadeInDownBig' -%}
+{% when '5' %}
+{%- assign css_animations_class_left = 'wow fadeInLeft' -%}
+{% when '6' %}
+{%- assign css_animations_class_left = 'wow fadeInLeftBig' -%}
+{% when '7' %}
+{%- assign css_animations_class_left = 'wow fadeInRight' -%}
+{% when '8' %}
+{%- assign css_animations_class_left = 'wow fadeInRightBig' -%}
+{% when '9' %}
+{%- assign css_animations_class_left = 'wow fadeInUp' -%}
+{% when '10' %}
+{%- assign css_animations_class_left = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.right_css_animations -%}
+{% when '1' %}
+{%- assign css_animations_class_right = '' -%}
+{% when '2' %}
+{%- assign css_animations_class_right = 'wow fadeIn' -%}
+{% when '3' %}
+{%- assign css_animations_class_right = 'wow fadeInDown' -%}
+{% when '4' %}
+{%- assign css_animations_class_right = 'wow fadeInDownBig' -%}
+{% when '5' %}
+{%- assign css_animations_class_right = 'wow fadeInLeft' -%}
+{% when '6' %}
+{%- assign css_animations_class_right = 'wow fadeInLeftBig' -%}
+{% when '7' %}
+{%- assign css_animations_class_right = 'wow fadeInRight' -%}
+{% when '8' %}
+{%- assign css_animations_class_right = 'wow fadeInRightBig' -%}
+{% when '9' %}
+{%- assign css_animations_class_right = 'wow fadeInUp' -%}
+{% when '10' %}
+{%- assign css_animations_class_right = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.style -%}
+{% when '1' %}
+{%- assign style_class = 'g-blog-newsletter-dark' -%}
+{% when '2' %}
+{%- assign style_class = 'g-blog-newsletter-light' -%}
+{%- endcase -%}
+
+<div class="g-blog-newsletter {{ style_class }} wow fadeIn" style="{% if section.settings.margin != blank %}margin: {{ section.settings.margin }};{% endif %}{% if section.settings.padding != blank %}padding: {{ section.settings.padding }};{% endif %}{% if section.settings.bg_color != blank %}background-color: {{ section.settings.bg_color }};{% endif %}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-xs-12 {{ css_animations_class_left }}">
+        {% if section.settings.title_blog != blank %}
+            <h3>{{ section.settings.title_blog }}</h3>
+        {% endif %}
+
+        <div class="blog-list-item">
+          {%- assign blog = blogs[section.settings.blog] -%}
+          {% unless blog.empty? %}
+            {% assign number_limit = section.settings.articles_show_many | plus:0 %}
+            {% for article in blog.articles limit:number_limit %}
+            <article class="blog-item">
+              <div class="time-date">
+                <span class="day">{{ article.published_at | time_tag: format: 'day' }}</span>
+                <span class="month-year">{{ article.published_at | time_tag: '%b' }}</span>
+              </div>
+              <div class="blog-info">
+                <div class="author-date-blog">
+                  <span>{{ 'homepage.onboarding.by' | t }} {{ article.author }},</span><span class="posted-on">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                </div>
+                <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+              </div>
+            </article>
+          	{% endfor %}
+          {% else %}
+            {% for i in (1..2) %}
+            <article class="blog-item">
+              <div class="time-date">
+                <span class="day">{{ 'now' | date: "%d" }}</span>
+                <span class="month-year">{{ 'now' | date: "%b" }}</span>
+              </div>
+              <div class="blog-info">
+                <div class="author-date-blog">
+                  <span>{{ 'homepage.onboarding.by' | t }} {{ 'homepage.onboarding.blog_author' | t }},</span><span class="posted-on">{{ 'now' | date: "%B" }} {{ 'now' | date: "%d" }}, {{ 'now' | date: "%Y" }}</span>
+                </div>
+                <h4><a href="/">{{ 'homepage.onboarding.blog_title' | t }}</a></h4>
+              </div>
+            </article>    		
+            {% endfor %}
+          {% endunless %}	
+        </div>   
+      </div>
+      <div class="col-sm-6 col-xs-12 {{ css_animations_class_right }}">
+          {% if section.settings.title_newsletter != blank %}
+          	<h3>{{ section.settings.title_newsletter }}</h3>
+          {% endif %}
+          {% if section.settings.heading_newsletter != blank %}
+          	<h2  {% if section.settings.heading_newsletter_color != blank %}style="color: {{ section.settings.heading_newsletter_color }};"{% endif %}>{{ section.settings.heading_newsletter  }}</h2>
+          {% endif %}
+          {% if section.settings.subtitle_newsletter != blank %}
+          	<p class="font-size-16">{{ section.settings.subtitle_newsletter }}</p>
+          {% endif %}
+          
+          {% form 'customer',  class:'form-blog-newsletter' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+          <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {% else %}
+          <div class="input-group password__input-group">
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email"
+                   name="contact[email]"
+                   id="Email-Blog"
+                   class="globo-easy-mc-email field-no-label"
+                   value="{% if customer %}{{ customer.email }}{% endif %}"
+                   placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                   autocorrect="off"
+                   autocapitalize="off">
+            <span class="input-group__btn">
+              <button type="submit" class="globo-easy-mc-submit-button btn btn-primary" name="commit" id="Subscribe-Blog">
+                <span>{{ 'general.newsletter_form.submit' | t }}</span>
+              </button>
+            </span>
+          </div>
+          {% endif %}
+          {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Blog and Newsletter",
+    "class": "globo_blog_newsletter",
+    "settings": [
+      {
+        "type": "select",
+        "id": "left_css_animations",
+        "label": "Left CSS Animation",
+        "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "5"
+      },
+      {
+        "type": "select",
+        "id": "right_css_animations",
+        "label": "Right CSS Animation",
+        "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "7"
+      },
+      {
+        "type": "select",
+        "id": "style",
+        "label": "Style",
+        "options": [
+          { "value": "1", "label": "Dark" },
+          { "value": "2", "label": "Light" }
+        ],
+        "default": "1"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "padding",
+        "label": "Padding: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "header",
+        "content": "Blog"
+      },
+      {
+        "type": "text",
+        "id": "title_blog",
+        "label": "Title",
+        "default": "LATEST BLOG"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+      {
+        "type":"text",
+        "id":"articles_show_many",
+        "label":"How many articles do you want to show? ( integer )",
+        "default": "2"
+     },
+     {
+        "type": "header",
+        "content": "Newsletter"
+     },
+     {
+        "type": "text",
+        "id": "title_newsletter",
+        "label": "Title",
+        "default": "NEWSLETTER"
+      },
+     {
+        "type": "text",
+        "id": "heading_newsletter",
+        "label": "Heading",
+        "default": "Get Discount 30% Off"
+      },
+      {
+        "type": "color",
+        "id": "heading_newsletter_color",
+        "label": "Heading color"
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle_newsletter",
+        "label": "Subtitle",
+		"default": "Get 20% discount with notified about the latest news and updates.<br \/> No spam, we promise!"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog and Newsletter",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

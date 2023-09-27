@@ -1,0 +1,46 @@
+{% if settings.show_newsletter_popup %}
+{% if request.page_type == 'index' %}
+<div class="la-newsletter-popup" data-back-time="1" data-show-mobile="0" id="la_newsletter_popup" data-delay="{{ settings.popup_show_ms }}">
+  <a href="#" class="btn-close-newsletter-popup"><i class="dl-icon-close"></i></a>
+  <div class="newsletter-popup-top">
+    {% if settings.image_popup_newsletter != blank %}
+  	<img data-src="{{ settings.image_popup_newsletter | img_url: '640x', format: 'pjpg' | split:'?' | first }}" src="{{ 'pixel.gif' | asset_url }}" alt="{{ settings.image_popup_newsletter.alt }}" class="lazy">
+  	{% else %}
+    {{ 'image' | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+  <div class="newsletter-popup-content text-center">
+    {% if settings.newsletter_popup_title != blank %}
+    <h2>{{ settings.newsletter_popup_title }}</h2>
+    {% endif %}
+    {% if settings.newsletter_popup_subtitle != blank %}
+    <p><strong>{{ settings.newsletter_popup_subtitle }}</strong></p>
+    {% endif %}
+    {% form 'customer', id: 'contact-form-popup', class:'globo-easy-mc-form' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+    <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+    {% else %}
+    <div class="input-group password__input-group">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email"
+             name="contact[email]"
+             id="email-popup"
+             class="globo-easy-mc-email field-no-label"
+             value="{% if customer %}{{ customer.email }}{% endif %}"
+             placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+             autocorrect="off"
+             autocapitalize="off">
+      <span class="input-group__btn">
+        <button type="submit" class="globo-easy-mc-submit-button btn" name="commit" id="submit-popup">
+          <span>{{ 'general.newsletter_form.submitpopup' | t }}</span>
+        </button>
+      </span>
+    </div>
+    {% endif %}
+    {% endform %}
+    <label class="lbl-dont-show-popup"><input type="checkbox" id="dont_show_popup" /><label class="style-checkbox-newsletter" for="dont_show_popup">{{ 'general.newsletter_form.dont_show_popup' | t }}</label></label>
+  </div>
+</div>
+{% endif %}
+{% endif %}

@@ -1,0 +1,220 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+<div class="g-list-collections {{ css_animations_class }}" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title }}</h2>
+    {% endif %}
+    <div style="display: none;">{% include 'dlicon-arrow-left2' %}{% include 'dlicon-arrow-right2' %}</div>
+    <div class="g-slick-slider" data-slick='{"infinite":{% if section.settings.use_loop %}true{% else %}false{% endif %},"dots":{% if section.settings.use_dots %}true{% else %}false{% endif %},"slidesToShow":1,"slidesToScroll":1,"autoplay":{% if section.settings.use_autoplay %}true{% else %}false{% endif %},"arrows":{% if section.settings.use_arrow %}true{% else %}false{% endif %},"speed":"1000","autoplaySpeed":3000,"centerMode":false,"variableWidth":false,"nextArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-next default\"><svg><use xlink:href=\"#dlicon-arrow-right2\"><\/use><\/svg><\/button>","prevArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-prev default\"><svg><use xlink:href=\"#dlicon-arrow-left2\"><\/use><\/svg><\/button>"}'>
+      {% for block in section.blocks %}
+        <div class="row-list-collections">
+          <div class="col-md-4 col-sm-5 col-xs-12 pull-left">
+            {% if block.settings.image != blank %}
+            <div class="image-shadow">
+              <a href="{{ block.settings.link }}"><img class="lazy" data-src="{{ block.settings.image | img_url: 'grande', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image.alt }}"><span class="icon-plus">{% include 'icon-plus' %}</span></a>
+            </div>
+            {% else %}
+            {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            <div class="list-collection--info">
+              {% if block.settings.title != blank %}
+              <h3><a href="{{ block.settings.link }}">{{ block.settings.title }}</a></h3>
+              {% endif %}
+              {% if block.settings.text != blank %}
+              <p>{{ block.settings.text }}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-7 col-xs-12 pull-right">
+            {% if block.settings.image2 != blank %}
+            <div class="image-shadow">
+              <a href="{{ block.settings.link2 }}"><img class="lazy" data-src="{{ block.settings.image2 | img_url: 'grande', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image2.alt }}"><span class="icon-plus">{% include 'icon-plus' %}</span></a>
+            </div>
+            {% else %}
+            {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            <div class="list-collection--info">
+              {% if block.settings.title2 != blank %}
+              <h3><a href="{{ block.settings.link2 }}">{{ block.settings.title2 }}</a></h3>
+              {% endif %}
+              {% if block.settings.text2 != blank %}
+              <p>{{ block.settings.text2 }}</p>
+              {% endif %}
+            </div>	
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Block list collections",
+    "class": "globo_list_collections",
+	"max_blocks": 8,
+  	"presets": [
+      {
+        "name": "Block list collections",
+        "category": "Categories & Banner",
+        "blocks": [
+          {
+            "type": "block_list_collections"
+          },
+          {
+            "type": "block_list_collections"
+          },
+          {
+            "type": "block_list_collections"
+          },
+          {
+            "type": "block_list_collections"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Trending Collections"
+      },
+      {
+       "type": "header",
+       "content": "Settings Slider"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_loop",
+        "label": "Use Infinite loop sliding?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "use_autoplay",
+        "label": "Use autoplay?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "use_dots",
+        "label": "Use dots?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "use_arrow",
+        "label": "Use arrow?",
+        "default": false
+      }
+    ],
+  	"blocks": [
+      {
+        "type": "block_list_collections",
+        "name": "Block list collections",
+        "settings": [
+           {
+             "type": "header",
+             "content": "Columns 1"
+           },
+           {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+           },
+           {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Orange T-shirt D23"
+           },
+           {
+              "type": "text",
+              "id": "text",
+              "label": "Text",
+              "default": "Suspendisse faucibus sed dolor eget<br> posuere interdum urna."
+           },
+           {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+           },
+           {
+             "type": "header",
+             "content": "Columns 2"
+           },
+           {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image"
+           },
+           {
+              "type": "text",
+              "id": "title2",
+              "label": "Title",
+              "default": "Shoes Romance Women 2018"
+           },
+           {
+              "type": "text",
+              "id": "text2",
+              "label": "Text",
+              "default": "Suspendisse faucibus sed dolor eget posuere<br> interdum urna."
+           },
+           {
+              "type": "url",
+              "id": "link2",
+              "label": "Link"
+           }
+        ]
+      }
+    ]
+  }
+{% endschema %}

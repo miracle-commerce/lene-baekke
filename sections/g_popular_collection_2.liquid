@@ -1,0 +1,306 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.use_width -%}
+    {% when '1' %}
+      	{%- assign content_width = 'g-fullwwidth' -%}
+    {% when '2' %}
+    	{%- assign content_width = 'container-full' -%}
+    {% when '3' %}
+    	{%- assign content_width = 'container' -%}
+{%- endcase -%}
+<div class="g-popular-collection-2 {{ css_animations_class }}" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="{{ content_width }}">
+    <div class="g-relative">
+      {% if section.settings.title != blank %}
+      <h2 {% if section.settings.title_position_top != blank %}style="top: {{ section.settings.title_position_top }};"{% endif %}>{{ section.settings.title }}</h2>
+      {% endif %}
+      <div class="list-popular-collections-2">
+        {% for block in section.blocks %}
+        {%- case block.settings.width -%}
+        {% when '1' %}
+        {% assign featured_banner_width = 'col-sm-3 col-xs-12' %}
+        {% when '2' %}
+        {% assign featured_banner_width = 'col-sm-4 col-xs-12' %}
+        {% when '3' %}
+        {% assign featured_banner_width = 'col-sm-6 col-xs-12' %}
+        {% when '4' %}
+        {% assign featured_banner_width = 'col-sm-8 col-xs-12' %}
+        {% when '5' %}
+        {% assign featured_banner_width = 'col-sm-12 col-xs-12' %}
+        {%- endcase -%}
+        {% case block.type %}
+        {% when 'block_collection_1' %}
+		<div class="{{ featured_banner_width }}" style="padding: 0; {% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}">
+          <div class="popular-collection-item-bottom">
+            <div class="image">
+              {% if block.settings.image != blank %}
+              <img class="lazy" data-src="{{ block.settings.image | img_url: 'master', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+              {% else %}
+              {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg svg-height-600' }}
+              {% endif %}
+            </div>
+            <div class="info">
+              {% if block.settings.title != blank %}
+              <h3 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.subtitle != blank %}
+              <p {% if block.settings.subtitle_color != blank %}style="color: {{ block.settings.subtitle_color }};"{% endif %}>{{ block.settings.subtitle }}</p>
+              {% endif %}
+            </div>
+            {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="overflow-link"></a>
+            {% endif %}
+          </div>          
+        </div>
+        {% when 'block_collection_2' %}
+        <div class="{{ featured_banner_width }}" style="padding: 0; {% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}">
+          <div class="popular-collection-item-center">
+            <div class="image">
+              {% if block.settings.image != blank %}
+              <img class="lazy" data-src="{{ block.settings.image | img_url: 'master', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+              {% else %}
+              {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg svg-height-600' }}
+              {% endif %}
+            </div>
+            <div class="info">
+              {% if block.settings.title != blank %}
+              <h3 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.subtitle != blank %}
+              <p {% if block.settings.subtitle_color != blank %}style="color: {{ block.settings.subtitle_color }};"{% endif %}>{{ block.settings.subtitle }}</p>
+              {% endif %}
+            </div>
+            {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="overflow-link"></a>
+            {% endif %}
+          </div>  
+        </div>        
+        {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Popular Collections 2",
+    "class": "globo_block_popular_c_2",
+    "max_blocks": 15,
+    "presets": [
+      {
+        "name": "Popular Collections 2",
+        "category": "Categories & Banner",
+        "blocks" : [
+          {
+            "type": "block_collection_1"
+          },
+          {
+            "type": "block_collection_2"
+          },
+          {
+            "type": "block_collection_2"
+          },
+          {
+            "type": "block_collection_1"
+          },
+          {
+            "type": "block_collection_1"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "select",
+        "id": "use_width",
+        "label": "Content width",
+        "options": [
+          { "value": "1", "label": "Use full width" },
+          { "value": "2", "label": "Use padding" },
+          { "value": "3", "label": "Use container" }
+        ],
+        "default": "1"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "block_collection_1",
+      "name": "Block collection 1",
+      "settings": [
+         {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "2",
+        "options": [
+             {
+               "value": "1",
+               "label": "25%"
+             },
+             {
+               "value": "2",
+               "label": "33.33333%"
+             },
+             {
+               "value": "3",
+               "label": "50%"
+             },
+             {
+               "value": "4",
+               "label": "66.66666%"
+             },
+             {
+               "value": "5",
+               "label": "100%"
+             }
+           ]
+         },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Cafe Collection"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+         },
+         {
+            "type": "textarea",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Suspendisse faucibus sed dolor eget<br> posuere interdum urna."
+         },
+         {
+            "type": "color",
+            "id": "subtitle_color",
+            "label": "Subtitle color"
+         },
+         {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+         }
+      ]
+    },
+    {
+      "type": "block_collection_2",
+      "name": "Block collection 2",
+      "settings": [
+         {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "2",
+        "options": [
+             {
+               "value": "1",
+               "label": "25%"
+             },
+             {
+               "value": "2",
+               "label": "33.33333%"
+             },
+             {
+               "value": "3",
+               "label": "50%"
+             },
+             {
+               "value": "4",
+               "label": "66.66666%"
+             },
+             {
+               "value": "5",
+               "label": "100%"
+             }
+           ]
+         },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Taste wonderful"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+         },
+         {
+            "type": "textarea",
+            "id": "subtitle",
+            "label": "Subtitle"
+         },
+         {
+            "type": "color",
+            "id": "subtitle_color",
+            "label": "Subtitle color"
+         },
+         {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+         }
+      ]
+    }
+  ]
+  }
+{% endschema %}

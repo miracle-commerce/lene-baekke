@@ -1,0 +1,177 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.postperrow -%}
+    {% when '2' %}
+      	{%- assign blog_class_width = 'col-md-6 col-sm-6' -%}
+    {% when '3' %}
+    	{%- assign blog_class_width = 'col-md-4 col-sm-4' -%}
+{%- endcase -%}
+<div class="g-post-blog {{ css_animations_class }}" style="{% if section.settings.color != blank %}background: {{ section.settings.color }};{% endif %} {% if section.settings.margin != blank %}margin: {{ section.settings.margin }};{% endif %} {% if section.settings.padding != blank %}padding: {{ section.settings.padding }};{% endif %}">
+  <div class="container">
+    <div class="title-section">
+      {% if section.settings.title != blank %}
+      <h2 class="title-border-top-small">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+      <p>{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+    <div class="row">
+      {%- assign blog = blogs[section.settings.blog] -%}
+      {% unless blog.empty? %}
+        {% assign number_limit = section.settings.articles_show_many | plus:0 %}
+        {% for article in blog.articles limit:number_limit %}
+        <article class="{{ blog_class_width }} col-xs-12">
+          <div class="blog_item-2">
+            <div class="blog_item-time-date">
+              <span class="day">{{ article.published_at | time_tag: format: 'day' }}</span>
+              <span class="month-year">{{ article.published_at | time_tag: '%b' }}</span>
+            </div>
+            <div class="blog_item-info-2">
+              <div class="author-date-blog">
+                <span>{{ 'homepage.onboarding.by' | t }} {{ article.author }},</span><span class="posted-on">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+              </div>
+              <h3 class="entry-blog-title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <div class="blog_item-excerpt">
+                {% if article.excerpt.size > 0 %}
+                {{ article.excerpt | strip_html }}
+                {% else %}
+                {{ article.content | strip_html | truncatewords: 15 }}
+                {% endif %}
+              </div>
+              <a href="{{ article.url }}" class="read-more">{{ 'blogs.article.read_more' | t }}</a>
+            </div>
+          </div>
+        </article>
+      	{% endfor %}
+      {% else %}
+      	{% for i in (1..2) %}
+        <article class="col-md-6 col-sm-6 col-xs-12">
+          <div class="blog_item-2">
+            <div class="blog_item-time-date">
+                <span class="day">{{ 'now' | date: "%d" }}</span>
+                <span class="month-year">{{ 'now' | date: "%b" }}</span>
+            </div>
+            <div class="blog_item-info-2">
+              <div class="author-date-blog">
+                <span>{{ 'homepage.onboarding.by' | t }} {{ 'homepage.onboarding.blog_author' | t }},</span><span class="posted-on">{{ 'now' | date: "%B" }} {{ 'now' | date: "%d" }}, {{ 'now' | date: "%Y" }}</span>
+              </div>
+              <h3 class="entry-blog-title"><a href="/">{{ 'homepage.onboarding.blog_title' | t }}</a></h3>
+              <div class="blog_item-excerpt">{{ 'homepage.onboarding.blog_excerpt' | t }}</div>
+              <a href="/" class="read-more">{{ 'blogs.article.read_more' | t }}</a>
+            </div>
+          </div>
+        </article>    		
+      	{% endfor %}
+      {% endunless %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Blog posts grid 2",
+    "class": "globo_blog_grid_2",
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Blog background color"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "padding",
+        "label": "Padding: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Latest Blog"
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "select",
+        "id": "postperrow",
+        "label": "Blog post per row",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ],
+        "default": "2"
+      },
+      {
+        "type":"text",
+        "id":"articles_show_many",
+        "label":"How many articles do you want to show? ( integer )",
+        "default": "2"
+     }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts grid 2",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

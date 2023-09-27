@@ -1,0 +1,361 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+<div class="g-client-collections-blog {{ css_animations_class }}" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="g-fullwwidth">
+    {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'clients' %}
+    <div class="col-clients-say-ccb">
+      <div class="ct_clients-say" {% if block.settings.padding != blank %}style="padding: {{ block.settings.padding }};"{% endif %}>
+        {% if block.settings.text != blank %}
+        <div class="text-testimonials-support">{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.name != blank %}
+      	<div class="name-black">{{ block.settings.name }}</div>
+        {% endif %}
+      </div>
+    </div>
+    {% when 'image_link' %}
+    <div class="col-list-collections-ccb">
+      <div class="ccb-columns-1" {% if block.settings.content_color_1 != blank %}style="color: {{ block.settings.content_color_1 }};"{% endif %}>
+        <div class="col-relative">
+          <div class="categories-item--thumbnail">
+            {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: '470x320' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+            {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="categories-item--info">
+            <div class="table-banner">
+              <div class="table-cell-banner text-center">
+                {% if block.settings.title != blank %}
+                <div class="ccb-title">{{ block.settings.title }}</div>
+                {% endif %}
+                {% if block.settings.subtitle != blank %}
+                <div class="ccb-subtitle">{{ block.settings.subtitle }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="overflow-link"></a>{% endif %}
+        </div>
+      </div>
+      <div class="ccb-columns-2">
+        <div class="ccb-box-child" style="{% if block.settings.bg_color_2 != blank %}background-color: {{ block.settings.bg_color_2 }};{% endif %}{% if block.settings.content_color_2 != blank %}color: {{ block.settings.content_color_2 }};{% endif %}">
+          <div class="categories-item--info">
+            <div class="table-banner">
+              <div class="table-cell-banner text-center">
+                {% if block.settings.title_2 != blank %}
+                <div class="ccb-title">{{ block.settings.title_2 }}</div>
+                {% endif %}
+                {% if block.settings.subtitle_2 != blank %}
+                <div class="ccb-subtitle">{{ block.settings.subtitle_2 }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% if block.settings.link_2 != blank %}<a href="{{ block.settings.link_2 }}" class="overflow-link"></a>{% endif %}        	
+        </div>
+        <div class="ccb-box-child" style="{% if block.settings.bg_color_3 != blank %}background-color: {{ block.settings.bg_color_3 }};{% endif %}{% if block.settings.content_color_2 != blank %}color: {{ block.settings.content_color_3 }};{% endif %}">
+          <div class="categories-item--info">
+            <div class="table-banner">
+              <div class="table-cell-banner text-center">
+                {% if block.settings.title_3 != blank %}
+                <div class="ccb-title">{{ block.settings.title_3 }}</div>
+                {% endif %}
+                {% if block.settings.subtitle_3 != blank %}
+                <div class="ccb-subtitle">{{ block.settings.subtitle_3 }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% if block.settings.link_3 != blank %}<a href="{{ block.settings.link_3 }}" class="overflow-link"></a>{% endif %}        	
+        </div>
+      </div>
+    </div>
+    {% when 'blog' %}
+    <div class="col-blog-ccb">
+      <div class="bg--blog-masonry">
+        <div class="blog--list-masonry" {% if block.settings.padding != blank %}style="padding: {{ block.settings.padding }};"{% endif %}>
+          {% if block.settings.title != blank %}
+          <h4>{{ block.settings.title }}</h4>
+          {% endif %}
+          {%- assign blog = blogs[block.settings.blog] -%}
+          {% unless blog.empty? %}
+          {% assign number_limit = block.settings.articles_show_many | plus:0 %}
+          {% for article in blog.articles limit:number_limit %}
+          <article class="blog-item">
+            <div class="time-date">
+              <span class="day">{{ article.published_at | time_tag: format: 'day' }}</span>
+              <span class="month-year">{{ article.published_at | time_tag: '%b' }}</span>
+            </div>
+            <div class="blog-info">
+              <div class="author-date-blog">
+                <span>{{ 'homepage.onboarding.by' | t }} {{ article.author }},</span><span class="posted-on">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+              </div>
+              <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+            </div>
+          </article>
+          {% endfor %}
+          {% else %}
+          {% for i in (1..2) %}
+          <article class="blog-item">
+            <div class="time-date">
+              <span class="day">{{ 'now' | date: "%d" }}</span>
+              <span class="month-year">{{ 'now' | date: "%b" }}</span>
+            </div>
+            <div class="blog-info">
+              <div class="author-date-blog">
+                <span>{{ 'homepage.onboarding.by' | t }} {{ 'homepage.onboarding.blog_author' | t }},</span><span class="posted-on">{{ 'now' | date: "%B" }} {{ 'now' | date: "%d" }}, {{ 'now' | date: "%Y" }}</span>
+              </div>
+              <h4><a href="/">{{ 'homepage.onboarding.blog_title' | t }}</a></h4>
+            </div>
+          </article>    		
+          {% endfor %}
+          {% endunless %}	
+        </div> 
+      </div>
+    </div>
+    {% endcase %}
+    {% endfor %}
+  </div>     
+</div>
+<div class="clearfix"></div>
+{% schema %}
+  {
+    "name": "Client collections blog",
+    "class": "globo_client_collections_blog",
+	"max_blocks": 3,
+  	"presets": [
+      {
+        "name": "Client collections blog",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "clients"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "blog"
+          }
+		]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      }
+    ],
+  	"blocks": [
+      {
+        "type": "clients",
+        "name": "Clients say",
+        "settings": [
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "&laquo; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo tristique<\/i> &raquo;"
+          },
+          {
+            "type": "textarea",
+            "id": "name",
+            "label": "Name",
+            "default": "<span>JONT HENRRY<\/span> - CEO NESOS"
+          }
+        ]
+      },
+      {
+        "type": "image_link",
+        "name": "Block image text link",
+        "settings": [
+         {
+          "type": "header",
+          "content": "Columns 1"
+         },
+         {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+         },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+         },
+         {
+          "type": "color",
+          "id": "content_color_1",
+          "label": "Color content",
+		  "default": "#ffffff"
+         },
+         {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+		  "default": "Men's"
+         },
+         {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+		  "default": "220 Item"
+         },
+  		 {
+          "type": "header",
+          "content": "Columns 2"
+         },
+         {
+          "type": "paragraph",
+          "content": "Box child 1"
+         },
+         {
+          "type": "url",
+          "id": "link_2",
+          "label": "Link",
+          "info": "Optional"
+         },
+         {
+          "type": "color",
+          "id": "bg_color_2",
+          "label": "Background color",
+		  "default": "#f66240"
+         },
+         {
+          "type": "color",
+          "id": "content_color_2",
+          "label": "Color content",
+		  "default": "#ffffff"
+         },
+         {
+          "type": "text",
+          "id": "title_2",
+          "label": "Title",
+		  "default": "Women's"
+         },
+         {
+          "type": "text",
+          "id": "subtitle_2",
+          "label": "Subtitle",
+		  "default": "220 Item"
+         },
+         {
+          "type": "paragraph",
+          "content": "Box child 2"
+         },
+         {
+          "type": "url",
+          "id": "link_3",
+          "label": "Link",
+          "info": "Optional"
+         },
+         {
+          "type": "color",
+          "id": "bg_color_3",
+          "label": "Background color",
+		  "default": "#c44d83"
+         },
+         {
+          "type": "color",
+          "id": "content_color_3",
+          "label": "Color content",
+		  "default": "#ffffff"
+         },
+         {
+          "type": "text",
+          "id": "title_3",
+          "label": "Title",
+		  "default": "Kids's"
+         },
+         {
+          "type": "text",
+          "id": "subtitle_3",
+          "label": "Subtitle",
+		  "default": "220 Item"
+         }
+        ]
+      },
+      {
+        "type": "blog",
+        "name": "Blog",
+        "settings": [
+          {
+            "type": "text",
+            "id": "padding",
+            "label": "Padding content: (top-right-bottom-left)",
+            "default": "15% 15px"
+         },
+       	 {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Latest News"
+         },
+         {
+            "id": "blog",
+            "type": "blog",
+            "label": "Blog"
+         },
+         {
+            "type":"text",
+            "id":"articles_show_many",
+            "label":"How many articles do you want to show? ( integer )",
+            "default": "2"
+         }
+        ]
+      }
+    ]
+  }
+{% endschema %}

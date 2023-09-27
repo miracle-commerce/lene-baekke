@@ -1,0 +1,82 @@
+<div class="custom-block-column wow fadeIn">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft">
+        {% if section.settings.title != blank %}
+        <div class="title-block-small">{{ section.settings.title }}</div>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight">
+        {% if section.settings.text != blank %}
+        {{ section.settings.text }}
+        {% endif %}
+        {% if section.settings.name != blank %}
+        <div class="name-black">{{ section.settings.name }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% if section.settings.image != blank %}
+<div class="about-img wow fadeIn">
+  <div class="container-full">
+    <img data-src="{{ section.settings.image | img_url: '1720x700' | split:'?' | first }}" class="vc_single_image-img attachment-full lazy" alt="{{ section.settings.image.alt }}">
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "About 2 text image",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Left content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "HISTORY SINCE 1998"
+      },
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Welcome to Hebes<br />Store - Amazing<br />furniture"
+      },
+      {
+        "type": "paragraph",
+        "content": "Right content"
+      },
+      {
+        "type": "html",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <strong>Suspendisse faucibus<\/strong> sed dolor eget posuere. Sed id interdum urna faucibus sed dolor eget posuere.<\/p><p>Sed id interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet dolor eget posuere.<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "name",
+        "label": "Name",
+        "default": "<span>JONT HENRRY<\/span> - CEO"
+      },
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

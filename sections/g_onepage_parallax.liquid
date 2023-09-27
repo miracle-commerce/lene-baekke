@@ -1,0 +1,3439 @@
+{%- case section.settings.sidetoshow -%}
+    {% when '3' %}
+      	{%- assign slider_class_width = 'xlg-grid-3-items lg-grid-3-items md-grid-3-items' -%}
+    {% when '4' %}
+    	{%- assign slider_class_width = 'xlg-grid-4-items lg-grid-4-items md-grid-4-items' -%}
+{%- endcase -%}
+
+{%- case section.settings.nav_style -%}
+	{% when '1' %}
+		{%- assign nav_class = 'g-nav-onepage-1' -%}
+	{% when '2' %}
+		{%- assign nav_class = 'g-nav-onepage-2' -%}
+	{% when '3' %}
+		{%- assign nav_class = 'g-nav-onepage-3' -%}
+{%- endcase -%}
+
+{%- case section.settings.catalog_position -%}
+    {% when '1' %}
+      	{%- assign catalog_class = 'catalog_position-1' -%}
+    {% when '2' %}
+    	{%- assign catalog_class = 'catalog_position-2' -%}
+{%- endcase -%}
+
+{%- case section.settings.social_position -%}
+    {% when '1' %}
+      	{%- assign social_class = 'social_position-1' -%}
+    {% when '2' %}
+    	{%- assign social_class = 'social_position-2' -%}
+{%- endcase -%}
+
+<div class="g-fullpage">
+  {% if section.settings.use_nav %}
+  <div id="onepage-actions" class="{{ nav_class }}">
+    <a id="moveSectionUp" href="#"><i class="icon dl-icon-up"></i></a>
+    <a id="moveSectionDown" href="#"><i class="icon dl-icon-down"></i></a>
+  </div>
+  {% endif %}
+  {% if section.settings.use_dot %}
+  <style>
+    #fp-nav.fp-right {display: block;}
+    #fp-nav ul li a span, .fp-slidesNav ul li a span {background: {{ section.settings.dot_color }} !important;}
+  </style>
+  {% endif %}
+  {% if section.settings.catalog_text != blank %}
+  <div class="catalog-onepage {{ catalog_class }}"><a href="{{ section.settings.catalog_link }}" {% if section.settings.catalog_text_color != blank %}style="color: {{ section.settings.catalog_text_color }};"{% endif %}>{{ section.settings.catalog_text }}</a></div>
+  {% endif %}
+  {% if section.settings.copyright_text != blank %}
+  <div class="copyright-onepage {{ social_class }}" {% if section.settings.copyright_text_color != blank %}style="color: {{ section.settings.copyright_text_color }};"{% endif %}>{{ section.settings.copyright_text }}</div>
+  {% endif %}
+  {% if section.settings.use_phone_number_slider %}
+  <div class="phone-number-slider" {% if section.settings.color_phone_number != blank %}style="color: {{ section.settings.color_phone_number }};"{% endif %}>
+    <div class="icon" style="{% if section.settings.bg_color_phone_number_icon != blank %}background-color: {{ section.settings.bg_color_phone_number_icon }};{% endif %} {% if section.settings.color_phone_number_icon != blank %}color: {{ section.settings.color_phone_number_icon }};{% endif %}"><i class="fa fa-phone"></i></div>{{ section.settings.text_phone_number_slider }}
+  </div>
+  {% endif %}
+  <div id="fullpage">
+    {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'section1' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %} 
+      <div class="onepage-content-section-1">
+        {% if block.settings.title != blank %}
+        <h2 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</h2>
+        {% endif %}
+        <div class="text-and-button">
+        {% if block.settings.text != blank %}
+        <div class="text" {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.button_name != blank %}
+        <a href="{{ block.settings.button_link }}" {% if block.settings.button_color != blank %}style="color: {{ block.settings.button_color }};"{% endif %}>{{ block.settings.button_name }}</a>
+        {% endif %}
+        </div>
+      </div>
+      {% if block.settings.text_info != blank %}
+      	<div class="text-info-slider" {% if block.settings.text_info_color != blank %}style="color: {{ block.settings.text_info_color }};"{% endif %}>{{ block.settings.text_info }}</div>
+      {% endif %}
+    </div>
+    {% when 'section2' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %} 
+      <div class="onepage-content-section-2">
+        <div class="container">
+          {% if block.settings.title != blank %}
+          <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.heading != blank %}
+          <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <div class="text" {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</div>
+          {% endif %}
+          {% if block.settings.button_name != blank %}
+          <a href="{{ block.settings.button_link }}" {% if block.settings.button_color != blank %}style="color: {{ block.settings.button_color }};"{% endif %}>{{ block.settings.button_name }}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% if block.settings.text_info != blank %}
+      <div class="text-info-slider" {% if block.settings.text_info_color != blank %}style="color: {{ block.settings.text_info_color }};"{% endif %}>{{ block.settings.text_info }}</div>
+      {% endif %}
+    </div>
+    {% when 'section3' %}
+    <div class="section section--{{ block.id }}">
+      {% if block.settings.bg_color != blank %}
+      <div class="bg-color-section-contact" style="background-color: {{ block.settings.bg_color }};"></div>
+      {% endif %}
+      <div class="onepage-content-section-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <div class="onepage-s-newsletter">
+                {% if block.settings.heading != blank %}
+                <h2>{{ block.settings.heading }}</h2>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.subtitle != blank %}
+                <p>{{ block.settings.subtitle }}</p>
+                {% endif %}
+                {% form 'customer', id: 'contact-form-onepage-1',  class:'form-newsletter clearfix' %}
+                {{ form.errors | default_errors }}
+                {% if form.posted_successfully? %}
+                <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                {% else %}
+                <div class="input-group-newsletter">
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <input type="email"
+                         name="contact[email]"
+                         id="email-section-contact"
+                         class="mc-email field-no-label"
+                         value="{% if customer %}{{ customer.email }}{% endif %}"
+                         placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                         autocorrect="off"
+                         autocapitalize="off" {% if block.settings.bg_color_input != blank %}style="background-color: {{ block.settings.bg_color_input }};"{% endif %}>
+                  <span class="input-group__btn">
+                    <button type="submit" class="mc-submit-button btn btn-primary" name="commit" id="submit-section-contact">
+                      <span>{{ 'general.newsletter_form.submit' | t }}</span>
+                    </button>
+                  </span>
+                </div>
+                {% endif %}
+                {% endform %}
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="onepage-s-contact-info">
+                <div class="textwidget content-widget-html">
+                  {% if block.settings.logo_footer != blank %}
+                  <p>
+                    <a href="/"><img src="{{ block.settings.logo_footer | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.logo_footer.alt | default: shop.name }}"></a>
+                  </p>
+                  {% endif %}
+                  {{  block.settings.content_html }}
+                  <div class="social-media-link style-default clearfix">
+                    <ul>
+                      {% if settings.social_facebook_link != blank %}
+                      <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                      {% endif %}
+                      {% if settings.social_twitter_link != blank %}
+                      <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                      {% endif %}
+                      {% if settings.social_pinterest_link != blank %}
+                      <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                      {% endif %}
+                      {% if settings.social_instagram_link != blank %}
+                      <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                      {% endif %}
+                      {% if settings.social_behance_link != blank %}
+                      <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                      {% endif %}
+                      {% if settings.social_tumblr_link != blank %}
+                      <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                      {% endif %}
+                      {% if settings.social_snapchat_link != blank %}
+                      <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                      {% endif %}
+                      {% if settings.social_youtube_link != blank %}
+                      <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                      {% endif %}
+                      {% if settings.social_vimeo_link != blank %}
+                      <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>
+        @media(max-width: 767px) {
+          .section--{{ block.id }} .bg-color-section-contact+.onepage-content-section-3 {
+            background-color: {{ block.settings.bg_color }};;
+          }
+        }
+      </style>
+    </div>
+    {% when 'section4' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+      <div class="onepage-content-section-4">
+        <div class="container">
+          {% if block.settings.title_rotate != blank %}
+          <div class="title-rotate-14" style="text-transform: uppercase; font-size: {{ block.settings.title_rotate_font_size }}px; font-weight: 700; color: {{ block.settings.title_rotate_color }}; margin: 5px 0; line-height: 1;">{{ block.settings.title_rotate }}</div>
+          {% endif %}
+          {% if block.settings.heading != blank %}
+          <h2 style="font-size: {{ block.settings.heading_font_size }}px; color: {{ block.settings.heading_color }}; margin: 35vh 0 35px 0; line-height: 1;">{{ block.settings.heading }}</h2>
+          {% endif %}
+          {% if block.settings.button_name != blank %}
+          <a href="{{ block.settings.button_link }}" style="font-size: {{ block.settings.button_font_size }}px; color: {{ block.settings.button_color }}; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;">{{ block.settings.button_name }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% when 'section5' %}
+    <div class="section section--{{ block.id }}">
+      {% if block.settings.bg_color != blank %}
+      <div class="bg-color-section-contact" style="background-color: {{ block.settings.bg_color }};"></div>
+      {% endif %}
+      <div class="onepage-content-section-3 onepage-content-section-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7 col-xs-12">
+              <div class="max-width-500">
+                {% if block.settings.image != blank %}
+                <div class="image"><img data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="lazy" /></div>
+                {% endif %}
+                {% if block.settings.text_left != blank %}
+                <div class="text" {% if block.settings.text_left_color != blank %}style="color: {{ block.settings.text_left_color }};"{% endif %}>
+                  {{ block.settings.text_left }}
+                </div>
+                {% endif %}
+                {% if block.settings.name != blank %}
+                <div class="name-black">{{ block.settings.name }}</div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-sm-5 col-xs-12">
+              <div class="onepage-s-newsletter">
+                {% if block.settings.heading != blank %}
+                <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                <h3 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.subtitle != blank %}
+                <p>{{ block.settings.subtitle }}</p>
+                {% endif %}
+                {% form 'customer', id: 'contact-form-onepage-2',  class:'form-newsletter clearfix' %}
+                {{ form.errors | default_errors }}
+                {% if form.posted_successfully? %}
+                <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                {% else %}
+                <div class="input-group-newsletter">
+                  <input type="hidden" name="contact[tags]" value="newsletter">
+                  <input type="email"
+                         name="contact[email]"
+                         id="email-section-contact-2"
+                         class="mc-email field-no-label"
+                         value="{% if customer %}{{ customer.email }}{% endif %}"
+                         placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                         autocorrect="off"
+                         autocapitalize="off" {% if block.settings.bg_color_input != blank %}style="background-color: {{ block.settings.bg_color_input }};"{% endif %}>
+                  <span class="input-group__btn">
+                    <button type="submit" class="mc-submit-button btn btn-primary" name="commit" id="submit-section-contact-2">
+                      <span>{{ 'general.newsletter_form.submit' | t }}</span>
+                    </button>
+                  </span>
+                </div>
+                {% endif %}
+                {% endform %}
+              </div>
+              <div class="onepage-s-contact-info">
+                <div class="textwidget content-widget-html">
+                  {% if block.settings.logo_footer != blank %}
+                  <p>
+                    <a href="/"><img src="{{ block.settings.logo_footer | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.logo_footer.alt | default: shop.name }}"></a>
+                  </p>
+                  {% endif %}
+                  {{  block.settings.content_html }}
+                  <div class="social-media-link style-default clearfix">
+                    <ul>
+                      {% if settings.social_facebook_link != blank %}
+                      <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                      {% endif %}
+                      {% if settings.social_twitter_link != blank %}
+                      <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                      {% endif %}
+                      {% if settings.social_pinterest_link != blank %}
+                      <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                      {% endif %}
+                      {% if settings.social_instagram_link != blank %}
+                      <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                      {% endif %}
+                      {% if settings.social_behance_link != blank %}
+                      <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                      {% endif %}
+                      {% if settings.social_tumblr_link != blank %}
+                      <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                      {% endif %}
+                      {% if settings.social_snapchat_link != blank %}
+                      <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                      {% endif %}
+                      {% if settings.social_youtube_link != blank %}
+                      <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                      {% endif %}
+                      {% if settings.social_vimeo_link != blank %}
+                      <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <style>
+          {% if block.settings.content_color != blank %}
+          .section--{{ block.id }} .onepage-content-section-3.onepage-content-section-5, 
+          .section--{{ block.id }} .onepage-content-section-3.onepage-content-section-5 a, 
+          .section--{{ block.id }} .onepage-content-section-5 .onepage-s-contact-info p strong {
+            color: {{ block.settings.content_color }};
+          }
+          {% endif %}
+          @media(max-width: 767px) {
+            .section--{{ block.id }} .bg-color-section-contact+.onepage-content-section-3.onepage-content-section-5 {
+              background-color: {{ block.settings.bg_color }};;
+            }
+          }
+        </style>
+      </div>
+    </div>
+    {% when 'section6' %}
+    <div class="section">
+      <div class="left-section-onepage" {% if block.settings.bg_left_section != blank %}style="background-color: {{ block.settings.bg_left_section }};"{% endif %}>
+        <div class="content-left-section-onepage">
+          {% if block.settings.title != blank %}
+          <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.heading != blank %}
+          <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <p {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+          {% endif %}
+          {% if block.settings.use_button %}
+          <a href="{{ block.settings.button_link }}" class="btn-svg-slider">
+            <svg data-name="button view" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+              <metadata><?xpacket begin="﻿" ?>
+                <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01">
+                  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                    <rdf:Description rdf:about=""/>
+                  </rdf:RDF>
+                </x:xmpmeta>
+                <?xpacket end="w"?></metadata>
+              <defs>
+                <filter x="-39" y="-39" width="129" height="129" filterUnits="userSpaceOnUse">
+                  <feOffset result="offset" in="SourceAlpha"/>
+                  <feGaussianBlur result="blur" stdDeviation="6.164"/>
+                  <feFlood result="flood" flood-color="#96b0cb" flood-opacity="0.31"/>
+                  <feComposite result="composite" operator="in" in2="blur"/>
+                  <feBlend result="blend" in="SourceGraphic"/>
+                </filter>
+              </defs>
+              <circle data-name="Ellipse bg" class="cls-1" cx="25" cy="25" r="25" style="fill: {{ block.settings.button_bg }};" />
+              <path class="cls-2" d="M24,15h1V35H24V15ZM15,26V25H35v1H15Z" style="fill: {{ block.settings.button_color }};" />
+            </svg>
+          </a>
+          {% endif %}
+        </div>	
+      </div>
+      <div class="right-section-onepage">
+        {% if block.settings.image != blank %}
+        <div class="image"><img src="{{ block.settings.image | img_url: '800x' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" /></div>
+        {% endif %}
+      </div>
+    </div>
+    {% when 'section7' %}
+    <div class="section">
+      <div class="left-section-onepage" {% if block.settings.bg_left_section != blank %}style="background-color: {{ block.settings.bg_left_section }};"{% endif %}>
+        <div class="content-left-section-onepage">
+          {% if block.settings.title != blank %}
+          <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.heading != blank %}
+          <h2 class="font-size-48" {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <p class="text-section7-onepage" {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+          {% endif %}
+          {% if block.settings.use_4_columns %}
+          <ul class="list-4_columns">
+            <li>
+              {% if block.settings.title_column_1 != blank %}
+              <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_1 }}</h4>
+              {% endif %}
+              {% if block.settings.subtitle_column_1 != blank %}
+              <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_1 }}</div>
+              {% endif %}
+            </li>
+            <li>
+              {% if block.settings.title_column_2 != blank %}
+              <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_2 }}</h4>
+              {% endif %}
+              {% if block.settings.subtitle_column_2 != blank %}
+              <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_2 }}</div>
+              {% endif %}
+            </li>
+            <li>
+              {% if block.settings.title_column_3 != blank %}
+              <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_3 }}</h4>
+              {% endif %}
+              {% if block.settings.subtitle_column_3 != blank %}
+              <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_3 }}</div>
+              {% endif %}
+            </li>
+            <li>
+              {% if block.settings.title_column_4 != blank %}
+              <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_4 }}</h4>
+              {% endif %}
+              {% if block.settings.subtitle_column_4 != blank %}
+              <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_4 }}</div>
+              {% endif %}
+            </li>
+          </ul>
+          {% endif %}
+        </div>	
+      </div>
+      <div class="right-section-onepage">
+        {% if block.settings.image != blank %}
+        <div class="image"><img src="{{ block.settings.image | img_url: '800x' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" /></div>
+        {% endif %}
+      </div>
+    </div>
+    {% when 'section8' %}
+    <div class="section">
+      <div class="left-menu-collection-onepage" {% if block.settings.bg_color != blank %}style="background-color: {{ block.settings.bg_color }};"{% endif %}>
+        <ul>
+          {%- for link in linklists[block.settings.menu].links -%}
+          <li><a href="{{ link.url }}" {% if block.settings.menu_color != blank %}style="color: {{ block.settings.menu_color }};"{% endif %}>{{ link.title }}</a></li>
+          {%- else -%}
+          {% capture theme_settings_footer_linklist_path %}<strong>Collections</strong> > <strong>List Links</strong>{% endcapture %}
+          {{ 'layout.footer.instructions_for_linklist_html' | t: theme_settings_link: theme_settings_link, theme_settings_footer_linklist_path: theme_settings_footer_linklist_path }}
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="right-list-product-onepage">
+        <div class="content-list-product-onepage">
+          {% if block.settings.title != blank %}
+          <div class="title">{{ block.settings.title }}</div>
+          {% endif %}
+          {% assign collection = collections[block.settings.id_collection] %}
+          <div class="g-slick-products grid-items {{ slider_class_width }} sm-grid-3-items xs-grid-2-items mb-grid-1-items" data-slick='{"infinite":{% if block.settings.use_loop %}true{% else %}false{% endif %},"dots":{% if block.settings.use_dots %}true{% else %}false{% endif %},"slidesToShow":{{ block.settings.sidetoshow }},"slidesToScroll":{{ block.settings.sidetoshow }},"autoplay":{% if block.settings.use_autoplay %}true{% else %}false{% endif %},"arrows": false,"speed":"1000","autoplaySpeed":3000,"centerMode":false,"variableWidth":false,"nextArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-next default\"><svg><use xlink:href=\"#dlicon-arrow-right2\"><\/use><\/svg><\/button>","prevArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-prev default\"><svg><use xlink:href=\"#dlicon-arrow-left2\"><\/use><\/svg><\/button>","responsive":[{"breakpoint":1200,"settings":{"slidesToShow":3,"slidesToScroll":3}},{"breakpoint":992,"settings":{"slidesToShow":3,"slidesToScroll":3}},{"breakpoint":768,"settings":{"slidesToShow":2,"slidesToScroll":2}},{"breakpoint":480,"settings":{"slidesToShow":1,"slidesToScroll":1}}]}'>
+            {% if collection.empty? %}
+            {% for i in (1..20) limit:block.settings.items_show %}
+            {% include 'no-products' %}
+            {% endfor %}
+            {% else %}
+            {% for product in collection.products limit:block.settings.items_show %}
+            {% include 'g_product_carousel' %} 
+            {% endfor %}
+            {% endif %}
+          </div>
+          {% if block.settings.use_arrow %}
+          <div class="g-slick-arrow-center">
+            <div style="display: none;">{% include 'dlicon-arrow-left2' %}{% include 'dlicon-arrow-right2' %}</div>
+            <button type="button" class="slick-prev-custom slick-prev default slick-arrow">{% include 'dlicon-arrow-left2' %}</button>
+            <button type="button" class="slick-next-custom slick-next default slick-arrow">{% include 'dlicon-arrow-right2' %}</button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% when 'section9' %}
+    <div class="section">
+      <div class="left-section-onepage slick-slider-dots-onepage" {% if block.settings.bg_left_section != blank %}style="background-color: {{ block.settings.bg_left_section }};"{% endif %}>
+        <div class="content-left-section-onepage">
+          {% if block.settings.title != blank %}
+          <div class="title">{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.heading_left != blank %}
+          <h3>{{ block.settings.heading_left }}</h3>
+          {% endif %}
+          <div class="g-stick-testimonial g-slick-slider" data-slick='{"infinite":{% if block.settings.use_loop %}true{% else %}false{% endif %},"dots":{% if block.settings.use_dots %}true{% else %}false{% endif %},"slidesToShow":1,"slidesToScroll":1,"autoplay":{% if block.settings.use_autoplay %}true{% else %}false{% endif %},"arrows":{% if block.settings.use_arrows %}true{% else %}false{% endif %},"speed":"1000","autoplaySpeed":3000,"centerMode":false,"variableWidth":false,"vertical":false,"nextArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-next default\"><svg><use xlink:href=\"#dlicon-arrow-right2\"><\/use><\/svg><\/button>","prevArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-prev default\"><svg><use xlink:href=\"#dlicon-arrow-left2\"><\/use><\/svg><\/button>","responsive":[{"breakpoint":1824,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":1200,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":992,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":768,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":480,"settings":{"slidesToShow":1,"slidesToScroll":1}}]}'>
+            {% if block.settings.use_client_say_1 %}
+            <div class="testimonial_item">
+              <div class="testimonial_item--image">
+                {% if block.settings.client_image_1 != blank %}
+                <img src="{{ block.settings.client_image_1 | img_url: '50x50' }}" alt="{{ block.settings.client_image_1.alt }}" />
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="right-testimonial_item">
+                {% if block.settings.quote_1 != blank %}
+                <div class="testimonial_item--info">
+                  {{ block.settings.quote_1 }}
+                </div>
+                {% endif %}
+                {% if block.settings.author_1 != blank %}
+                <div class="testimonial_item--bottom">
+                  {{ block.settings.author_1 }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+            {% if block.settings.use_client_say_2 %}
+            <div class="testimonial_item">
+              <div class="testimonial_item--image">
+                {% if block.settings.client_image_2 != blank %}
+                <img src="{{ block.settings.client_image_2 | img_url: '50x50' }}" alt="{{ block.settings.client_image_2.alt }}" />
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="right-testimonial_item">
+                {% if block.settings.quote_2 != blank %}
+                <div class="testimonial_item--info">
+                  {{ block.settings.quote_2 }}
+                </div>
+                {% endif %}
+                {% if block.settings.author_2 != blank %}
+                <div class="testimonial_item--bottom">
+                  {{ block.settings.author_2 }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+            {% if block.settings.use_client_say_3 %}
+            <div class="testimonial_item">
+              <div class="testimonial_item--image">
+                {% if block.settings.client_image_3 != blank %}
+                <img src="{{ block.settings.client_image_3 | img_url: '50x50' }}" alt="{{ block.settings.client_image_3.alt }}" />
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="right-testimonial_item">
+                {% if block.settings.quote_3 != blank %}
+                <div class="testimonial_item--info">
+                  {{ block.settings.quote_3 }}
+                </div>
+                {% endif %}
+                {% if block.settings.author_3 != blank %}
+                <div class="testimonial_item--bottom">
+                  {{ block.settings.author_3 }}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="right-section-onepage">
+        <div class="content-right-section-onepage">
+          {% if block.settings.title_blog != blank %}
+          <h3>{{ block.settings.title_blog }}</h3>
+          {% endif %}
+          <div style="display: none;">{% include 'dlicon-arrow-left2' %}{% include 'dlicon-arrow-right2' %}</div>
+          <div class="blog-list-item g-slick-slider" data-slick='{"rows": 2, "dots": true, "arrows": false, "infinite": true, "speed": 600, "slidesToShow": 1, "slidesToScroll": 1,"nextArrow":"<button type=\"button\" style=\"font-size:18px;width:18px;height:18px;line-height:18px;\" class=\"slick-next default\"><svg><use xlink:href=\"#dlicon-arrow-right2\"><\/use><\/svg><\/button>","prevArrow":"<button type=\"button\" style=\"font-size:18px;width:18px;height:18px;line-height:18px;\" class=\"slick-prev default\"><svg><use xlink:href=\"#dlicon-arrow-left2\"><\/use><\/svg><\/button>"}'>
+            {%- assign blog = blogs[block.settings.blog] -%}
+            {% unless blog.empty? %}
+            {% assign number_limit = block.settings.articles_show_many | plus:0 %}
+            {% for article in blog.articles limit:number_limit %}
+            <article class="blog-item">
+              <div class="time-date">
+                <span class="day">{{ article.published_at | time_tag: format: 'day' }}</span>
+                <span class="month-year">{{ article.published_at | time_tag: '%b' }}</span>
+              </div>
+              <div class="blog-info">
+                <div class="author-date-blog">
+                  <span>{{ 'homepage.onboarding.by' | t }} {{ article.author }},</span><span class="posted-on">{{ article.published_at | time_tag: format: 'month_day_year' }}</span>
+                </div>
+                <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+              </div>
+            </article>
+            {% endfor %}
+            {% else %}
+            {% for i in (1..4) %}
+            <article class="blog-item">
+              <div class="time-date">
+                <span class="day">{{ 'now' | date: "%d" }}</span>
+                <span class="month-year">{{ 'now' | date: "%b" }}</span>
+              </div>
+              <div class="blog-info">
+                <div class="author-date-blog">
+                  <span>{{ 'homepage.onboarding.by' | t }} {{ 'homepage.onboarding.blog_author' | t }},</span><span class="posted-on">{{ 'now' | date: "%B" }} {{ 'now' | date: "%d" }}, {{ 'now' | date: "%Y" }}</span>
+                </div>
+                <h4><a href="/">{{ 'homepage.onboarding.blog_title' | t }}</a></h4>
+              </div>
+            </article>    		
+            {% endfor %}
+            {% endunless %}	
+          </div> 
+        </div>
+      </div>
+    </div>
+    {% when 'section10' %}
+    <div class="section">
+      <div class="left-section-onepage" {% if block.settings.bg_left_section != blank %}style="background-color: {{ block.settings.bg_left_section }};"{% endif %}>
+        <div class="content-left-section-onepage">
+          <div class="onepage-s-newsletter">
+            {% if block.settings.title != blank %}
+            <div class="title">{{ block.settings.title }}</div>
+            {% endif %}
+            {% if block.settings.heading_left != blank %}
+            <h3>{{ block.settings.heading_left }}</h3>
+            {% endif %}
+            {% if block.settings.text_left != blank %}
+            <p>{{ block.settings.text_left }}</p>
+            {% endif %}
+            {% form 'customer', id: 'contact-form-onepage-10',  class:'form-newsletter clearfix' %}
+            {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+            <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+            {% else %}
+            <div class="input-group-newsletter">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="email"
+                     name="contact[email]"
+                     id="email-section-contact-10"
+                     class="mc-email field-no-label"
+                     value="{% if customer %}{{ customer.email }}{% endif %}"
+                     placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                     autocorrect="off"
+                     autocapitalize="off" {% if block.settings.bg_color_input != blank %}style="background-color: {{ block.settings.bg_color_input }};"{% endif %}>
+              <span class="input-group__btn">
+                <button type="submit" class="mc-submit-button btn btn-primary" name="commit" id="submit-section-contact-10">
+                  <span>{{ 'general.newsletter_form.submit' | t }}</span>
+                </button>
+              </span>
+            </div>
+            {% endif %}
+            {% endform %}
+          </div>
+        </div>
+      </div>
+      <div class="right-section-onepage">
+        <div class="content-right-section-onepage">
+          <div class="onepage-s-contact-info">
+            <div class="textwidget content-widget-html">
+              {% if block.settings.logo_footer != blank %}
+              <p>
+                <a href="/"><img src="{{ block.settings.logo_footer | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.logo_footer.alt | default: shop.name }}"></a>
+              </p>
+              {% endif %}
+              {{  block.settings.content_html }}
+              <div class="social-media-link style-default clearfix">
+                <ul>
+                  {% if settings.social_facebook_link != blank %}
+                  <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                  {% endif %}
+                  {% if settings.social_twitter_link != blank %}
+                  <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                  {% endif %}
+                  {% if settings.social_pinterest_link != blank %}
+                  <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                  {% endif %}
+                  {% if settings.social_instagram_link != blank %}
+                  <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                  {% endif %}
+                  {% if settings.social_behance_link != blank %}
+                  <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                  {% endif %}
+                  {% if settings.social_tumblr_link != blank %}
+                  <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                  {% endif %}
+                  {% if settings.social_snapchat_link != blank %}
+                  <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                  {% endif %}
+                  {% if settings.social_youtube_link != blank %}
+                  <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                  {% endif %}
+                  {% if settings.social_vimeo_link != blank %}
+                  <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% when 'section11' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %} 
+      <div class="onepage-content-section-2 onepage-content-section-11">
+        <div class="container">
+          {% if block.settings.title != blank %}
+          <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.heading != blank %}
+          <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <div class="text" {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</div>
+          {% endif %}
+          {% if block.settings.button_name != blank %}
+          <a href="{{ block.settings.button_link }}" {% if block.settings.button_color != blank %}style="color: {{ block.settings.button_color }};"{% endif %}>{{ block.settings.button_name }}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% if block.settings.text_info != blank %}
+      <div class="text-info-slider text-info-slider-11" {% if block.settings.text_info_color != blank %}style="color: {{ block.settings.text_info_color }};"{% endif %}>{{ block.settings.text_info }}</div>
+      {% endif %}
+    </div>
+    {% when 'section12' %}
+    <div class="section section-before-bg">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+      <div class="onepage-content-section-4 onepage-content-section-12">
+        <div class="container">
+          {% if block.settings.title_rotate != blank %}
+          <div class="title-rotate-14" style="text-transform: uppercase; font-size: {{ block.settings.title_rotate_font_size }}px; font-weight: 700; color: {{ block.settings.title_rotate_color }}; margin: 5px 0; line-height: 1;">{{ block.settings.title_rotate }}</div>
+          {% endif %}
+          <div class="bottom-onepage-12">
+            {% if block.settings.heading != blank %}
+            <h2 style="font-size: {{ block.settings.heading_font_size }}px; color: {{ block.settings.heading_color }}; margin: 35vh 0 10px 0; line-height: 1;">{{ block.settings.heading }}</h2>
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <p {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+            {% endif %}
+            {% if block.settings.button_name != blank %}
+            <a href="{{ block.settings.button_link }}" style="font-size: {{ block.settings.button_font_size }}px; color: {{ block.settings.button_color }}; letter-spacing: 0.05em; font-weight: 700;">{{ block.settings.button_name }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if block.settings.use_social_slider %}
+      <div class="social-slider social-slider-onepage">
+        <ul>
+          {% if block.settings.social_slider_1 != blank %}
+          <li><a href="{{ block.settings.link_social_slider_1 }}" target="_blank">{{ block.settings.social_slider_1 }}</a></li>
+          {% endif %}
+          {% if block.settings.social_slider_2 != blank %}
+          <li><a href="{{ block.settings.link_social_slider_2 }}" target="_blank">{{ block.settings.social_slider_2 }}</a></li>
+          {% endif %}
+          {% if block.settings.social_slider_3 != blank %}
+          <li><a href="{{ block.settings.link_social_slider_3 }}" target="_blank">{{ block.settings.social_slider_3 }}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if block.settings.use_menu_on_slider %}
+      <div class="list-collections-onepage-slider">
+        <ul>
+          {%- for link in linklists[block.settings.menu_on_slider].links -%}
+          <li><a href= "{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    {% when 'section13' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax cover-background-parallax-13" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+      <div class="content-left-section-onepage content-left-section-onepage-13" style="padding: 0; max-width: 100%;">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-5 col-xs-12"></div>
+            <div class="col-sm-7 col-xs-12">
+              {% if block.settings.title != blank %}
+              <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+              {% endif %}
+              {% if block.settings.heading != blank %}
+              <h2 class="font-size-48" {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+              {% endif %}
+              {% if block.settings.text != blank %}
+              <p class="text-section7-onepage" {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+              {% endif %}
+              {% if block.settings.use_4_columns %}
+              <ul class="list-4_columns">
+                <li>
+                  {% if block.settings.title_column_1 != blank %}
+                  <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_1 }}</h4>
+                  {% endif %}
+                  {% if block.settings.subtitle_column_1 != blank %}
+                  <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_1 }}</div>
+                  {% endif %}
+                </li>
+                <li>
+                  {% if block.settings.title_column_2 != blank %}
+                  <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_2 }}</h4>
+                  {% endif %}
+                  {% if block.settings.subtitle_column_2 != blank %}
+                  <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_2 }}</div>
+                  {% endif %}
+                </li>
+                <li>
+                  {% if block.settings.title_column_3 != blank %}
+                  <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_3 }}</h4>
+                  {% endif %}
+                  {% if block.settings.subtitle_column_3 != blank %}
+                  <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_3 }}</div>
+                  {% endif %}
+                </li>
+                <li>
+                  {% if block.settings.title_column_4 != blank %}
+                  <h4 {% if block.settings.title_column_color != blank %}style="color: {{ block.settings.title_column_color }};"{% endif %}>{{ block.settings.title_column_4 }}</h4>
+                  {% endif %}
+                  {% if block.settings.subtitle_column_4 != blank %}
+                  <div class="subtitle" {% if block.settings.subtitle_column_color != blank %}style="color: {{ block.settings.subtitle_column_color }};"{% endif %}>{{ block.settings.subtitle_column_4 }}</div>
+                  {% endif %}
+                </li>
+              </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% when 'section14' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+      <div class="onepage-section-14">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <div class="left-section-14">
+              {% if block.settings.title != blank %}
+              <h2>{{ block.settings.title }}</h2>
+              {% endif %}
+              {% if block.settings.text_left != blank %}
+              <p>{{ block.settings.text_left }}</p>
+              {% endif %}
+              {% if block.settings.name_left != blank %}
+              <div class="name-black">{{ block.settings.name_left }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <div class="onepage-s-contact-info">
+              <div class="textwidget content-widget-html">
+                {% if block.settings.logo_footer != blank %}
+                <p>
+                  <a href="/"><img src="{{ block.settings.logo_footer | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.logo_footer.alt | default: shop.name }}"></a>
+                </p>
+                {% endif %}
+                {{  block.settings.content_html }}
+                <div class="social-media-link style-default clearfix">
+                  <ul>
+                    {% if settings.social_facebook_link != blank %}
+                    <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                    {% endif %}
+                    {% if settings.social_twitter_link != blank %}
+                    <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                    {% endif %}
+                    {% if settings.social_pinterest_link != blank %}
+                    <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                    {% endif %}
+                    {% if settings.social_instagram_link != blank %}
+                    <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                    {% endif %}
+                    {% if settings.social_behance_link != blank %}
+                    <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                    {% endif %}
+                    {% if settings.social_tumblr_link != blank %}
+                    <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                    {% endif %}
+                    {% if settings.social_snapchat_link != blank %}
+                    <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                    {% endif %}
+                    {% if settings.social_youtube_link != blank %}
+                    <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                    {% endif %}
+                    {% if settings.social_vimeo_link != blank %}
+                    <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    {% when 'section15' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+      <div class="onepage-section-14 onepage-section-15">
+        <div class="container-full">
+          <div class="row row-flex-center">
+            <div class="col-sm-6 col-xs-12">
+              {% if block.settings.title != blank %}
+              <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+              {% endif %}
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="content-right-section15">
+                {% if block.settings.price != blank %}
+                <div class="price" {% if block.settings.price_color != blank %}style="color: {{ block.settings.price_color }};"{% endif %}>{{ block.settings.price }}</div>
+                {% endif %}
+                {% if block.settings.heading != blank %}
+                <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+                {% endif %}
+                {% if block.settings.button_name != blank %}
+                <a href="{{ block.settings.button_link }}" {% if block.settings.button_color != blank %}style="color: {{ block.settings.button_color }};"{% endif %}>{{ block.settings.button_name }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% when 'section16' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax cover-background-parallax-16" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+      <div class="onepage-section-14 onepage-section-16">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <div class="left-section-14">
+                {% if block.settings.title != blank %}
+                <h2>{{ block.settings.title }}</h2>
+                {% endif %}
+                {% if block.settings.text_left != blank %}
+                <p>{{ block.settings.text_left }}</p>
+                {% endif %}
+                {% if block.settings.name_left != blank %}
+                <div class="name-black">{{ block.settings.name_left }}</div>
+                {% endif %}
+              </div>
+              <div class="onepage-s-contact-info">
+                <div class="textwidget content-widget-html">
+                  {{  block.settings.content_html }}
+                  <div class="social-media-link style-default clearfix">
+                    <ul>
+                      {% if settings.social_facebook_link != blank %}
+                      <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                      {% endif %}
+                      {% if settings.social_twitter_link != blank %}
+                      <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                      {% endif %}
+                      {% if settings.social_pinterest_link != blank %}
+                      <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                      {% endif %}
+                      {% if settings.social_instagram_link != blank %}
+                      <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                      {% endif %}
+                      {% if settings.social_behance_link != blank %}
+                      <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                      {% endif %}
+                      {% if settings.social_tumblr_link != blank %}
+                      <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                      {% endif %}
+                      {% if settings.social_snapchat_link != blank %}
+                      <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                      {% endif %}
+                      {% if settings.social_youtube_link != blank %}
+                      <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                      {% endif %}
+                      {% if settings.social_vimeo_link != blank %}
+                      <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {% if block.settings.title_newsletter != blank %}
+              <h3>{{ block.settings.title_newsletter }}</h3>
+              {% endif %}
+              {% if block.settings.subtitle_newsletter != blank %}
+              <p class="subtitle-newsletter">{{ block.settings.subtitle_newsletter }}</p>
+              {% endif %}
+              {% form 'customer', id: 'contact-form-onepage-16',  class:'form-newsletter clearfix' %}
+              {{ form.errors | default_errors }}
+              {% if form.posted_successfully? %}
+              <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+              {% else %}
+              <div class="input-group-newsletter">
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <input type="email"
+                       name="contact[email]"
+                       id="email-section-contact-16"
+                       class="mc-email field-no-label"
+                       value="{% if customer %}{{ customer.email }}{% endif %}"
+                       placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                       autocorrect="off"
+                       autocapitalize="off" {% if block.settings.bg_color_input != blank %}style="background-color: {{ block.settings.bg_color_input }};"{% endif %}>
+                <span class="input-group__btn">
+                  <button type="submit" class="mc-submit-button btn btn-primary" name="commit" id="submit-section-contact-16">
+                    <span>{{ 'general.newsletter_form.submit' | t }}</span>
+                  </button>
+                </span>
+              </div>
+              {% endif %}
+              {% endform %}
+            </div>
+            <div class="col-sm-6 col-xs-12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% when 'section17' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %} 
+      <div class="onepage-content-section-2 onepage-content-section-17">
+        <div class="container text-right">
+          {% if block.settings.title != blank %}
+          <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+          {% endif %}
+          {% if block.settings.heading != blank %}
+          <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+          {% endif %}
+          <div class="price-and-button">
+            {% if block.settings.price != blank %}
+            <span class="price" {% if block.settings.price_color != blank %}style="color: {{ block.settings.price_color }};"{% endif %}>{{ block.settings.price }}</span>
+            {% endif %}
+            {% if block.settings.button_name != blank %}
+            <a href="{{ block.settings.button_link }}" {% if block.settings.button_color != blank %}style="color: {{ block.settings.button_color }};"{% endif %}>{{ block.settings.button_name }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% when 'section18' %}
+    <div class="section">
+      {% if block.settings.image != blank %}
+      <div class="cover-background-parallax" style="background-image: url({{ block.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+      {% else %}
+      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %} 
+      <div class="onepage-content-section-2 onepage-content-section-18">
+        <div class="container">
+          <div class="section18-about-client">
+            <div class="section18-about">
+              {% if block.settings.title_1 != blank %}
+              <div class="title" {% if block.settings.title_1_color != blank %}style="color: {{ block.settings.title_1_color }};"{% endif %}>{{ block.settings.title_1 }}</div>
+              {% endif %}
+              {% if block.settings.heading != blank %}
+              <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+              {% endif %}
+              {% if block.settings.text_1 != blank %}
+              <p {% if block.settings.text_1_color != blank %}style="color: {{ block.settings.text_1_color }};"{% endif %}>{{ block.settings.text_1 }}</p>
+              {% endif %}
+            </div>
+            <div class="section18-client">
+              {% if block.settings.title_2 != blank %}
+              <div class="title" {% if block.settings.title_2_color != blank %}style="color: {{ block.settings.title_2_color }};"{% endif %}>{{ block.settings.title_2 }}</div>
+              {% endif %}
+              {% if block.settings.text_2 != blank %}
+              <p {% if block.settings.text_2_color != blank %}style="color: {{ block.settings.text_2_color }};"{% endif %}>{{ block.settings.text_2 }}</p>
+              {% endif %}
+              <div class="name-client">
+                {% if block.settings.image_client != blank %}
+                	<img src="{{ block.settings.image_client | img_url: '40x40' | split:'?' | first  }}" alt="{{ block.settings.image_client.alt }}" />
+                {% endif %}
+                {% if block.settings.name != blank %}
+                	<span {% if block.settings.name_color != blank %}style="color: {{ block.settings.name_color }};"{% endif %}>{{ block.settings.name }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% when 'section19' %}
+    <div class="section section19-onepage-parallax" {% if block.settings.bg_color != blank %}style="background-color: {{ block.settings.bg_color }};"{% endif %}>
+      {% if block.settings.use_left_menu %}
+      <div class="left-menu-collection-onepage left-menu-collection-onepage-19">
+        <ul>
+          {%- for link in linklists[block.settings.menu].links -%}
+          <li><a href="{{ link.url }}" {% if block.settings.menu_color != blank %}style="color: {{ block.settings.menu_color }};"{% endif %}>{{ link.title }}</a></li>
+          {%- else -%}
+          {% capture theme_settings_footer_linklist_path %}<strong>Collections</strong> > <strong>List Links</strong>{% endcapture %}
+          {{ 'layout.footer.instructions_for_linklist_html' | t: theme_settings_link: theme_settings_link, theme_settings_footer_linklist_path: theme_settings_footer_linklist_path }}
+          {%- endfor -%}
+        </ul>
+      </div>
+      {% endif %}
+      <div class="{% if block.settings.use_left_menu %}right-list-product-onepage{% else %}container{% endif %}">
+        <div class="content-list-product-onepage">
+          {% if block.settings.title != blank %}
+          <div class="title">{{ block.settings.title }}</div>
+          {% endif %}
+          {% assign collection = collections[block.settings.id_collection] %}
+          <div class="g-slick-products grid-items {{ slider_class_width }} sm-grid-3-items xs-grid-2-items mb-grid-1-items" data-slick='{"infinite":{% if block.settings.use_loop %}true{% else %}false{% endif %},"dots":{% if block.settings.use_dots %}true{% else %}false{% endif %},"slidesToShow":{{ block.settings.sidetoshow }},"slidesToScroll":{{ block.settings.sidetoshow }},"autoplay":{% if block.settings.use_autoplay %}true{% else %}false{% endif %},"arrows": false,"speed":"1000","autoplaySpeed":3000,"centerMode":false,"variableWidth":false,"nextArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-next default\"><svg><use xlink:href=\"#dlicon-arrow-right2\"><\/use><\/svg><\/button>","prevArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-prev default\"><svg><use xlink:href=\"#dlicon-arrow-left2\"><\/use><\/svg><\/button>","responsive":[{"breakpoint":1200,"settings":{"slidesToShow":3,"slidesToScroll":3}},{"breakpoint":992,"settings":{"slidesToShow":3,"slidesToScroll":3}},{"breakpoint":768,"settings":{"slidesToShow":2,"slidesToScroll":2}},{"breakpoint":480,"settings":{"slidesToShow":1,"slidesToScroll":1}}]}'>
+            {% if collection.empty? %}
+            {% for i in (1..20) limit:block.settings.items_show %}
+            {% include 'no-products' %}
+            {% endfor %}
+            {% else %}
+            {% for product in collection.products limit:block.settings.items_show %}
+            {% include 'g_product_carousel' %} 
+            {% endfor %}
+            {% endif %}
+          </div>
+          {% if block.settings.use_arrow %}
+          <div class="g-slick-arrow-center">
+            <div style="display: none;">{% include 'dlicon-arrow-left2' %}{% include 'dlicon-arrow-right2' %}</div>
+            <button type="button" class="slick-prev-custom slick-prev default slick-arrow">{% include 'dlicon-arrow-left2' %}</button>
+            <button type="button" class="slick-next-custom slick-next default slick-arrow">{% include 'dlicon-arrow-right2' %}</button>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% when 'section20' %}
+    <div class="section section20-onepage">
+      <div class="g-sick-image-section20 g-slick-slider" data-slick='{"infinite":{% if block.settings.use_loop %}true{% else %}false{% endif %},"dots":{% if block.settings.use_dots %}true{% else %}false{% endif %},"slidesToShow":1,"slidesToScroll":1,"autoplay":{% if block.settings.use_autoplay %}true{% else %}false{% endif %},"arrows":{% if block.settings.use_arrows %}true{% else %}false{% endif %},"speed":"1000","autoplaySpeed":3000,"centerMode":false,"variableWidth":false,"vertical":false,"nextArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-next default\"><svg><use xlink:href=\"#dlicon-arrow-right2\"><\/use><\/svg><\/button>","prevArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-prev default\"><svg><use xlink:href=\"#dlicon-arrow-left2\"><\/use><\/svg><\/button>","responsive":[{"breakpoint":1824,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":1200,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":992,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":768,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":480,"settings":{"slidesToShow":1,"slidesToScroll":1}}]}'>
+        {% if block.settings.use_slider_1 %}
+        <div class="section20_item">
+          <div class="section20_item--image">
+            {% if block.settings.image_1 != blank %}
+            <div class="cover-background-parallax" style="background-image: url({{ block.settings.image_1 | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+            {% else %}
+            {% capture current %}{% cycle 1 %}{% endcapture %}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="section20_item--description">
+            <div class="container">
+              {% if block.settings.title_1 != blank %}
+              <div class="title" {% if block.settings.title_1_color != blank %}style="color: {{ block.settings.title_1_color }};"{% endif %}>{{ block.settings.title_1 }}</div>
+              {% endif %}
+              {% if block.settings.heading_1 != blank %}
+              <h2 {% if block.settings.heading_1_color != blank %}style="color: {{ block.settings.heading_1_color }};"{% endif %}>{{ block.settings.heading_1 }}</h2>
+              {% endif %}
+              {% if block.settings.price_1 != blank %}
+              <div class="price" {% if block.settings.price_1_color != blank %}style="color: {{ block.settings.price_1_color }};"{% endif %}>{{ block.settings.price_1 }}</div>
+              {% endif %}
+              {% if block.settings.button_name_1 != blank %}
+              <a href="{{ block.settings.button_link_1 }}" class="btn-section-20" style="color: {{ block.settings.button_1_color }}; background-color: {{ block.settings.button_1_bg_color }};">{{ block.settings.button_name_1 }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% if block.settings.use_slider_2 %}
+        <div class="section20_item">
+          <div class="section20_item--image">
+            {% if block.settings.image_2 != blank %}
+            <div class="cover-background-parallax" style="background-image: url({{ block.settings.image_2 | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+            {% else %}
+            {% capture current %}{% cycle 2 %}{% endcapture %}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="section20_item--description">
+            <div class="container">
+              {% if block.settings.title_2 != blank %}
+              <div class="title" {% if block.settings.title_2_color != blank %}style="color: {{ block.settings.title_2_color }};"{% endif %}>{{ block.settings.title_2 }}</div>
+              {% endif %}
+              {% if block.settings.heading_2 != blank %}
+              <h2 {% if block.settings.heading_2_color != blank %}style="color: {{ block.settings.heading_2_color }};"{% endif %}>{{ block.settings.heading_2 }}</h2>
+              {% endif %}
+              {% if block.settings.price_2 != blank %}
+              <div class="price" {% if block.settings.price_2_color != blank %}style="color: {{ block.settings.price_2_color }};"{% endif %}>{{ block.settings.price_2 }}</div>
+              {% endif %}
+              {% if block.settings.button_name_2 != blank %}
+              <a href="{{ block.settings.button_link_2 }}" class="btn-section-20" style="color: {{ block.settings.button_2_color }}; background-color: {{ block.settings.button_2_bg_color }};">{{ block.settings.button_name_2 }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% if block.settings.use_slider_3 %}
+        <div class="section20_item">
+          <div class="section20_item--image">
+            {% if block.settings.image_3 != blank %}
+            <div class="cover-background-parallax" style="background-image: url({{ block.settings.image_3 | img_url: '1920x', format: 'pjpg' | split:'?' | first }});"></div>
+            {% else %}
+            {% capture current %}{% cycle 1 %}{% endcapture %}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="section20_item--description">
+            <div class="container">
+              {% if block.settings.title_3 != blank %}
+              <div class="title" {% if block.settings.title_3_color != blank %}style="color: {{ block.settings.title_3_color }};"{% endif %}>{{ block.settings.title_3 }}</div>
+              {% endif %}
+              {% if block.settings.heading_3 != blank %}
+              <h2 {% if block.settings.heading_3_color != blank %}style="color: {{ block.settings.heading_3_color }};"{% endif %}>{{ block.settings.heading_3 }}</h2>
+              {% endif %}
+              {% if block.settings.price_3 != blank %}
+              <div class="price" {% if block.settings.price_3_color != blank %}style="color: {{ block.settings.price_3_color }};"{% endif %}>{{ block.settings.price_3 }}</div>
+              {% endif %}
+              {% if block.settings.button_name_3 != blank %}
+              <a href="{{ block.settings.button_link_3 }}" class="btn-section-20" style="color: {{ block.settings.button_3_color }}; background-color: {{ block.settings.button_3_bg_color }};">{{ block.settings.button_name_3 }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+{{ 'fullpage.css' | asset_url | stylesheet_tag }}
+{{ 'fullpage.js' | asset_url | script_tag }}
+{% schema %}
+  {
+    "name": "Onepage Parallax",
+    "class": "g_onepage_parallax",
+    "presets": [
+      {
+        "name": "Onepage Parallax",
+        "category": "Onepage",
+        "blocks" : [
+            {
+              "type": "section1"
+            },
+            {
+              "type": "section2"
+            },
+            {
+              "type": "section2"
+            },
+            {
+              "type": "section2"
+            },
+            {
+              "type": "section2"
+            },
+            {
+              "type": "section3"
+            }
+        ]
+      }
+    ],
+    "settings": [
+        {
+          "type": "header",
+          "content": "Note:"
+        },
+        {
+          "type": "paragraph",
+          "content": "The configuration for this one page parallax can only show up when you save. Fullpage.js can only be initialized once So please save only when you setup completely."
+        },
+        {
+          "type": "header",
+          "content": "Catalog"
+        },
+        {
+          "type": "text",
+          "id": "catalog_text",
+          "label": "Catalog text",
+          "default": "Catalog"
+        },
+        {
+          "type": "url",
+          "id": "catalog_link",
+          "label": "Catalog link"
+        },
+        {
+          "type": "color",
+          "id": "catalog_text_color",
+          "label": "Color"
+        },
+        {
+          "type": "select",
+          "id": "catalog_position",
+          "label": "Catalog position",
+          "options": [
+            { "value": "1", "label": "Catalog position 1" },
+            { "value": "2", "label": "Catalog position 2" }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "header",
+          "content": "Copyright"
+        },
+        {
+          "type": "text",
+          "id": "copyright_text",
+          "label": "Copyright text",
+          "default": "© 2018 NeSOS.  Made by Globotheme"
+        },
+        {
+          "type": "color",
+          "id": "copyright_text_color",
+          "label": "Color"
+        },
+        {
+          "type": "select",
+          "id": "social_position",
+          "label": "Social position",
+          "options": [
+            { "value": "1", "label": "Social position 1" },
+            { "value": "2", "label": "Social position 2" }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "header",
+          "content": "Phone number"
+        },	
+        {
+          "type": "checkbox",
+          "id": "use_phone_number_slider",
+          "label": "Use phone number",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "text_phone_number_slider",
+          "label": "Phone",
+          "default": "944 3444 5534"
+        },
+        {
+          "type": "color",
+          "id": "color_phone_number",
+          "label": "Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "bg_color_phone_number_icon",
+          "label": "Background color icon",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_phone_number_icon",
+          "label": "Color icon",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Settings slider parallax"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_nav",
+          "label": "Use nav?",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "nav_style",
+          "label": "Use nav style position",
+          "options": [
+            { "value": "1", "label": "Nav style 1" },
+            { "value": "2", "label": "Nav style 2" },
+			{ "value": "3", "label": "Nav style 3" }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_dot",
+          "label": "Use dot?",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "dot_color",
+          "label": "Dots color"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "section1",
+        "name": "Block section 1",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Settings image & text"
+          },			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title",
+			"default": "NeSos<br><span style='color: #f7941d;'>Fashion<\/span><br>Shop"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+			"default": "&laquo; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique &raquo;"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+            "default": "ALL SHOP"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color"
+          },
+          {
+            "type": "header",
+            "content": "Text info"
+          },
+          {
+            "type": "text",
+            "id": "text_info",
+            "label": "Text info",
+            "default": "Introducing"
+          },
+          {
+            "type": "color",
+            "id": "text_info_color",
+            "label": "Text info color"
+          }
+        ]
+      },
+      {
+        "type": "section2",
+        "name": "Block section 2",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Settings image & text"
+          },			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title",
+			"default": "Dress Trending"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+			"default": "Yellow dress"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+			"default": "Suspendisse faucibus sed dolor eget posuere interdum urna."
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+            "default": "View Colection"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#000000"
+          },
+          {
+            "type": "header",
+            "content": "Text info"
+          },
+          {
+            "type": "text",
+            "id": "text_info",
+            "label": "Text info",
+            "default": "Women<br>trending"
+          },
+          {
+            "type": "color",
+            "id": "text_info_color",
+            "label": "Text info color"
+          }
+        ]
+      },
+      {
+        "type": "section3",
+        "name": "Block section 3",
+		"limit": 1,
+        "settings": [
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+			"default": "#fff568"
+          },			
+          {
+            "type": "header",
+            "content": "Newsletter"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Newsletter"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Get Discount 30% Off"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Get 20% discount with notified about the latest news and updates. No spam, we promise!"
+          },
+          {
+            "type": "color",
+            "id": "bg_color_input",
+            "label": "Background color input"
+          },
+          {
+            "type": "header",
+            "content": "Contact info"
+          },
+         {
+           "type": "image_picker",
+           "id": "logo_footer",
+           "label": "Custom logo",
+           "info": "115px wide .png recommended"
+         },
+         {
+           "type": "html",
+           "id": "content_html",
+           "label": "Content html",
+           "default": "<p><strong>We ship every where! Free in the US<\/strong><\/p><ul><li>contact@globosoftware.net<br>+455 45 454555<\/li><li>004 Riley Street, Surry<br>Hills 2050 Sydney, Australia<\/li><\/ul>"
+         }
+        ]
+      },
+      {
+        "type": "section4",
+        "name": "Block section 4",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Settings image & text"
+          },			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title_rotate",
+            "label": "Title rotate",
+			"default": "TRENDING<br><span style='font-weight: 200;'>COLLECTION 2018<\/span>"
+          },
+          {
+            "type": "text",
+            "id": "title_rotate_font_size",
+            "label": "Title rotate font size",
+            "default": "24"
+          },
+          {
+            "type": "color",
+            "id": "title_rotate_color",
+            "label": "Title rotate color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Shoes 2018"
+          },
+          {
+            "type": "text",
+            "id": "heading_font_size",
+            "label": "Heading font size",
+            "default": "72"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+			"default": "SHOP NOW"
+          },
+          {
+            "type": "text",
+            "id": "button_font_size",
+            "label": "Button font size",
+            "default": "14"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#ffffff"
+          }
+        ]
+      },
+      {
+        "type": "section5",
+        "name": "Block section 5",
+		"limit": 1,
+        "settings": [
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+			"default": "#374284"
+          },
+          {
+            "type": "header",
+            "content": "Left Content"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "text_left",
+            "label": "Text",
+			"default": "<p>Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. consectetur adipiscing commodo tristique Vestibulum imperdiet nibh vel magna lacinia ultrices.<\/p><p>Sed id interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet, consectetur adipiscing elit.<\/p>"
+          },
+          {
+            "type": "color",
+            "id": "text_left_color",
+            "label": "Text color"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name",
+			"default": "<strong>JONT HENRRY<\/strong> - CEO NESOS"
+          },
+          {
+            "type": "header",
+            "content": "Newsletter"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Newsletter"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Get Discount 30% Off"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "color",
+            "id": "content_color",
+            "label": "Content color"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Get 20% discount with notified about the latest news and updates. No spam, we promise!"
+          },
+          {
+            "type": "color",
+            "id": "bg_color_input",
+            "label": "Background color input"
+          },
+          {
+            "type": "header",
+            "content": "Contact info"
+          },
+         {
+           "type": "image_picker",
+           "id": "logo_footer",
+           "label": "Custom logo",
+           "info": "115px wide .png recommended"
+         },
+         {
+           "type": "html",
+           "id": "content_html",
+           "label": "Content html",
+           "default": "<p><strong>We ship every where! Free in the US<\/strong><\/p><ul><li>contact@globosoftware.net<br>+455 45 454555<\/li><li>004 Riley Street, Surry<br>Hills 2050 Sydney, Australia<\/li><\/ul>"
+         },
+          {
+            "type": "header",
+            "content": "Phone number"
+          }
+        ]
+      },
+      {
+        "type": "section6",
+        "name": "Block section 6",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Left Content"
+          },
+          {
+            "type": "color",
+            "id": "bg_left_section",
+            "label": "Background color left section",
+            "default": "#2e3192"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Featured <br>Collection"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Shoes Stock"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Suspendisse faucibus sed dolor eget posuere <br>interdum urna."
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_button",
+            "label": "Use button?",
+            "default": true
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "color",
+            "id": "button_bg",
+            "label": "Button background color",
+			"default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+			"default": "#000000"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "section7",
+        "name": "Block section 7",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Left Content"
+          },
+          {
+            "type": "color",
+            "id": "bg_left_section",
+            "label": "Background color left section",
+            "default": "#f26522"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "About<br>Store"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "NeSos Store"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+			"label": "Text",
+			"default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique Vestibulum imperdiet nibh vel magna lacinia ultrices."
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "header",
+            "content": "Settings 4 columns"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_4_columns",
+            "label": "Use 4 cloumns",
+            "default": true
+          },
+          {
+            "type": "color",
+            "id": "title_column_color",
+            "label": "Title color"
+          },
+          {
+            "type": "color",
+            "id": "subtitle_column_color",
+            "label": "Subtitle color"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 1"
+          },
+          {
+            "type": "text",
+            "id": "title_column_1",
+            "label": "Title",
+            "default": "Free Shipping"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_1",
+            "label": "Subtitle",
+            "default": "GREAT FROM HEBES"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 2"
+          },
+          {
+            "type": "text",
+            "id": "title_column_2",
+            "label": "Title",
+            "default": "Support Customer"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_2",
+            "label": "Subtitle",
+            "default": "24 HOURS A DAY"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 3"
+          },
+          {
+            "type": "text",
+            "id": "title_column_3",
+            "label": "Title",
+            "default": "Secure Payment"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_3",
+            "label": "Subtitle",
+            "default": "100% SECURE PAYMENT"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 4"
+          },
+          {
+            "type": "text",
+            "id": "title_column_4",
+            "label": "Title",
+            "default": "30 Days Return"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_4",
+            "label": "Subtitle",
+            "default": "SIMPLY RETURN 30 DAYS"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "section8",
+        "name": "Block section 8",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Left Content"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#2e3192"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Add menu collections"
+          },
+          {
+            "type": "color",
+            "id": "menu_color",
+            "label": "List collections color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "All Product"
+          },
+          {
+            "type": "select",
+            "id": "sidetoshow",
+            "label": "Slides To Show",
+            "options": [
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              }
+            ],
+            "default": "3"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_loop",
+            "label": "Use Infinite loop sliding?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_autoplay",
+            "label": "Use autoplay?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_dots",
+            "label": "Use dots?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_arrow",
+            "label": "Use arrow?",
+            "default": true
+          },
+  		   {
+             "type":"collection",
+             "id":"id_collection",
+             "label":"Choose collection"
+           },
+           {
+              "type": "select",
+              "id": "items_show",
+              "label": "Number product to show",
+              "options": [
+                {
+                  "value": "6",
+                  "label": "6"
+                },
+                {
+                  "value": "8",
+                  "label": "8"
+                },
+                {
+                  "value": "9",
+                  "label": "9"
+                },
+                {
+                  "value": "10",
+                  "label": "10"
+                },
+                {
+                  "value": "12",
+                  "label": "12"
+                },
+                {
+                  "value": "16",
+                  "label": "16"
+                },
+                {
+                  "value": "20",
+                  "label": "20"
+                }
+              ],
+              "default": "6"
+           }
+        ]
+      },
+      {
+        "type": "section9",
+        "name": "Block section 9",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Setting slider"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_arrows",
+            "label": "Use Arrows?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_dots",
+            "label": "Use Dots?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "use_autoplay",
+            "label": "Use autoplay?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_loop",
+            "label": "Use Infinite loop sliding?",
+            "default": false
+          },
+          {
+            "type": "header",
+            "content": "Left Content"
+          },
+          {
+            "type": "color",
+            "id": "bg_left_section",
+            "label": "Background color left section",
+            "default": "#f26522"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Client & <br>Blog"
+          },
+          {
+            "type": "text",
+            "id": "heading_left",
+            "label": "Heading left",
+            "default": "Happy Clients"
+          },
+          {
+            "type": "paragraph",
+            "content": "Client say 1"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_client_say_1",
+            "label": "Use client say 1",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "client_image_1",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "quote_1",
+			"label": "Text",
+			"default": "&quot; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique &quot;"
+          },
+          {
+            "type": "text",
+            "id": "author_1",
+            "label": "Author",
+			"default": "<span>JONT HENRRY<\/span> - CEO MOONTHEME"
+          },
+          {
+            "type": "paragraph",
+            "content": "Client say 2"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_client_say_2",
+            "label": "Use client say 2",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "client_image_2",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "quote_2",
+			"label": "Text",
+			"default": "&quot; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique &quot;"
+          },
+          {
+            "type": "text",
+            "id": "author_2",
+            "label": "Author",
+			"default": "<span>JONT HENRRY<\/span> - CEO MOONTHEME"
+          },
+          {
+            "type": "paragraph",
+            "content": "Client say 3"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_client_say_3",
+            "label": "Use client say 3",
+            "default": false
+          },
+          {
+            "type": "image_picker",
+            "id": "client_image_3",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "quote_3",
+			"label": "Text",
+			"default": "&quot; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique &quot;"
+          },
+          {
+            "type": "text",
+            "id": "author_3",
+            "label": "Author",
+			"default": "<span>JONT HENRRY<\/span> - CEO MOONTHEME"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+          {
+            "type": "text",
+            "id": "title_blog",
+            "label": "Title",
+            "default": "Latest News"
+          },
+          {
+            "id": "blog",
+            "type": "blog",
+            "label": "Blog"
+          },
+          {
+            "type":"text",
+            "id":"articles_show_many",
+            "label":"How many articles do you want to show? ( integer )",
+            "default": "4"
+         }
+        ]
+      },
+      {
+        "type": "section10",
+        "name": "Block section 10",
+		"limit": 1,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Left Content"
+          },
+          {
+            "type": "color",
+            "id": "bg_left_section",
+            "label": "Background color",
+			"default": "#f26522"
+          },			
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Get in <br>touch"
+          },
+          {
+            "type": "text",
+            "id": "heading_left",
+            "label": "Heading",
+            "default": "Get Discount 30% Off"
+          },
+          {
+            "type": "text",
+            "id": "text_left",
+            "label": "Subheading",
+            "default": "Get 20% discount with notified about the latest news and updates. No spam, we promise!"
+          },
+          {
+            "type": "color",
+            "id": "bg_color_input",
+            "label": "Background color input"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+         {
+           "type": "image_picker",
+           "id": "logo_footer",
+           "label": "Custom logo",
+           "info": "115px wide .png recommended"
+         },
+         {
+           "type": "html",
+           "id": "content_html",
+           "label": "Content html",
+           "default": "<p><strong>We ship every where! Free in the US<\/strong><\/p><ul><li>contact@globosoftware.net<br>+455 45 454555<\/li><li>004 Riley Street, Surry<br>Hills 2050 Sydney, Australia<\/li><\/ul>"
+         }
+        ]
+      },
+      {
+        "type": "section11",
+        "name": "Block section 11",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Settings image & text"
+          },			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+			"default": "Black Watch <br>2018"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+            "default": "Shop Now"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#000000"
+          },
+          {
+            "type": "header",
+            "content": "Text info"
+          },
+          {
+            "type": "text",
+            "id": "text_info",
+            "label": "Text info",
+			"default": "<strong>New<\/strong><br>Arrival"
+          },
+          {
+            "type": "color",
+            "id": "text_info_color",
+            "label": "Text info color"
+          }
+        ]
+      },
+      {
+        "type": "section12",
+        "name": "Block section 12",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Settings image & text"
+          },			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title_rotate",
+            "label": "Title rotate",
+			"default": "TRENDING<br><span style='font-weight: 200;'>COLLECTION 2018<\/span>"
+          },
+          {
+            "type": "text",
+            "id": "title_rotate_font_size",
+            "label": "Title rotate font size",
+            "default": "24"
+          },
+          {
+            "type": "color",
+            "id": "title_rotate_color",
+            "label": "Title rotate color",
+            "default": "#000000"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Watch Stock 2018"
+          },
+          {
+            "type": "text",
+            "id": "heading_font_size",
+            "label": "Heading font size",
+            "default": "60"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color",
+            "default": "#000000"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Suspendisse faucibus sed dolor eget posuere interdum urna."
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#636363"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+			"default": "Shop Now"
+          },
+          {
+            "type": "text",
+            "id": "button_font_size",
+            "label": "Button font size",
+            "default": "12"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#000000"
+          },
+          {
+            "type": "header",
+            "content": "Social"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_social_slider",
+            "label": "Use social slider",
+            "default": true
+          },
+          {
+            "type": "paragraph",
+            "content": "Social 1"
+          },
+          {
+            "type": "text",
+            "id": "social_slider_1",
+            "label": "Text social 1",
+            "default": "Facebook"
+          },
+          {
+            "type": "text",
+            "id": "link_social_slider_1",
+            "label": "Link social 1",
+            "default": "#"
+          },
+          {
+            "type": "paragraph",
+            "content": "Social 2"
+          },
+          {
+            "type": "text",
+            "id": "social_slider_2",
+            "label": "Text social 2",
+            "default": "Twitter"
+          },
+          {
+            "type": "text",
+            "id": "link_social_slider_2",
+            "label": "Link social 2",
+            "default": "#"
+          },
+          {
+            "type": "paragraph",
+            "content": "Social 3"
+          },
+          {
+            "type": "text",
+            "id": "social_slider_3",
+            "label": "Text social 3",
+            "default": "Google+"
+          },
+          {
+            "type": "text",
+            "id": "link_social_slider_3",
+            "label": "Link social 3",
+            "default": "#"
+          },
+          {
+            "type": "header",
+            "content": "Menu on slider"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_menu_on_slider",
+            "label": "Use menu on slider?",
+            "default": true
+          },
+          {
+            "type": "link_list",
+            "id": "menu_on_slider",
+            "label": "Add menu"
+          }
+        ]
+      },
+      {
+        "type": "section13",
+        "name": "Block section 13",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "About<br>Store"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color",
+			"default": "#000000"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "NeSos Store"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color",
+			"default": "#000000"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+			"label": "Text",
+			"default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique Vestibulum imperdiet nibh vel magna lacinia ultrices."
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+			"default": "#636363"
+          },
+          {
+            "type": "header",
+            "content": "Settings 4 columns"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_4_columns",
+            "label": "Use 4 cloumns",
+            "default": true
+          },
+          {
+            "type": "color",
+            "id": "title_column_color",
+            "label": "Title color",
+			"default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "subtitle_column_color",
+            "label": "Subtitle color",
+			"default": "#636363"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 1"
+          },
+          {
+            "type": "text",
+            "id": "title_column_1",
+            "label": "Title",
+            "default": "Free Shipping"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_1",
+            "label": "Subtitle",
+            "default": "GREAT FROM HEBES"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 2"
+          },
+          {
+            "type": "text",
+            "id": "title_column_2",
+            "label": "Title",
+            "default": "Support Customer"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_2",
+            "label": "Subtitle",
+            "default": "24 HOURS A DAY"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 3"
+          },
+          {
+            "type": "text",
+            "id": "title_column_3",
+            "label": "Title",
+            "default": "Secure Payment"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_3",
+            "label": "Subtitle",
+            "default": "100% SECURE PAYMENT"
+          },
+          {
+            "type": "paragraph",
+            "content": "Column 4"
+          },
+          {
+            "type": "text",
+            "id": "title_column_4",
+            "label": "Title",
+            "default": "30 Days Return"
+          },
+          {
+            "type": "text",
+            "id": "subtitle_column_4",
+            "label": "Subtitle",
+            "default": "SIMPLY RETURN 30 DAYS"
+          }
+        ]
+      },
+      {
+        "type": "section14",
+        "name": "Block section 14",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "header",
+            "content": "Left Content"
+          },			
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "NeSos Funiture Store"
+          },
+          {
+            "type": "textarea",
+            "id": "text_left",
+            "label": "Text",
+            "default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique Vestibulum imperdiet nibh vel magna lacinia ultrices."
+          },
+          {
+            "type": "textarea",
+            "id": "name_left",
+            "label": "Name",
+            "default": "<span>JONT HENRRY<\/span> - CEO NESOS"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+         {
+           "type": "image_picker",
+           "id": "logo_footer",
+           "label": "Custom logo",
+           "info": "115px wide .png recommended"
+         },
+         {
+           "type": "html",
+           "id": "content_html",
+           "label": "Content html",
+           "default": "<p><strong>We ship every where! Free in the US<\/strong><\/p><ul><li>contact@globosoftware.net<br>+455 45 454555<\/li><li>004 Riley Street, Surry<br>Hills 2050 Sydney, Australia<\/li><\/ul>"
+         }
+        ]
+      },
+      {
+        "type": "section15",
+        "name": "Block section 15",
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "header",
+            "content": "Left Content"
+          },			
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "New<br>Arrival"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+          {
+            "type": "text",
+            "id": "price",
+            "label": "Price",
+            "default": "$ 42.00"
+          },
+          {
+            "type": "color",
+            "id": "price_color",
+            "label": "Price color"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Catus Desktop New 2018"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+            "default": "Buy Now"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          }
+        ]
+      },
+      {
+        "type": "section16",
+        "name": "Block section 16",
+		"limit": 1,
+        "settings": [
+		  {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "header",
+            "content": "About Content"
+          },			
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "NeSos Funiture Store"
+          },
+          {
+            "type": "textarea",
+            "id": "text_left",
+            "label": "Text",
+            "default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique Vestibulum imperdiet nibh vel magna lacinia ultrices."
+          },
+          {
+            "type": "textarea",
+            "id": "name_left",
+            "label": "Name",
+            "default": "<span>JONT HENRRY<\/span> - CEO NESOS"
+          },
+          {
+            "type": "header",
+            "content": "Contact info"
+          },
+          {
+             "type": "image_picker",
+             "id": "logo_footer",
+             "label": "Custom logo",
+             "info": "115px wide .png recommended"
+          },
+          {
+             "type": "html",
+             "id": "content_html",
+             "label": "Content html",
+             "default": "<ul><li>contact@globosoftware.net<br>+455 45 454555<\/li><li>004 Riley Street, Surry<br>Hills 2050 Sydney, Australia<\/li><\/ul>"
+          },
+          {
+            "type": "header",
+            "content": "Newsletter"
+          },
+          {
+            "type": "text",
+            "id": "title_newsletter",
+            "label": "Title",
+            "default": "Get Discount 30% Off"
+          },
+          {
+            "type": "textarea",
+            "id": "subtitle_newsletter",
+            "label": "Subtitle",
+            "default": "Get 20% discount with notified about the latest news and updates. No spam, we promise!"
+          }
+        ]
+      },
+      {
+        "type": "section17",
+        "name": "Block section 17",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Settings image & text"
+          },			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title",
+			"default": "NEW PRODUCT"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+          },
+          {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+			"default": "Headphone D56"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "text",
+            "id": "price",
+            "label": "Price",
+			"default": "$ 42.00"
+          },
+          {
+            "type": "color",
+            "id": "price_color",
+            "label": "Price color"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          },
+          {
+            "type": "text",
+            "id": "button_name",
+            "label": "Button name",
+            "default": "Shop Now"
+          },
+          {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#000000"
+          }
+        ]
+      },
+      {
+        "type": "section18",
+        "name": "Block section 18",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Settings image & text"
+          },			
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background image"
+          },
+          {
+            "type": "header",
+            "content": "About"
+          },
+          {
+            "type": "text",
+            "id": "title_1",
+            "label": "Title",
+			"default": "About<br>Nesos CAKE"
+          },
+          {
+            "type": "color",
+            "id": "title_1_color",
+            "label": "Title color"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+			"default": "NeSos Cake Store"
+          },
+          {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "textarea",
+            "id": "text_1",
+            "label": "Text",
+			"default": "Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>consectetur adipiscing commodo<\/i> tristique Vestibulum imperdiet nibh vel magna lacinia ultrices."
+          },
+          {
+            "type": "color",
+            "id": "text_1_color",
+            "label": "Text color"
+          },
+          {
+            "type": "header",
+            "content": "Client"
+          },
+          {
+            "type": "text",
+            "id": "title_2",
+            "label": "Title",
+			"default": "Happy clietns"
+          },
+          {
+            "type": "color",
+            "id": "title_2_color",
+            "label": "Title color"
+          },
+          {
+            "type": "textarea",
+            "id": "text_2",
+            "label": "Text",
+			"default": "&ldquo; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. hendrerit ac nisi Lorem ipsum dolor &rdquo;"
+          },
+          {
+            "type": "color",
+            "id": "text_2_color",
+            "label": "Text color"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_client",
+            "label": "Client image"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Client name",
+			"default": "JONT HENRRY"
+          },
+          {
+            "type": "color",
+            "id": "name_color",
+            "label": "Client name color"
+          }		
+        ]
+      },
+      {
+        "type": "section19",
+        "name": "Block section 19",
+        "settings": [
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background color",
+            "default": "#f6ffe6"
+          },
+          {
+            "type": "header",
+            "content": "Left Content"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_left_menu",
+            "label": "Use left menu",
+            "default": true
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Add menu collections"
+          },
+          {
+            "type": "color",
+            "id": "menu_color",
+            "label": "List collections color",
+            "default": "#000000"
+          },
+          {
+            "type": "header",
+            "content": "Right Content"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "All Product"
+          },
+          {
+            "type": "select",
+            "id": "sidetoshow",
+            "label": "Slides To Show",
+            "options": [
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              }
+            ],
+            "default": "3"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_loop",
+            "label": "Use Infinite loop sliding?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_autoplay",
+            "label": "Use autoplay?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_dots",
+            "label": "Use dots?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "use_arrow",
+            "label": "Use arrow?",
+            "default": false
+          },
+  		   {
+             "type":"collection",
+             "id":"id_collection",
+             "label":"Choose collection"
+           },
+           {
+              "type": "select",
+              "id": "items_show",
+              "label": "Number product to show",
+              "options": [
+                {
+                  "value": "6",
+                  "label": "6"
+                },
+                {
+                  "value": "8",
+                  "label": "8"
+                },
+                {
+                  "value": "9",
+                  "label": "9"
+                },
+                {
+                  "value": "10",
+                  "label": "10"
+                },
+                {
+                  "value": "12",
+                  "label": "12"
+                },
+                {
+                  "value": "16",
+                  "label": "16"
+                },
+                {
+                  "value": "20",
+                  "label": "20"
+                }
+              ],
+              "default": "6"
+           }
+        ]
+      },
+      {
+        "type": "section20",
+        "name": "Block section 20",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Setting slider"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_arrows",
+            "label": "Use Arrows?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_dots",
+            "label": "Use Dots?",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "use_autoplay",
+            "label": "Use autoplay?",
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "use_loop",
+            "label": "Use Infinite loop sliding?",
+            "default": false
+          },
+          {
+            "type": "header",
+            "content": "Content slider"
+          },
+          {
+            "type": "paragraph",
+            "content": "Slider 1"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_slider_1",
+            "label": "Use slider 1",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title_1",
+			"label": "Title",
+			"default": "Pizza"
+          },
+          {
+            "type": "color",
+            "id": "title_1_color",
+            "label": "Title color",
+			"default": "#f7941d"
+          },
+          {
+            "type": "text",
+            "id": "heading_1",
+			"label": "Heading",
+			"default": "Nesos Pizza"
+          },
+          {
+            "type": "color",
+            "id": "heading_1_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "text",
+            "id": "price_1",
+			"label": "Price",
+			"default": "$ 42.00"
+          },
+          {
+            "type": "color",
+            "id": "price_1_color",
+            "label": "Price color",
+			"default": "#f7941d"
+          },
+          {
+            "type": "text",
+            "id": "button_name_1",
+			"label": "Button name",
+			"default": "View Product"
+          },
+          {
+            "type": "text",
+            "id": "button_link_1",
+			"label": "Button link"
+          },
+          {
+            "type": "color",
+            "id": "button_1_color",
+            "label": "Button color",
+			"default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "button_1_bg_color",
+            "label": "Button background color",
+			"default": "#ffffff"
+          },
+          {
+            "type": "paragraph",
+            "content": "Slider 2"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_slider_2",
+            "label": "Use slider 2",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title_2",
+			"label": "Title",
+			"default": "Pizza"
+          },
+          {
+            "type": "color",
+            "id": "title_2_color",
+            "label": "Title color",
+			"default": "#f7941d"
+          },
+          {
+            "type": "text",
+            "id": "heading_2",
+			"label": "Heading",
+			"default": "Nesos Pizza"
+          },
+          {
+            "type": "color",
+            "id": "heading_2_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "text",
+            "id": "price_2",
+			"label": "Price",
+			"default": "$ 42.00"
+          },
+          {
+            "type": "color",
+            "id": "price_2_color",
+            "label": "Price color",
+			"default": "#f7941d"
+          },
+          {
+            "type": "text",
+            "id": "button_name_2",
+			"label": "Button name",
+			"default": "View Product"
+          },
+          {
+            "type": "text",
+            "id": "button_link_2",
+			"label": "Button link"
+          },
+          {
+            "type": "color",
+            "id": "button_2_color",
+            "label": "Button color",
+			"default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "button_2_bg_color",
+            "label": "Button background color",
+			"default": "#ffffff"
+          },
+          {
+            "type": "paragraph",
+            "content": "Slider 3"
+          },
+          {
+            "type": "checkbox",
+            "id": "use_slider_3",
+            "label": "Use slider 3",
+            "default": true
+          },
+          {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title_3",
+			"label": "Title",
+			"default": "Pizza"
+          },
+          {
+            "type": "color",
+            "id": "title_3_color",
+            "label": "Title color",
+			"default": "#f7941d"
+          },
+          {
+            "type": "text",
+            "id": "heading_3",
+			"label": "Heading",
+			"default": "Nesos Pizza"
+          },
+          {
+            "type": "color",
+            "id": "heading_3_color",
+            "label": "Heading color"
+          },
+          {
+            "type": "text",
+            "id": "price_3",
+			"label": "Price",
+			"default": "$ 42.00"
+          },
+          {
+            "type": "color",
+            "id": "price_3_color",
+            "label": "Price color",
+			"default": "#f7941d"
+          },
+          {
+            "type": "text",
+            "id": "button_name_3",
+			"label": "Button name",
+			"default": "View Product"
+          },
+          {
+            "type": "text",
+            "id": "button_link_3",
+			"label": "Button link"
+          },
+          {
+            "type": "color",
+            "id": "button_3_color",
+            "label": "Button color",
+			"default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "button_3_bg_color",
+            "label": "Button background color",
+			"default": "#ffffff"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

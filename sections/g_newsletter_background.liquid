@@ -1,0 +1,156 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.use_width -%}
+    {% when '1' %}
+      	{%- assign width_one_banner = 'g-fullwwidth' -%}
+    {% when '2' %}
+    	{%- assign width_one_banner = 'container-full' -%}
+    {% when '3' %}
+    	{%- assign width_one_banner = 'container' -%}
+{%- endcase -%}
+
+<div class="g--newsletter-background {{ css_animations_class }}">
+  <div class="{{ width_one_banner }}">
+    <div class="g-banner-newsletter cover-background lazy" {% if section.settings.image != blank %}data-src="{{ section.settings.image | img_url: '1920x', format: 'pjpg' | split:'?' | first }}"{% else %}style="background-color: {{ section.settings.bg_color }}; margin: {{ section.settings.margin }};"{% endif %} {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+      <div class="content-newsletter--bg">
+        {% if section.settings.title != blank %}
+        <h2 {% if section.settings.title_color != blank %}style="color: {{ section.settings.title_color }};"{% endif %}>{{ section.settings.title }}</h2>
+        {% endif %}	
+        {% if section.settings.subtitle != blank %}
+        <p {% if section.settings.subtitle_color != blank %}style="color: {{ section.settings.subtitle_color }};"{% endif %}>{{ section.settings.subtitle }}</p>
+        {% endif %}
+        <div id="globo-mailchimp-container-bg" class="globo-mailchimp-container-bg g_column-inner">
+          {% form 'customer',  class:'globo-easy-mc-form' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+          <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {% else %}
+          <div class="input-group password__input-group">
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email"
+                   name="contact[email]"
+                   id="Email-bg"
+                   class="globo-easy-mc-email field-no-label"
+                   value="{% if customer %}{{ customer.email }}{% endif %}"
+                   placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                   autocorrect="off"
+                   autocapitalize="off">
+            <span class="input-group__btn">
+              <button type="submit" class="globo-easy-mc-submit-button btn btn-primary" name="commit" id="Subscribe-bg">
+                <span>{{ 'general.newsletter_form.submit' | t }}</span>
+              </button>
+            </span>
+          </div>
+          {% endif %}
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter background",
+    "class": "globo_newsletter_default",
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "select",
+        "id": "use_width",
+        "label": "Newsletter width",
+        "options": [
+            { "value": "1", "label": "Use full width" },
+            { "value": "2", "label": "Use padding" },
+            { "value": "3", "label": "Use container" }
+          ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+		"default": "#6ce374"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Get Discount 30% Off"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title color"
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Subtitle",
+		"default": "Get 20% discount with notified about the latest news and updates. No spam, we promise!"
+      },
+      {
+        "type": "color",
+        "id": "subtitle_color",
+        "label": "Subtitle color"
+      },
+      {
+        "type": "paragraph",
+        "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      }
+    ],
+    "presets": [{
+      "name": "Newsletter background",
+      "category": "Promotional"
+    }]
+  }
+{% endschema %}

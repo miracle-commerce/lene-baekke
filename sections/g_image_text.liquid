@@ -1,0 +1,373 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.use_width -%}
+    {% when '1' %}
+      	{%- assign image_text_width = 'g-fullwwidth' -%}
+    {% when '2' %}
+    	{%- assign image_text_width = 'container-full' -%}
+    {% when '3' %}
+    	{%- assign image_text_width = 'container' -%}
+{%- endcase -%}
+<div class="g-image-text" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="{{ image_text_width }}">
+      {% if section.settings.title != blank %}
+      <div class="title-image-text" {% if section.settings.title_color != blank %}style="color: {{ section.settings.title_color }};"{% endif %}>{{ section.settings.title }}</div>
+      {% endif %}
+      {% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'image_text_1' %}
+      <div class="row row-flex-center">
+        {%- case block.settings.position -%}
+        {% when '1' %}
+        {%- assign text_rotate_class = 'text-rotate-position-left' -%}
+        {% when '2' %}
+        {%- assign text_rotate_class = 'text-rotate-position-right' -%}
+        {%- endcase -%}
+        {% if block.settings.text_rotate_position != blank %}
+        <div class="text-rotate-position {{ text_rotate_class }}">{{ block.settings.text_rotate_position }}</div>
+        {% endif %}
+        <div class="col-sm-4 col-xs-12 {{ css_animations_class }}">
+          {% if block.settings.image != blank %}
+          <div class="{% if block.settings.use_image_shadow  %}image-shadow image-shadow-large{% else %}image-shadow image-no-shadow{% endif %} text-right">
+            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+              <img class="lazy" data-src="{{ block.settings.image | img_url: '370x520' | split:'?' | first }}" alt="{{ block.settings.image.alt }}">
+           {% if block.settings.link != blank %}  <span class="icon-plus">{% include 'icon-plus' %}</span>
+            </a>
+            {% endif %}
+          </div>
+          {% else %}
+          {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg svg-001' }}
+          {% endif %}
+        </div>
+        <div class="col-sm-2 col-xs-12"></div>
+        <div class="col-sm-6 col-xs-12 {{ css_animations_class }}" data-wow-delay="0.3s">
+          {% if block.settings.number != blank %}
+          <div class="b-t-number" {% if block.settings.number_color != blank %}style="color: {{ block.settings.number_color }};"{% endif %}>{{ block.settings.number }}</div>
+          {% endif %}
+          <div class="box-img-text" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>
+            {% if block.settings.title != blank %}
+            <h3 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>
+              {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{% endif %}
+                {{ block.settings.title }}
+              {% if block.settings.link != blank %}</a>{% endif %}
+            </h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <p {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+            {% endif %}
+            {% if block.settings.price != blank %}
+            <div class="price" {% if block.settings.price_color != blank %}style="color: {{ block.settings.price_color }};"{% endif %}>{{ block.settings.price }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% when 'image_text_2' %}
+      <div class="row row-flex-center">
+        {%- case block.settings.position -%}
+        {% when '1' %}
+        {%- assign text_rotate_class = 'text-rotate-position-left' -%}
+        {% when '2' %}
+        {%- assign text_rotate_class = 'text-rotate-position-right' -%}
+        {%- endcase -%}
+        {% if block.settings.text_rotate_position != blank %}
+        <div class="text-rotate-position {{ text_rotate_class }}">{{ block.settings.text_rotate_position }}</div>
+        {% endif %}
+        <div class="col-sm-6 col-xs-12 {{ css_animations_class }}">
+          {% if block.settings.number != blank %}
+          <div class="b-t-number-2" {% if block.settings.number_color != blank %}style="color: {{ block.settings.number_color }};"{% endif %}>{{ block.settings.number }}</div>
+          {% endif %}
+          <div class="box-img-text box-img-text-2" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>
+            {% if block.settings.title != blank %}
+            <h3 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>
+              {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{% endif %}
+                {{ block.settings.title }}
+              {% if block.settings.link != blank %}</a>{% endif %}
+            </h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <p {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+            {% endif %}
+            {% if block.settings.price != blank %}
+            <div class="price" {% if block.settings.price_color != blank %}style="color: {{ block.settings.price_color }};"{% endif %}>{{ block.settings.price }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 {{ css_animations_class }}" data-wow-delay="0.3s">
+          {% if block.settings.image != blank %}
+          <div class="{% if block.settings.use_image_shadow  %}image-shadow image-shadow-large{% else %}image-shadow image-no-shadow{% endif %} text-right">
+            {% if block.settings.link != blank %}<a href="{{ block.settings.link }}">{% endif %}
+              <img class="lazy" data-src="{{ block.settings.image | img_url: '510x370' | split:'?' | first }}" alt="{{ block.settings.image.alt }}">
+            {% if block.settings.link != blank %}  <span class="icon-plus">{% include 'icon-plus' %}</span>
+            </a>
+            {% endif %}
+          </div>
+          {% else %}
+          {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg svg-002' }}
+          {% endif %}
+        </div>
+      </div>
+      {% endcase %}
+      {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Block image text",
+    "class": "globo_image_text",
+    "max_blocks": 4,
+    "presets": [
+      {
+        "name": "Block image text",
+        "category": "Text",
+        "blocks" : [
+          {
+            "type": "image_text_1"
+          },
+          {
+            "type": "image_text_2"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "select",
+        "id": "use_width",
+        "label": "Banner width",
+        "options": [
+          { "value": "1", "label": "Use full width" },
+          { "value": "2", "label": "Use padding" },
+          { "value": "3", "label": "Use container" }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "# Featured collections"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title color"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "image_text_1",
+      "name": "Row image text 1",
+      "settings": [
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+         },
+         {
+            "type":"checkbox",
+            "id":"use_image_shadow",
+            "label":"Use image shadow?",
+            "default": false
+         },
+         {
+            "type":"url",
+            "id":"link",
+            "label":"Link",
+            "info": "Optional"
+         },
+         {
+            "type": "text",
+            "id": "number",
+            "label": "Number",
+            "default": "01"
+         },
+         {
+            "type": "color",
+            "id": "number_color",
+            "label": "Number color"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Dress Collection Women 2018"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+         },
+         {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Suspendisse faucibus sed dolor eget posuere interdum urna."
+         },
+         {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+         },
+         {
+            "type": "text",
+            "id": "price",
+            "label": "Price",
+            "default": "$ 42.00"
+         },
+         {
+            "type": "color",
+            "id": "price_color",
+            "label": "Price color"
+         },
+         {
+            "type": "text",
+            "id": "text_rotate_position",
+            "label": "Text rotate",
+            "default": "The Best<br>Collections"
+         },
+         {
+            "type": "select",
+            "id": "position",
+            "label": "Position",
+            "options": [
+              { "value": "1", "label": "Left" },
+              { "value": "2", "label": "Right" }
+            ],
+            "default": "2"
+         }
+
+      ]
+    },
+    {
+      "type": "image_text_2",
+      "name": "Row image text 2",
+      "settings": [
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+         },
+         {
+            "type":"checkbox",
+            "id":"use_image_shadow",
+            "label":"Use image shadow?",
+            "default": false
+         },
+         {
+            "type":"url",
+            "id":"link",
+            "label":"Link",
+            "info": "Optional"
+         },
+         {
+            "type": "text",
+            "id": "number",
+            "label": "Number",
+            "default": "01"
+         },
+         {
+            "type": "color",
+            "id": "number_color",
+            "label": "Number color"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Shoes Collection Women 2018"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+         },
+         {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Suspendisse faucibus sed dolor eget posuere interdum urna."
+         },
+         {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+         },
+         {
+            "type": "text",
+            "id": "price",
+            "label": "Price",
+            "default": "$ 42.00"
+         },
+         {
+            "type": "color",
+            "id": "price_color",
+            "label": "Price color"
+         },
+         {
+            "type": "text",
+            "id": "text_rotate_position",
+            "label": "Text rotate",
+            "default": "The Best<br>Collections"
+         },
+         {
+            "type": "select",
+            "id": "position",
+            "label": "Position",
+            "options": [
+              { "value": "1", "label": "Left" },
+              { "value": "2", "label": "Right" }
+            ],
+            "default": "2"
+         }
+      ]
+    }
+  ]
+  }
+{% endschema %}

@@ -1,0 +1,1175 @@
+{
+  "current": {
+    "color_body_text": "#898989",
+    "color_body_text_hover": "#f66240",
+    "color_text": "#a1a1a1",
+    "color_heading": "#000000",
+    "color_sale_text": "#f68e56",
+    "color_new_text": "#606da6",
+    "color_hot_text": "#ed1c24",
+    "bg_site_header": "rgba(0,0,0,0)",
+    "color_header": "#000000",
+    "color_mini_cart": "#ffffff",
+    "bg_color_mini_cart": "#000000",
+    "color_mini_cart_count": "#ffffff",
+    "bg_color_mini_cart_count": "#2d2d2d",
+    "body_color": "rgba(0,0,0,0)",
+    "product_title_color": "#000000",
+    "color_other_text": "#000000",
+    "background_footer_top": "#000033",
+    "background_footer_top_before": "rgba(0,0,0,0)",
+    "border_top_color_footer": "#000033",
+    "color_footer": "#d7d3d3",
+    "color_footer_hover": "#f66240",
+    "footer_color_heading": "#a1a1a1",
+    "type_header_font": "poppins_n7",
+    "font_header_base_size": 26,
+    "type_base_font": "poppins_n4",
+    "font_base_size": 14,
+    "header_imported": "header_two",
+    "use_header_container": false,
+    "use_header_sticky": true,
+    "use_header_transparency": true,
+    "logo": "shopify:\/\/shop_images\/BAEKKE_logo_TAGLINE_0da58a34-5f6a-4af7-b46e-3db60692240f.png",
+    "logo_image_sticky": true,
+    "logo_sticky": "shopify:\/\/shop_images\/BAEKKE_logo_2x_d02d8dce-0654-45a6-87b1-e3397414237f.png",
+    "main_linklist": "main-menu",
+    "contact_info_header_aside": "<p><a href=\"tel:+44%0800%464%207190%20\">+44 (0)800 464 7190<\/a><br><a href=\"mailto:hello@baekke.shop\">hello@baekke.shop<\/a><\/p>",
+    "show_social_header_aside": true,
+    "text_below_logo_h_1": "TELL YOUR STORY\nBrowse our collections, which feature jewellery pieces that will take your style game to the next level. Stand-out looks are made easy with colours you decide. Don’t stress it – just change the colours to spell out your vibe.\n\nFrom bracelets to pendants, studs to ear chains… boring jewellery is over, and we’re calling it. Explore our collections and discover jewellery that lets you express yourself with colours that mean something, whether that’s sharing your identity, or what you’re into. Your choice.",
+    "menu_collections_header8": "",
+    "text_bottom_header_8": "<p>© 2023 BAEKKE - UsMeUs International Ltd.<\/p>",
+    "phone_number_header9": "+44 07535408082",
+    "menu_collections_header10": "list-collections",
+    "main_menu_10_bg_hover": "#f66240",
+    "text_copyright_header14": "© 2023 UsMeUs International Ltd",
+    "megamenu1": "Product, Shop",
+    "megamenuimage1": "shopify:\/\/shop_images\/h12-p-2.jpg",
+    "megamenulinksimage1": "shopify:\/\/collections\/all",
+    "megamenuimage2": "shopify:\/\/shop_images\/h12-p-3.jpg",
+    "megamenulinksimage2": "shopify:\/\/collections",
+    "megamenuimage3": "",
+    "megamenulinksimage3": "",
+    "megamenu2": "Collection",
+    "megamenupage1": "",
+    "megamenupage2": "",
+    "megamenupage3": "",
+    "megamenunew": "",
+    "megamenuhot": "",
+    "use_collection_full_width": true,
+    "collection_show_more_products": false,
+    "product_per_row": "3",
+    "products_per_page": 12,
+    "layout": "left-sidebar",
+    "sort_enable": true,
+    "display_best_selling": false,
+    "layout_product": "1",
+    "bg_color_top_product": "#fafaf9",
+    "use_container_top_single": true,
+    "style_products_variants": "1",
+    "enable_ajax": true,
+    "enable_zoom": true,
+    "display_product_popup": true,
+    "show_product_countdown_scroll": true,
+    "use_product_limited": true,
+    "product_limited_init": "25",
+    "product_limited_stopped": "5",
+    "product_limited_interval": "8000",
+    "img_trust_badge": "shopify:\/\/shop_images\/icons2.png",
+    "product_description_title": "Description",
+    "display_additional_tab": true,
+    "additional_title": "Additional information",
+    "display_custom_tab": false,
+    "custom_tab_title": "Shipping & Returns",
+    "custom_tab_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "display_size_chart": false,
+    "custom_size_chart_title": "Size Chart",
+    "display_product_reviews": false,
+    "product_review_title": "Reviews",
+    "display_product_availability": true,
+    "display_product_sku": false,
+    "display_product_categories": false,
+    "display_product_tags": false,
+    "show_related_products": true,
+    "use_container_related": false,
+    "related_products_title": "Related Products",
+    "sidetoshow": "5",
+    "number_of_related_products": "10",
+    "share_image": "shopify:\/\/shop_images\/Baekke_jewellery_frontpage_Small_ead062c7-85f9-45e3-901b-de020271def1.jpg",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_google": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/baekkejewellery\/",
+    "social_behance_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "notification_product_use": false,
+    "notification_product_collection": "frontpage",
+    "notification_product_header": "Someone liked it:",
+    "notification_product_delay": "8000",
+    "notification_product_display": "5000",
+    "show_newsletter_popup": true,
+    "image_popup_newsletter": "shopify:\/\/shop_images\/Baekke_Bracelets_2_newsletter_36dddbd1-7a80-4441-be52-0f92f4a2ca1f.jpg",
+    "popup_show_ms": "3000",
+    "newsletter_popup_title": "Get your <span>10%<\/span> discount now",
+    "newsletter_popup_subtitle": "Sign up to our newsletter and save 10% for you next purchase.<br>No spam, we promise !",
+    "show_age_verify": false,
+    "bg_age_verify": "",
+    "title_age_verify": "Adults only (21+)",
+    "text_age_verify": "This website contains adult material and is only suitable for those 21 years or older. Click Enter only if you are at least 21 years of age.",
+    "link_exit": "https:\/\/www.google.com\/",
+    "show_backtotop": true,
+    "show_img_second": true,
+    "show_wishlist": false,
+    "show_compare": false,
+    "display_short_description": true,
+    "use_hover_box_shadow": true,
+    "g_product_action_style": "1",
+    "banner_page_general": "shopify:\/\/shop_images\/h51-bg-5.jpg",
+    "padding_page_default": "10% 0",
+    "color_text_banner_default": "#ffffff",
+    "favicon": "shopify:\/\/shop_images\/BAEKKE_Logo_square_2x_607554ac-9636-482b-8e82-347a0c4594a6.png",
+    "min_height_c_p_b": "100px",
+    "show_multiple_currencies": false,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+    "default_currency": "GBP",
+    "checkout_logo_image": "shopify:\/\/shop_images\/BAEKKE_logo_TAGLINE_R_2x_d1845f18-72d9-4ea1-91b7-c80bef6c3248.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "large",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "logo_header_aside": "shopify:\/\/shop_images\/logo.png",
+    "text_header_aside": "<p>Nullam varius porttitor augue id rutrum. Duis vehicula magna at magna tempus rhoncus. Maecenas quis lobortis elit, nec faucibus augue.<\/p><p>Phasellus pellentesque mi ut mauris volutpat pellentesque. Donec id leo efficitur, bibendum enim ac, consectetur ex.<\/p>",
+    "img_header_aside": "shopify:\/\/shop_images\/h5-c-5.jpg",
+    "type_main_menu_font": "montserrat_n4",
+    "display_color_variant": "true",
+    "type_bold_product_titles": "false",
+    "use_footer_bars": "false",
+    "use_body_boxed": "false",
+    "color_header_tranparent": "#636363",
+    "use_no_gutter": "false",
+    "show_header_top": "false",
+    "header_top_content": "<span>(800) +54.656.565<\/span><a href=\"mailto:contact@globosoftware.net\">contact@globosoftware.net<\/a>",
+    "header_middle_content": "New Season for this week : Texture Striped Sweatshirt",
+    "background_footer_bottom": "#1c1c1c",
+    "g_product_grid_style": "1",
+    "use_header_fullwidth": "true",
+    "type_base_family": "Google_Montserrat_sans",
+    "type_base_size": "14px",
+    "type_header_family": "Google_Playfair+Display_sans",
+    "menu_header_tranparent_fontsize": "18px",
+    "type_bold_menu_header_tranparent": "true",
+    "menu_header_tranparent_text_transform": "none",
+    "type_header_base_size": "26px",
+    "color_borders": "#e8e9eb",
+    "color_button": "#7796a8",
+    "color_button_text": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": "25",
+    "grid": "4",
+    "use_body_full": "true",
+    "color_body_bg": "#fff",
+    "header_work_time": "<strong>WORK TIME<\/strong><span>Mon - Fri: <i>7:00 AM to 8:00 PM<\/i><\/span><span>Sunday: <i>7:00 AM to 5:00 PM<\/i><\/span>",
+    "header_phone": "034 2333 3444",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1542852564976": {
+            "type": "logo",
+            "settings": {
+              "use_center": true,
+              "logo_footer": "shopify:\/\/shop_images\/BAEKKE_logo_TAGLINE_R_hvid_2x_81fb1e04-db0e-4fa7-b37c-1ae661c46189.png",
+              "copyright": "© 2023 UsMeUs International Ltd - All Rights Reserved",
+              "width": "33.33333%"
+            }
+          },
+          "dbd76ad2-08c6-46fd-80b4-30ad84bcbbe4": {
+            "type": "text",
+            "settings": {
+              "text": "",
+              "width": "16.66667%"
+            }
+          },
+          "1542852634865": {
+            "type": "text",
+            "settings": {
+              "text": "1 Vine Street, Mayfair <br>\nLondon W1J 0AH <br>\nEngland, UK\n<br>\n<a href=\"mailto:hello@baekke.shop\"> hello@baekke.shop<\/a><br> \n+44 (0) 800 464 7190<br><br>\n<a><\/a>",
+              "width": "25%"
+            }
+          },
+          "b0dc8e7e-2ab0-445e-a2c8-2792a6d9e44a": {
+            "type": "menu",
+            "settings": {
+              "title": "",
+              "menu": "footer",
+              "show_menu_horizontal": false,
+              "width": "25%"
+            }
+          },
+          "348a640e-f17c-4805-a2c7-67c158b133f6": {
+            "type": "social",
+            "settings": {
+              "width": "20%"
+            }
+          }
+        },
+        "block_order": [
+          "1542852564976",
+          "dbd76ad2-08c6-46fd-80b4-30ad84bcbbe4",
+          "1542852634865",
+          "b0dc8e7e-2ab0-445e-a2c8-2792a6d9e44a",
+          "348a640e-f17c-4805-a2c7-67c158b133f6"
+        ],
+        "settings": {
+          "show_footer": true,
+          "use_container": true,
+          "padding": "50px 0 10px 0"
+        }
+      },
+      "filter": {
+        "type": "filter",
+        "blocks": {
+          "1531276876742": {
+            "type": "other",
+            "disabled": true,
+            "settings": {
+              "title": "Filter by price",
+              "g_shop_by_tags": "$20.00 - $40.00, $40.00 - $60.00,\n$60.00 - $80.00, $80.00 - $100.00, $100.00 - $120.00"
+            }
+          },
+          "1531211315533": {
+            "type": "color",
+            "settings": {
+              "title": "Shop By Color",
+              "g_shop_by_tags_color": "Black, Blue, Brown, Green, Orange, Pink, Purple, Red, White, Yellow"
+            }
+          },
+          "1531211367403": {
+            "type": "other",
+            "disabled": true,
+            "settings": {
+              "title": "Shop By Size",
+              "g_shop_by_tags": "S, M, L"
+            }
+          },
+          "1536543164390": {
+            "type": "other",
+            "disabled": true,
+            "settings": {
+              "title": "Shop by tags",
+              "g_shop_by_tags": "Beauty, Globo"
+            }
+          },
+          "1531211387434": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "title": "Free Shipping",
+              "content_block_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pharetra, ligula non mollis pretium, lectus libero sodales augue, interdum auctor mauris dui non risus. Nulla facilisi."
+            }
+          },
+          "1536543032086": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "link": "shopify:\/\/collections\/all",
+              "title": "#Sport new",
+              "heading": "Off 20%"
+            }
+          },
+          "1536044467120": {
+            "type": "product",
+            "settings": {
+              "title": "Recent Product",
+              "id_collection": "tell-your-story",
+              "product_rows": "2",
+              "items_show": "4"
+            }
+          }
+        },
+        "block_order": [
+          "1531276876742",
+          "1531211315533",
+          "1531211367403",
+          "1536543164390",
+          "1531211387434",
+          "1536543032086",
+          "1536044467120"
+        ],
+        "settings": {
+          "allcollections_show": true,
+          "allcollections_heading": "Categories"
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "b0d81f1a-2fc0-4ae2-8bb2-556c1c262702": {
+            "type": "collection",
+            "settings": {
+              "collection": "bracelets"
+            }
+          },
+          "c2509f36-ee6a-49d4-b87e-4c5cd76c8454": {
+            "type": "collection",
+            "settings": {
+              "collection": "beads"
+            }
+          }
+        },
+        "block_order": [
+          "b0d81f1a-2fc0-4ae2-8bb2-556c1c262702",
+          "c2509f36-ee6a-49d4-b87e-4c5cd76c8454"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Baekke_bracelets_2_p_with_mirror_square_zoom_3_8e44a68b-c351-4297-b9d3-04bc9ca1b281.jpg",
+          "padding": "10% 0",
+          "color_text_banner": "#ffffff",
+          "text": "<p><strong>TELL YOUR STORY<\/strong><\/p>\n\nBrowse our collections, which feature jewellery pieces that will take your style game to the next level. Stand-out looks are made easy with colours you decide. Don’t stress it – just change the colours to spell out your vibe.\n<br><br>\nFrom bracelets to pendants, studs to ear chains… boring jewellery is over, and we’re calling it. Explore our collections and discover jewellery that lets you express yourself with colours that mean something, whether that’s sharing your identity, or what you’re into. \n<br><br>Your choice.",
+          "display_type": "all",
+          "sort": "date_reversed",
+          "grid": "2"
+        }
+      },
+      "about-page-template": {
+        "type": "about-page-template",
+        "blocks": {
+          "1531465783616": {
+            "type": "quote",
+            "disabled": true,
+            "settings": {
+              "quote": "&quot;Phasellus ut felis odio. Fusce hendrerit, ex ac finibus pulvinar, tortor felis egestas turpis, id pellentesque ligula risus vel sem. Nullam ut nunc a magna varius varius.&quot;",
+              "author": "Ophelia Conner<br>Customer"
+            }
+          },
+          "1531465796389": {
+            "type": "quote",
+            "disabled": true,
+            "settings": {
+              "quote": "&quot;Phasellus ut felis odio. Fusce hendrerit, ex ac finibus pulvinar, tortor felis egestas turpis, id pellentesque ligula risus vel sem. Nullam ut nunc a magna varius varius.&quot;",
+              "author": "Ophelia Conner<br>Customer"
+            }
+          }
+        },
+        "block_order": [
+          "1531465783616",
+          "1531465796389"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Baekke_bracelets_2_p_with_mirror_square_zoom_3.jpg",
+          "padding": "10% 0",
+          "color_text_banner": "#ffffff",
+          "image_row_1": "shopify:\/\/shop_images\/Lene_019.jpg",
+          "heading_row_1": "WHO WE ARE",
+          "text_row_1": "<p>At BAEKKE, we believe in the power of self-expression. Created in 2017 by Lene Schødt, a Danish female founder with a passion for design and a commitment to making a difference, our brand is a celebration of individuality with some lowkey conscious living thrown in for good measure.\n<\/p><p>\nMEET OUR FOUNDER\nLene Schødt, the driving force behind BAEKKE, is an inspiring woman who’s borderline obsessed with jewellery that anyone can wear, however they like. With a background in design, Lene mixes up her expertise with a desire for positive change.\n<\/p>",
+          "image_row_2": "shopify:\/\/shop_images\/Baekke_bracelets_2_p_with_mirror_square_zoom_3.jpg",
+          "heading_row_2": "LET’S GET REAL",
+          "text_row_2": "<p>Lene believes in the potential for small actions to make a big impact – that’s why BAEKKE's Small Streams initiative was born. Through the initiative, each bead purchase triggers donations to various organisations, contributing to positive change, one bead at a time.\n<\/p><p>\nLene is all about a cradle-to-cradle approach in her design process. This means every piece can be easily disassembled and recycled, so resources are kept in circulation as long as possible. Lene's passion for circular design fuels BAEKKE's mission to create jewellery that not only looks good but does good too.\n<\/p>",
+          "color_progress_bar": "#f7941d",
+          "title_progress_bar_1": "",
+          "percent_progress_bar_1": "",
+          "title_progress_bar_2": "",
+          "percent_progress_bar_2": "",
+          "title_progress_bar_3": "",
+          "percent_progress_bar_3": "",
+          "title_progress_bar_4": "",
+          "percent_progress_bar_4": "",
+          "title_testimonial": "",
+          "use_arrows": false,
+          "use_dots": false,
+          "use_autoplay": false,
+          "use_loop": false,
+          "button_name": "LET'S TALK",
+          "button_link": "shopify:\/\/pages\/contact-us"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "image": "",
+          "heading_password": "Our website is coming soon.",
+          "newsletter_enable": true,
+          "end_date_countdown": "2020\/01\/29",
+          "newsletter_placeholder": "Enter your email address...",
+          "newsletter_button_text": "Subscribe",
+          "show_share_buttons": true,
+          "social_message": "Spread the word"
+        }
+      },
+      "contact-page-template": {
+        "type": "contact-page-template",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/BAEKKE_bracelets_contact_us.jpg",
+          "padding": "10% 0",
+          "color_text_banner": "#ffffff",
+          "title_form_contact": "Get in touch",
+          "text": "<p>We're here to listen to what you have to say. Reach out to us with any enquiries, feedback, or even just to share your BAEKKE story. We value your thoughts and love connecting with our BAEKKE community, online and IRL. <\/p>",
+          "iframe_map": ""
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "blog_per_page": "6",
+          "image": "shopify:\/\/shop_images\/BAEKKE_BLOG.jpg",
+          "padding": "10% 0",
+          "color_text_banner": "#ffffff",
+          "layout": "blog_left_sidebar",
+          "data_container_width": "1170",
+          "data_item_width": "400",
+          "data_item_height": "500",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_blog_categories": true,
+          "title_blog_categories": "Categories",
+          "category_sidebar_linklist": "categories",
+          "show_lastest_post_blog": true,
+          "title_lastest_post": "Recent Posts",
+          "lastest_post_number": "4",
+          "show_instagram_blog": false,
+          "title_instagram_blog": "Instagram",
+          "accessToken_blog": "4056544068.d1a3d85.9d2eba44616b4f4c9ec2e4a9c6d89d27",
+          "limit_instagram_blog": "4",
+          "show_tags_blog": true,
+          "title_tags_blog": "Tag Cloud",
+          "show_blog_about_author": false,
+          "title_blog_author": "About Author",
+          "blog_name_author": "Nataila Portman – Blogger\/Designer",
+          "blog_text_author": "Praesent sed ex vel mauris eleifend mollis. Vestibulum dictum sodales ante, ac pulvinar urna sollicitudin in",
+          "link_author_facebook": "",
+          "link_author_twitter": "",
+          "link_author_google": "",
+          "link_author_instagram": "https:\/\/www.instagram.com\/baekkejewellery\/"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "layout": "2",
+          "padding": "10% 0",
+          "color_text_banner": "#000000",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true,
+          "show_blog_categories": true,
+          "title_blog_categories": "Categories",
+          "category_sidebar_linklist": "",
+          "show_lastest_post_blog": true,
+          "title_lastest_post": "Lastest Post",
+          "lastest_post_number": "4",
+          "show_instagram_blog": true,
+          "title_instagram_blog": "Instagram",
+          "accessToken_blog": "4056544068.d1a3d85.9d2eba44616b4f4c9ec2e4a9c6d89d27",
+          "limit_instagram_blog": "4",
+          "show_tags_blog": true,
+          "title_tags_blog": "Tag Cloud",
+          "show_blog_about_author": true,
+          "title_blog_author": "About Author",
+          "blog_name_author": "The BAEKKE Crew",
+          "blog_text_author": "",
+          "link_author_facebook": "",
+          "link_author_twitter": "",
+          "link_author_google": "",
+          "link_author_instagram": "https:\/\/www.instagram.com\/baekkejewellery\/",
+          "show_related_posts": true,
+          "title_related_posts": "Related Post",
+          "how_many_related_posts": "5"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": true
+        }
+      },
+      "g_custom_color": {
+        "type": "g_custom_color",
+        "settings": {
+        }
+      },
+      "about2-text-image": {
+        "type": "about2-text-image",
+        "settings": {
+          "title": "HISTORY SINCE 1998",
+          "heading": "Welcome to Hebes<br>Store - Amazing<br>furniture",
+          "text": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <strong>Suspendisse faucibus<\/strong> sed dolor eget posuere. Sed id interdum urna faucibus sed dolor eget posuere.<\/p><p>Sed id interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet dolor eget posuere.<\/p>",
+          "name": "<span>JONT HENRRY<\/span> - CEO"
+        }
+      },
+      "about2-brands": {
+        "type": "about2-brands",
+        "blocks": {
+          "1536220167879": {
+            "type": "logo_image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1536220169261": {
+            "type": "logo_image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1536220171015": {
+            "type": "logo_image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1536220172555": {
+            "type": "logo_image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "1536220174017": {
+            "type": "logo_image",
+            "settings": {
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1536220167879",
+          "1536220169261",
+          "1536220171015",
+          "1536220172555",
+          "1536220174017"
+        ],
+        "settings": {
+          "sidetoshow": "5",
+          "use_arrows": false,
+          "use_dots": false,
+          "use_autoplay": false,
+          "use_loop": false
+        }
+      },
+      "about2-text-support": {
+        "type": "about2-text-support",
+        "blocks": {
+          "1536221834856": {
+            "type": "block_text_support",
+            "settings": {
+              "heading": "01",
+              "title": "STORE LONDON",
+              "subtitle": "PO BOX 1334 COLLINS  VICETORIA 200 - LONDON",
+              "text": "Email:     Business@moontheme.net<br>\nPhone:  +032 3456 7890"
+            }
+          },
+          "1536221837910": {
+            "type": "block_text_support",
+            "settings": {
+              "heading": "02",
+              "title": "STORE PARIS",
+              "subtitle": "PO BOX 1334 COLLINS  VICETORIA SCARE 200 - PARIS",
+              "text": "Email:     Business@moontheme.net<br>\nPhone:  +032 3456 7890"
+            }
+          },
+          "1536221839340": {
+            "type": "block_text_support",
+            "settings": {
+              "heading": "03",
+              "title": "STORE NEWYORK",
+              "subtitle": "PO BOX 1334 COLLINS  VICETORIA SCARE 200 - PARIS",
+              "text": "Email:     Business@moontheme.net<br>\nPhone:  +032 3456 7890"
+            }
+          }
+        },
+        "block_order": [
+          "1536221834856",
+          "1536221837910",
+          "1536221839340"
+        ],
+        "settings": {
+          "heading_color": "",
+          "title_color": "",
+          "subtitle_color": "",
+          "bg_border_color": ""
+        }
+      },
+      "about3-page-template": {
+        "type": "about3-page-template",
+        "blocks": {
+          "1536226556038": {
+            "type": "quote",
+            "disabled": true,
+            "settings": {
+              "title": "Creative & Unique",
+              "subtitle": "GREAT FROM HEBES"
+            }
+          },
+          "1536226559510": {
+            "type": "quote",
+            "disabled": true,
+            "settings": {
+              "title": "Free Shipping",
+              "subtitle": "ALL ORDER OVER $30"
+            }
+          },
+          "1536226561662": {
+            "type": "quote",
+            "disabled": true,
+            "settings": {
+              "title": "Support Customer",
+              "subtitle": "SUPPORT 24\/7"
+            }
+          },
+          "1536226563209": {
+            "type": "quote",
+            "disabled": true,
+            "settings": {
+              "title": "Secure Payment",
+              "subtitle": "100% SECURE PAYMENT"
+            }
+          }
+        },
+        "block_order": [
+          "1536226556038",
+          "1536226559510",
+          "1536226561662",
+          "1536226563209"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Lene_019.jpg",
+          "title": "WHO WE ARE",
+          "heading": "Meet<br>our<br>founder",
+          "text": "<p>\n<strong>WHO WE ARE<\/strong>\n<\/p><p>\n\nAt BAEKKE, we believe in the power of self-expression. Created in 2017 by Lene Schødt, a Danish female founder with a passion for design and a commitment to making a difference, our brand is a celebration of individuality with some lowkey conscious living thrown in for good measure.\n<\/p><p>\nLene Schødt, the driving force behind BAEKKE, is an inspiring woman who’s borderline obsessed with jewellery that anyone can wear, however they like. With a background in design, Lene mixes up her expertise with a desire for positive change.\n<\/p><p>\n<strong>WHAT INSPIRES US<\/strong>\n<\/p><p>\n\nLene’s journey began with a vision to reinvent ‘normal’ jewellery and make it more versatile, adaptable and sustainable. Inspired by the concept of change, Her approach led to the creation of BAEKKE's interchangeable bead system, which lets wearers customise jewellery to match any outfit or mood.\n<\/p><p>\nLene and the team are all about a cradle-to-cradle approach in the design process. This means every piece can be easily disassembled and recycled, so resources are kept in circulation as long as possible. Lene's passion for circular design fuels BAEKKE's mission to create jewellery that not only looks good but does good too.\n<\/p><p><\/p>",
+          "name": ""
+        }
+      },
+      "contact2-page-template": {
+        "type": "contact2-page-template",
+        "settings": {
+          "title": "CONECT WITH US",
+          "heading": "Contact Us",
+          "title_right": "No. 342 - London Oxford Street,<br>012 United Kingdom.",
+          "text": "Email: contact@globosoftware.net<br>Phone: +(034) 334 55634",
+          "title_form_contact": "Get In Touch With Us"
+        }
+      },
+      "1543373832743": {
+        "type": "g_slideshow",
+        "blocks": {
+          "1544079442671": {
+            "type": "image3",
+            "settings": {
+              "text_align": "1",
+              "image": "shopify:\/\/shop_images\/Baekke_jewellery_frontpage_Small_ead062c7-85f9-45e3-901b-de020271def1.jpg",
+              "title_rotate": "",
+              "title_rotate_font_size": "24",
+              "title_rotate_color": "#ffffff",
+              "title": "",
+              "title_font_size": "12",
+              "title_color": "#ffffff",
+              "heading": "BIG<br>COLOUR<br>ENERGY",
+              "heading_font_size": "72",
+              "heading_color": "#000000",
+              "button_link": "shopify:\/\/collections\/all",
+              "button_name": "SHOP NOW",
+              "button_font_size": "24",
+              "button_color": "#f66240",
+              "show_video_popup": false,
+              "text_video_popup": "WATCH LOOKBOOK",
+              "text_video_popup_color": "#ffffff",
+              "link_video_popup": ""
+            }
+          },
+          "1544079689000": {
+            "type": "image3",
+            "settings": {
+              "text_align": "1",
+              "image": "shopify:\/\/shop_images\/Baekke_bracelets_and_pendants_2P_Montana_wide.jpg",
+              "title_rotate": "",
+              "title_rotate_font_size": "24",
+              "title_rotate_color": "#ffffff",
+              "title": "",
+              "title_font_size": "12",
+              "title_color": "#ffffff",
+              "heading": "NEVER<br>STOP<br>CHANGING",
+              "heading_font_size": "72",
+              "heading_color": "#ffffff",
+              "button_link": "shopify:\/\/collections\/all",
+              "button_name": "SHOP NOW",
+              "button_font_size": "24",
+              "button_color": "#f66240",
+              "show_video_popup": false,
+              "text_video_popup": "WATCH LOOKBOOK",
+              "text_video_popup_color": "#ffffff",
+              "link_video_popup": "https:\/\/www.youtube.com\/embed\/2df62ekI9UY?autoplay=1"
+            }
+          },
+          "1544080195502": {
+            "type": "image3",
+            "settings": {
+              "text_align": "1",
+              "image": "shopify:\/\/shop_images\/BAEKKE_bracelets_Frontpage.jpg",
+              "title_rotate": "",
+              "title_rotate_font_size": "24",
+              "title_rotate_color": "#ffffff",
+              "title": "",
+              "title_font_size": "12",
+              "title_color": "#ffffff",
+              "heading": "SHOW<br>YOUR<br>COLOURS",
+              "heading_font_size": "72",
+              "heading_color": "#ffffff",
+              "button_link": "shopify:\/\/collections\/all",
+              "button_name": "SHOP NOW",
+              "button_font_size": "24",
+              "button_color": "#f66240",
+              "show_video_popup": false,
+              "text_video_popup": "WATCH LOOKBOOK",
+              "text_video_popup_color": "#ffffff",
+              "link_video_popup": "https:\/\/www.youtube.com\/embed\/2df62ekI9UY?autoplay=1"
+            }
+          },
+          "1544080218376": {
+            "type": "image3",
+            "settings": {
+              "text_align": "1",
+              "image": "shopify:\/\/shop_images\/Baekke_jewellery_3_p_yellow_red_blue_Front.jpg",
+              "title_rotate": "",
+              "title_rotate_font_size": "24",
+              "title_rotate_color": "#ffffff",
+              "title": "",
+              "title_font_size": "12",
+              "title_color": "#ffffff",
+              "heading": "FEEL<br>THE<br>FREEDOM",
+              "heading_font_size": "72",
+              "heading_color": "#000000",
+              "button_link": "",
+              "button_name": "SHOP NOW",
+              "button_font_size": "24",
+              "button_color": "#f66240",
+              "show_video_popup": false,
+              "text_video_popup": "WATCH LOOKBOOK",
+              "text_video_popup_color": "#ffffff",
+              "link_video_popup": "https:\/\/www.youtube.com\/embed\/2df62ekI9UY?autoplay=1"
+            }
+          }
+        },
+        "block_order": [
+          "1544079442671",
+          "1544079689000",
+          "1544080195502",
+          "1544080218376"
+        ],
+        "settings": {
+          "mobile_slider_height": "",
+          "use_full_screen": true,
+          "use_box_content_below": false,
+          "bg_color_content_below": "",
+          "slider_left_content_before": false,
+          "use_width": "1",
+          "height_slider": "1200",
+          "margin": "",
+          "autoplay": true,
+          "use_dots_slideshow": false,
+          "use_dots_style": "3",
+          "use_nav_image": false,
+          "nav_image_style_position": "2",
+          "navtext_color": "#ffffff",
+          "use_nav_slideshow": true,
+          "navigation_color": "#ffffff",
+          "nav_style": "11",
+          "use_owl_thumbs": false,
+          "thumbs_style_position": "1",
+          "use_number_total": true,
+          "number_total_color": "#f66240",
+          "number_total_position": "2",
+          "transition": "slide",
+          "autoplay_speed": "5000",
+          "use_social_slider": true,
+          "social_color": "#9933ff",
+          "social_hover_color": "#f66240",
+          "social_position": "3",
+          "social_slider_1": "",
+          "link_social_slider_1": "",
+          "social_slider_2": "Follow us on INSTAGRAM",
+          "link_social_slider_2": "https:\/\/www.instagram.com\/baekkejewellery\/",
+          "social_slider_3": "",
+          "link_social_slider_3": "",
+          "use_catalog": false,
+          "catalog_position": "1",
+          "link_catalog": "shopify:\/\/collections\/all",
+          "text_catalog": "Catalog",
+          "color_catalog": "#000000",
+          "phone_number_position": "2",
+          "use_phone_number_slider": false,
+          "text_phone_number_slider": "+44 07535 408082",
+          "color_phone_number": "#000000",
+          "bg_color_phone_number_icon": "#000000",
+          "color_phone_number_icon": "#ffffff",
+          "show_scroll_down": false,
+          "use_icon_scroll": true,
+          "text_scroll": "DISCOVER NOW",
+          "scroll_down_color": "#f66240",
+          "use_menu_on_slider": false,
+          "menu_on_slider": "",
+          "color_menu_on_slider": "#000000",
+          "use_menu2_on_slider": false,
+          "menu2_on_slider": "",
+          "color_menu2_on_slider": "#ffffff",
+          "text_copyright_slider": "",
+          "copyright_position": "1",
+          "color_text_copyright_slider": "#e1e1e1"
+        }
+      },
+      "1544080791702": {
+        "type": "g_text_categories_3",
+        "blocks": {
+          "1544080791702-0": {
+            "type": "block_text_categories_3",
+            "settings": {
+              "link": "shopify:\/\/collections\/tell-your-story",
+              "title": "VISIT THE SHOP",
+              "title_font_size": "",
+              "subtitle": "21 ITEMS"
+            }
+          },
+          "1544080791702-1": {
+            "type": "block_text_categories_3",
+            "disabled": true,
+            "settings": {
+              "link": "shopify:\/\/collections\/earrings",
+              "title": "EARRINGS",
+              "title_font_size": "",
+              "subtitle": "8 ITEMS"
+            }
+          },
+          "1544080791702-2": {
+            "type": "block_text_categories_3",
+            "disabled": true,
+            "settings": {
+              "link": "shopify:\/\/collections\/pendants",
+              "title": "PENDANTS",
+              "title_font_size": "",
+              "subtitle": "8 ITEMS"
+            }
+          },
+          "1544080791702-3": {
+            "type": "block_text_categories_3",
+            "disabled": true,
+            "settings": {
+              "link": "shopify:\/\/collections\/beads",
+              "title": "COLOUR BEADS",
+              "title_font_size": "",
+              "subtitle": "24 ITEMS"
+            }
+          }
+        },
+        "block_order": [
+          "1544080791702-0",
+          "1544080791702-1",
+          "1544080791702-2",
+          "1544080791702-3"
+        ],
+        "custom_css": [
+          ".col-xs-12 p {text-transform: none;}"
+        ],
+        "settings": {
+          "css_animations": "9",
+          "use_container": true,
+          "margin": "0 0 -52vh 0",
+          "padding": "10vh 0 60vh  0",
+          "bg_color": "#f66240",
+          "content_color": "#ffffff",
+          "title": "#DOPAMINEDRESSING",
+          "heading": "ENTER YOUR COLOUR ERA",
+          "text": "Meet BAEKKE – where main characters like you show off their true colours. Our jewellery features interchangeable beads, so it fits any outfit, mood or message – no notes. One piece, many looks: it’s jewellery that hits different and gets across what you want to say."
+        }
+      },
+      "1544081503514": {
+        "type": "g_image_text_2",
+        "blocks": {
+          "1544081503514-0": {
+            "type": "image_text",
+            "settings": {
+              "style": "1",
+              "image": "shopify:\/\/shop_images\/Baekke_bracelets_hand_on_floor_square_Small_b0f0ce16-268e-4b88-95b2-d8ffacde803c.jpg",
+              "link": "shopify:\/\/collections\/tell-your-story",
+              "title": "JUST OWN IT",
+              "title_color": "#ffffff",
+              "text_color": "#e1e1e1",
+              "text": "Our jewellery is made with durable plastic beads that you simply click on and off so you can change up your look whenever you want. Bracelets, pendants, earrings… create your own look knowing your jewellery is on point and speaks the same language as you. \n<p><\/p>\nSee our collection here +",
+              "button_bg": "#ffffff",
+              "button_color": "#000000"
+            }
+          },
+          "1544081503514-1": {
+            "type": "image_text",
+            "settings": {
+              "style": "2",
+              "image": "shopify:\/\/shop_images\/Baekke_bracelets_2_p_4_hands__square_zoom_1.jpg",
+              "link": "shopify:\/\/pages\/about-baekke",
+              "title": "SHOW YOUR COLOURS",
+              "title_color": "#c99614",
+              "text_color": "#000000",
+              "text": "A different vibe every day? We love this for you. Time to add some colour coding to your outfit rotation with beads produced in Denmark and jewellery made of brass, silver and gold-plated brass with 18K red gold.\n<p><\/p>Read more about BAEKKE here +",
+              "button_bg": "#c99614",
+              "button_color": "#ffffff"
+            }
+          },
+          "1544081503514-2": {
+            "type": "image_text",
+            "settings": {
+              "style": "1",
+              "image": "shopify:\/\/shop_images\/Baekke_bracelets_and_pendants_Montana_Square_zoom_1.jpg",
+              "link": "shopify:\/\/pages\/read-our-news",
+              "title": "TAKE A CHANCE",
+              "title_color": "#073bbf",
+              "text_color": "#000000",
+              "text": "Our next-level jewellery means endless looks from just one piece. So you can do you, with colours that are your choice, nobody else’s, and can mean something… or not. That’s up to you. With BAEKKE, you’re kitted out for all kinds of moods and plans – ready to bring the realness to your outfit.<p><\/p>Visit our blog here +",
+              "button_bg": "#073bbf",
+              "button_color": ""
+            }
+          },
+          "1544081503514-3": {
+            "type": "image_text",
+            "settings": {
+              "style": "2",
+              "image": "shopify:\/\/shop_images\/BAEKKE_bracelets_harlekin_side_zoom_1.jpg",
+              "link": "shopify:\/\/pages\/design-and-sustainability-1",
+              "title": "TELL A NEW STORY",
+              "title_color": "#000000",
+              "text_color": "#000000",
+              "text": "BAEKKE jewellery is designed with a cradle-to-cradle approach, so you can feel good about what you bought, knowing that it can be easily recycled or reused when its life is over. Jewellery just got an update and we’re here for it.<p><\/p>Read about our design and sustainability here +",
+              "button_bg": "#000000",
+              "button_color": ""
+            }
+          },
+          "1544081503514-4": {
+            "type": "image_text",
+            "settings": {
+              "style": "1",
+              "image": "shopify:\/\/shop_images\/Baekke_jewellery_2_p_red_shirt_yellow_couch_square_2.jpg",
+              "link": "shopify:\/\/pages\/about4",
+              "title": "FEEL THE FREEDOM",
+              "title_color": "#f66240",
+              "text_color": "#000000",
+              "text": "Female-founded, purpose-led and serving absolute realness, BAEKKE brings jewellery that you can use to tell your own story, every day. Shop our collection now and never stop changing…<p><\/p>Meet our founder here +",
+              "button_bg": "#f66240",
+              "button_color": ""
+            }
+          }
+        },
+        "block_order": [
+          "1544081503514-0",
+          "1544081503514-1",
+          "1544081503514-2",
+          "1544081503514-3",
+          "1544081503514-4"
+        ],
+        "settings": {
+          "css_animations": "2",
+          "use_width": "3",
+          "margin": "20px 0 -80px 0"
+        }
+      },
+      "1544082959738": {
+        "type": "g_newsletter_text_support",
+        "blocks": {
+          "1544082959738-0": {
+            "type": "block_text_support",
+            "settings": {
+              "title": "We Ship Worldwide",
+              "text": "Baekke crosses borders"
+            }
+          },
+          "1544082959738-1": {
+            "type": "block_text_support",
+            "settings": {
+              "title": "Customer Support",
+              "text": "24 hours a day"
+            }
+          },
+          "1544082959738-2": {
+            "type": "block_text_support",
+            "settings": {
+              "title": "Secure Payment",
+              "text": "100% SECURE PAYMENT"
+            }
+          },
+          "1544082959738-3": {
+            "type": "block_text_support",
+            "settings": {
+              "title": "30 Days Return",
+              "text": "Return 30 days"
+            }
+          }
+        },
+        "block_order": [
+          "1544082959738-0",
+          "1544082959738-1",
+          "1544082959738-2",
+          "1544082959738-3"
+        ],
+        "settings": {
+          "css_animations": "9",
+          "use_container": true,
+          "margin": "",
+          "padding": "12% 0 5% 0",
+          "bg_color": "#f66240",
+          "content_color": "#ffffff",
+          "button_name": "VIEW OUR COLLECTION",
+          "button_link": "shopify:\/\/collections\/all",
+          "title": "# NEWSLETTER",
+          "heading": "Get your 10% discount now",
+          "subheading": "GET 10% DISCOUNT WHEN YOU SIGN UP FOR THE LATEST NEWS AND UPDATES. NO SPAM, WE PROMISE!"
+        }
+      },
+      "c1ba0bff-9fc5-44b1-9984-d4be920390b8": {
+        "type": "raptor-instagram",
+        "settings": {
+          "linktext": "Code is added. It will be shown on your website."
+        }
+      },
+      "team-page-template": {
+        "type": "team-page-template",
+        "settings": {
+          "padding": "",
+          "color_text_banner": "",
+          "text": "Cras porta posuere lectus, vitae consectetur dolor elementum id. Ut interdum, sem eget varius eleifend, ex risus gravida purus, sed finibus tortor nisi maximus orci. Etiam vel sollicitudin nisi. In ipsum tortor, vulputate nec est in, pharetra malesuada diam.",
+          "member_per_row": "4"
+        }
+      },
+      "faqs-page-template": {
+        "type": "faqs-page-template",
+        "blocks": {
+          "131ee3f7-9c8d-4f85-aed3-ba175f61cfc5": {
+            "type": "quote",
+            "settings": {
+              "question": "Q: How do Baekke's interchangeable beads work?",
+              "answer": "A: Baekke's interchangeable beads feature a unique click-on and click-off mechanism. Simply slide the bead onto your bracelet, pendant, or earrings and give it a gentle click to secure it in place. To change beads, just click them off and replace them with the colours that suit your vibe that day, or use them to share a coded message. It’s up to you."
+            }
+          },
+          "1918e693-4547-4f6a-aa3a-5d29821722c8": {
+            "type": "quote",
+            "settings": {
+              "question": "Q: Can I mix and match beads from different collections?",
+              "answer": "A: Absolutely – Baekke's interchangeable bead system allows you to mix and match beads from different collections. Get creative and customise your jewellery however you want."
+            }
+          },
+          "55d52b63-7bde-42bf-aa9a-20361d1274cc": {
+            "type": "quote",
+            "settings": {
+              "question": "Q: How durable are Baekke's jewellery pieces?",
+              "answer": "A: Our beads are made of durable plastic (polyethylene, which is highly recyclable), which ensures that they can be clicked on and off the bracelet again and again. However, we recommend that you do not leave the beads on the jewellery when you’re not wearing it – to prevent the plastic from “tiring”."
+            }
+          },
+          "f0b62a7a-8e30-4027-a1a3-8937c248657d": {
+            "type": "quote",
+            "settings": {
+              "question": "Q: Can I purchase additional beads separately?",
+              "answer": "A: You certainly can. Baekke offers a wide range of individual beads that you can purchase separately, so you can expand your collection and create even more looks."
+            }
+          },
+          "60c0bc52-685e-42a3-9bfe-3235efcd7bc9": {
+            "type": "quote",
+            "settings": {
+              "question": "Q: Are Baekke's materials sustainable?",
+              "answer": "A: Sustainability is at the core of our design philosophy: we carefully select materials with a focus on recyclability and longevity. Our jewellery is thoughtfully made to minimise waste and maximise its lifecycle."
+            }
+          },
+          "c2ef58b6-8cf3-427a-830b-e708f8daa70f": {
+            "type": "quote",
+            "settings": {
+              "question": "Q: How can I care for my Baekke jewellery?",
+              "answer": "A: To keep your Baekke jewellery looking its best, we recommend gently cleaning it with a soft cloth. Avoid exposing it to harsh chemicals or excessive moisture. Storing your jewellery in a cool, dry place when not in use will help maintain its quality."
+            }
+          },
+          "51d62614-f142-4f22-a12d-4e180755766a": {
+            "type": "quote",
+            "settings": {
+              "question": "Q: Does Baekke offer international shipping?",
+              "answer": "A: Yes, we offer international shipping to customers worldwide. No matter where you are, you can enjoy our unique jewellery and keep changing your looks to suit your mood."
+            }
+          }
+        },
+        "block_order": [
+          "131ee3f7-9c8d-4f85-aed3-ba175f61cfc5",
+          "1918e693-4547-4f6a-aa3a-5d29821722c8",
+          "55d52b63-7bde-42bf-aa9a-20361d1274cc",
+          "f0b62a7a-8e30-4027-a1a3-8937c248657d",
+          "60c0bc52-685e-42a3-9bfe-3235efcd7bc9",
+          "c2ef58b6-8cf3-427a-830b-e708f8daa70f",
+          "51d62614-f142-4f22-a12d-4e180755766a"
+        ],
+        "custom_css": [
+
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/BAEKKE_FAQS.jpg",
+          "padding": "10% 0",
+          "color_text_banner": "",
+          "text": "<h4><strong>Find the answer<\/strong><\/h4><p>Got questions? We've got answers. Find all the information you need in our frequently asked questions section here. From details about our materials to tips on how to look after your jewellery, we're here to make sure your BAEKKE experience is 100% good vibes only.<\/p>"
+        }
+      },
+      "about4-page-template": {
+        "type": "about4-page-template",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/BaekkeBracelts2psweet_square_zoom1_aca50b81-5e63-4546-8e75-842c9ee2a7cb.jpg",
+          "title": "design and sustainability",
+          "heading": "Small streams<br>make a<br>great river",
+          "text": "<p>\n<strong>SHARE YOUR VIBE<\/strong>\n<\/p><p>\nYou wanted change and we understood the assignment – which is why behind our statement designs lies a commitment to sustainability. We believe in making a positive impact on the planet without compromising on style. \n<\/p><p>\nBAEKKE jewellery is thoughtfully made with recyclable materials, to make sure your choices are part of a brighter future. Read on to discover the details of our design process and how serious we are about keeping resources in circulation.\n<\/p><p>\n<strong>MAKE IT LAST<\/strong>\n<\/p><p>\nWe’re conscious of waste. That's why we carefully select and make use of materials that can last for generations to come. Circularity is a vital part of BAEKKE design: making sure what we produce can be easily taken apart and upcycled. \n<\/p><p>\nSo when the lifetime of one product is complete, it can be transformed into something new with equal or even higher value. In other words, we're totally committed to reducing waste and maximising the potential of every material. You wouldn’t have it any other way, right?\n<\/p><p>\n<strong>MAKE IT COUNT<\/strong>\n<\/p><p>\nWhat are you saying with your BAEKKE colours? Selected colour designs support local, national, and international organisations. Our Small Streams Initiative lets you be part of something bigger: you can contribute to organisations who want to make a difference.. \n<\/p><p>\n‘Small Streams’ comes from the proverb “Small streams make a great river”, the inspiration for the name BAEKKE, which means streams or ‘brooks’. Even the smallest acts of kindness can lead to real change. So explore the stories behind our support and feel the buzz of knowing your jewellery does more than just pop.\n<\/p><p><\/p>",
+          "name": ""
+        }
+      },
+      "about5-page-template": {
+        "type": "about5-page-template",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Bracelet_BAEKKE_Combination_with_beads.jpg",
+          "title": "about baekke",
+          "heading": "Never<br>stop<br>changing",
+          "text": "<p>\n<strong>LET’S GET REAL<\/strong>\n<\/p><p>\nAt BAEKKE, we believe in the power of self-expression. Created in 2017 by Lene Schødt, a Danish female founder with a passion for design and a commitment to making a difference, our brand is a celebration of individuality with some lowkey conscious living thrown in for good measure.\n<\/p><p>\nWe also believe in the potential for small actions to make a big impact – that’s why BAEKKE's Small Streams initiative was born. Through the initiative, each bead purchase triggers donations to various organisations, contributing to positive change, one bead at a time.\n<\/p><p>\n<strong>TIME TO TALK PLASTIC<\/strong>\n<\/p><p>\nAt Baekke, we understand the concern surrounding the use of plastic. But guess what? Turns out plastic isn’t a dirty word: single use plastic is. So while our jewellery is not made from recycled plastic, our innovative design allows you to easily click the beads on and off, promoting long-term use rather than single-use consumption, which is the enemy of the environment. \n<\/p><p>\nIt’s true: plastic, when responsibly managed, is a valuable resource that can be highly reusable. Unlike materials like glass that require a LOT of energy for recycling (thanks to their high melting temperatures) plastic can be reused with a lot less energy. And of course, being able to detach materials from one another is essential for successful recycling, and we’ve done that through our (excuse us while we flex a moment) ingenious design.\n<\/p><p>\n<strong>SPEAK YOUR TRUTH<\/strong>\n<\/p><p>\nBAEKKE is more than just a jewellery brand. It's a movement that empowers you to embrace your individuality and make positive changes. With Lene leading the way, we invite you to be part of the BAEKKE community and celebrate colour and self-expression through design that cares.\n<\/p><p>\nCheck out our iconic jewellery, find something that speaks to you… and become part of the BAEKKE journey. Like you, we want to look good, and want to look after this planet too… it’s the only one we’ve got, right?\n<\/p><p><\/p>",
+          "name": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "1543373832743",
+      "1544080791702",
+      "1544081503514",
+      "1544082959738",
+      "c1ba0bff-9fc5-44b1-9984-d4be920390b8"
+    ],
+    "blocks": {
+      "5294968793578418440": {
+        "type": "shopify:\/\/apps\/king-product-options-variant\/blocks\/app-embed\/ce104259-52b1-4720-9ecf-76b34cae0401",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "11651401770006824842": {
+        "type": "shopify:\/\/apps\/ymq-product-options-variants\/blocks\/app-embed\/86b91121-1f62-4e27-9812-b70a823eb918",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".box-img-text p {text-transform: none;}"
+    ]
+  }
+}

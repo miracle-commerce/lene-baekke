@@ -1,0 +1,127 @@
+<div class="page-width-content template-page-about3">
+  <div class="container-full">
+    <div class="row equalize">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="image">
+            {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: '775x980' }}" alt="{{ section.settings.image.alt }}" />
+            {% else %}
+          	{{ 'image' | placeholder_svg_tag }}
+            {% endif %}
+        </div>
+        <div class="text-about">
+          {% if section.settings.title != blank %}
+          <div class="title">{{ section.settings.title }}</div>
+          {% endif %}
+          {% if section.settings.heading != blank %}
+          <h1>{{ section.settings.heading }}</h1>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="custom-block-column custom-block-column-about3">
+          {% if section.settings.text != blank %}
+          {{ section.settings.text }}
+          {% endif %}
+          {% if section.settings.name != blank %}
+          <div class="name-black">{{ section.settings.name }}</div>
+          {% endif %}
+          <div class=g-text-support-2>
+            <div class="row">
+              {% for block in section.blocks %}
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="img">
+                  {% if block.settings.image != blank %}
+                  <img class="lazy" data-src="{{ block.settings.image | img_url: 'small' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+                  {% else %}
+                  {{ 'image' | placeholder_svg_tag }}
+                  {% endif %}
+                </div>
+                <div class="text-has-image">
+                  {% if block.settings.title != blank %}
+                  <h4>{{ block.settings.title }}</h4>
+                  {% endif %}
+                  {% if block.settings.subtitle != blank %}
+                  <span class="subtitle">{{ block.settings.subtitle }}</span>
+                  {% endif %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "About page 4",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left content"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+		"default": "HISTORY SINCE 1998"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+		"default": "Welcome to<br>Hebes Store<br>furniture"
+      },
+      {
+        "type": "header",
+        "content": "Right content"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text",
+		"default": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. <strong>Suspendisse faucibus<\/strong> sed dolor eget posuere. Sed id interdum urna faucibus sed dolor eget posuere.<\/p><p>Sed id interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit amet dolor eget posuere.<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "name",
+        "label": "Name",
+		"default": "<span>JONT HENRRY<\/span> - CEO"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Block text support",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Creative & Unique"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "GREAT FROM HEBES"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

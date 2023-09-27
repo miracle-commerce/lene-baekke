@@ -1,0 +1,172 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '11' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+<div class="g-testimonials-2 {{ css_animations_class }}" style="{% if section.settings.margin != blank %}margin: {{ section.settings.margin }};{% endif %}{% if section.settings.padding != blank %}padding: {{ section.settings.padding }};{% endif %}{% if section.settings.bg_color != blank %}background-color: {{ section.settings.bg_color }};{% endif %}">
+  <div class="container">
+    <div style="display: none;">{% include 'dlicon-arrow-left2' %}{% include 'dlicon-arrow-right2' %}</div>
+    <div class="g-slick-testimonials g-slick-slider" data-slick='{"infinite":{% if section.settings.use_loop %}true{% else %}false{% endif %},"dots":{% if section.settings.use_dots %}true{% else %}false{% endif %},"slidesToShow":1,"slidesToScroll":1,"autoplay":{% if section.settings.use_autoplay %}true{% else %}false{% endif %},"arrows":false,"speed":"1000","autoplaySpeed":3000,"centerMode":false,"variableWidth":false,"nextArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-next default\"><svg><use xlink:href=\"#dlicon-arrow-right2\"><\/use><\/svg><\/button>","prevArrow":"<button type=\"button\" style=\"font-size:24px;width:24px;height:24px;line-height:24px;\" class=\"slick-prev default\"><svg><use xlink:href=\"#dlicon-arrow-left2\"><\/use><\/svg><\/button>","responsive":[{"breakpoint":1200,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":992,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":768,"settings":{"slidesToShow":1,"slidesToScroll":1}},{"breakpoint":480,"settings":{"slidesToShow":1,"slidesToScroll":1}}]}'>
+      {% for block in section.blocks %}
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            {% if block.settings.image != blank %}
+            <div class="testimonial_item--image" {% if section.settings.content_color != blank %}style="color: {{ section.settings.content_color }};"{% endif %}>
+              <img src="{{ block.settings.image | img_url: '50x50' }}" alt="{{ block.settings.image.alt }}" />
+            </div>
+            {% endif %}          	
+          </div>
+          <div class="col-md-9 col-sm-8 col-xs-12">
+            <div class="max-width-500">
+              {% if block.settings.quote != blank %}
+              <div class="testimonial_item--info" {% if section.settings.content_color != blank %}style="color: {{ section.settings.content_color }};"{% endif %}>
+                {{ block.settings.quote }}
+              </div>
+              {% endif %}
+              {% if block.settings.author != blank %}
+              <div class="testimonial_item--bottom" {% if section.settings.content_color != blank %}style="color: {{ section.settings.content_color }};"{% endif %}>
+                {{ block.settings.author }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Testimonials 2",
+    "class": "globo_testimonials_2",
+	"max_blocks": 8,
+  	"presets": [
+      {
+        "name": "Testimonials 2",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "block_testimonials_2"
+          },
+          {
+            "type": "block_testimonials_2"
+          },
+          {
+            "type": "block_testimonials_2"
+          },
+          {
+            "type": "block_testimonials_2"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInDown" },
+          { "value": "11", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "padding",
+        "label": "Padding: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#fd3341"
+      },
+      {
+        "type": "color",
+        "id": "content_color",
+        "label": "content color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_loop",
+        "label": "Use Infinite loop sliding?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "use_autoplay",
+        "label": "Use autoplay?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "use_dots",
+        "label": "Use dots?",
+        "default": true
+      }
+    ],
+  	"blocks": [
+      {
+        "type": "block_testimonials_2",
+        "name": "Block testimonials 2",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "quote",
+            "label": "Text",
+			"default": "&quot; Suspendisse faucibus sed dolor eget posuere interdum urna. ante commodo tristique. <i>Consectetur adipiscing commodo tristique<\/i> &quot;"
+          },
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+			"default": "<span>JONT HENRRY<\/span>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

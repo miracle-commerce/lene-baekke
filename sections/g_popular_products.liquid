@@ -1,0 +1,304 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.use_width -%}
+    {% when '1' %}
+      	{%- assign content_width = 'g-fullwwidth' -%}
+    {% when '2' %}
+    	{%- assign content_width = 'container-full' -%}
+    {% when '3' %}
+    	{%- assign content_width = 'container' -%}
+{%- endcase -%}
+<div class="g-banner-image-text-2 {{ css_animations_class }}" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="{{ content_width }}">
+    <div class="g-relative">
+      {% if section.settings.title != blank %}
+      <h2 {% if section.settings.title_position_top != blank %}style="top: {{ section.settings.title_position_top }};"{% endif %}>{{ section.settings.title }}</h2>
+      {% endif %}
+      <div class="list-popular-products">
+        {% for block in section.blocks %}
+        {%- case block.settings.width -%}
+        {% when '1' %}
+        {% assign featured_banner_width = 'col-sm-3 col-xs-12' %}
+        {% when '2' %}
+        {% assign featured_banner_width = 'col-sm-4 col-xs-12' %}
+        {% when '3' %}
+        {% assign featured_banner_width = 'col-sm-6 col-xs-12' %}
+        {% when '4' %}
+        {% assign featured_banner_width = 'col-sm-8 col-xs-12' %}
+        {% when '5' %}
+        {% assign featured_banner_width = 'col-sm-12 col-xs-12' %}
+        {%- endcase -%}
+        <div class="{{ featured_banner_width }}" style="padding: 0; {% if block.settings.margin != blank %}margin: {{ block.settings.margin }};{% endif %}">
+          <div class="popular-product-item">
+            <div class="image">
+              {% if block.settings.image_1 != blank %}
+              <img class="lazy" data-src="{{ block.settings.image_1 | img_url: '860x860', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image_1.alt }}" />
+              {% else %}
+              {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg svg-height-600' }}
+              {% endif %}
+            </div>
+            <div class="info">
+              {% if block.settings.title_1 != blank %}
+              <h3 {% if block.settings.title_1_color != blank %}style="color: {{ block.settings.title_1_color }};"{% endif %}>{{ block.settings.title_1 }}</h3>
+              {% endif %}
+              {% if block.settings.price_1 != blank %}
+              <div class="price" {% if block.settings.price_1_color != blank %}style="color: {{ block.settings.price_1_color }};"{% endif %}>{{ block.settings.price_1 }}</div>
+              {% endif %}
+            </div>
+            {% if block.settings.link_1 != blank %}
+            <a href="{{ block.settings.link_1 }}" class="overflow-link"></a>
+            {% endif %}
+          </div>
+          <div class="popular-product-item">
+            <div class="image">
+              {% if block.settings.image_2 != blank %}
+              <img class="lazy" data-src="{{ block.settings.image_2 | img_url: '860x860', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image_2.alt }}" />
+              {% else %}
+              {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg svg-height-600' }}
+              {% endif %}
+            </div>
+            <div class="info">
+              {% if block.settings.title_2 != blank %}
+              <h3 {% if block.settings.title_2_color != blank %}style="color: {{ block.settings.title_2_color }};"{% endif %}>{{ block.settings.title_2 }}</h3>
+              {% endif %}
+              {% if block.settings.price_2 != blank %}
+              <div class="price" {% if block.settings.price_2_color != blank %}style="color: {{ block.settings.price_2_color }};"{% endif %}>{{ block.settings.price_2 }}</div>
+              {% endif %}
+            </div>
+            {% if block.settings.link_2 != blank %}
+            <a href="{{ block.settings.link_2 }}" class="overflow-link"></a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% if section.settings.view_all_products != blank %}
+      <a href="{{ section.settings.link_view_all_products }}" class="browse-all-products" {% if section.settings.button_position_bottom != blank %}style="bottom: {{ section.settings.button_position_bottom }};"{% endif %}><span>{{ section.settings.view_all_products }}</span></a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Block Popular Products",
+    "class": "globo_block_popular_products",
+    "max_blocks": 8,
+    "presets": [
+      {
+        "name": "Block Popular Products",
+        "category": "Product",
+        "blocks" : [
+          {
+            "type": "block_popular_product"
+          },
+          {
+            "type": "block_popular_product"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "select",
+        "id": "use_width",
+        "label": "Content width",
+        "options": [
+          { "value": "1", "label": "Use full width" },
+          { "value": "2", "label": "Use padding" },
+          { "value": "3", "label": "Use container" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Popular Products"
+      },
+      {
+        "type": "text",
+        "id": "title_position_top",
+        "label": "Title position top",
+        "default": "-12%"
+      },
+      {
+        "type": "text",
+        "id": "view_all_products",
+        "label": "Text view products",
+        "default": "Browse All Products"
+      },
+      {
+        "type": "url",
+        "id": "link_view_all_products",
+        "label": "Link view products"
+      },
+      {
+        "type": "text",
+        "id": "button_position_bottom",
+        "label": "Button postion bottom",
+        "default": "90px"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "block_popular_product",
+      "name": "Block popular product",
+      "settings": [
+         {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "3",
+        "options": [
+             {
+               "value": "1",
+               "label": "25%"
+             },
+             {
+               "value": "2",
+               "label": "33.33333%"
+             },
+             {
+               "value": "3",
+               "label": "50%"
+             },
+             {
+               "value": "4",
+               "label": "66.66666%"
+             },
+             {
+               "value": "5",
+               "label": "100%"
+             }
+           ]
+         },
+         {
+            "type": "text",
+            "id": "margin",
+            "label": "Margin: (top-right-bottom-left)",
+            "info": "Ex: 10px 0 30px 0"
+         },
+         {
+          "type": "header",
+          "content": "Product item 1"
+         },
+         {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title_1",
+            "label": "Title",
+            "default": "Chocolate Candy H1"
+         },
+         {
+            "type": "color",
+            "id": "title_1_color",
+            "label": "Title color"
+         },
+         {
+            "type": "text",
+            "id": "price_1",
+            "label": "Price",
+            "default": "$ 2.00"
+         },
+         {
+            "type": "color",
+            "id": "price_1_color",
+            "label": "Price color"
+         },
+         {
+            "type": "url",
+            "id": "link_1",
+            "label": "Link"
+         },
+         {
+          "type": "header",
+          "content": "Product item 2"
+         },
+         {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title_2",
+            "label": "Title",
+            "default": "Chocolate Candy H1"
+         },
+         {
+            "type": "color",
+            "id": "title_2_color",
+            "label": "Title color"
+         },
+         {
+            "type": "text",
+            "id": "price_2",
+            "label": "Price",
+            "default": "$ 2.00"
+         },
+         {
+            "type": "color",
+            "id": "price_2_color",
+            "label": "Price color"
+         },
+         {
+            "type": "url",
+            "id": "link_2",
+            "label": "Link"
+         }
+      ]
+    }
+  ]
+  }
+{% endschema %}

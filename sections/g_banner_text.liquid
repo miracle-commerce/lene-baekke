@@ -1,0 +1,290 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.use_width -%}
+    {% when '1' %}
+      	{%- assign banner_width = 'g-fullwwidth' -%}
+    {% when '2' %}
+    	{%- assign banner_width = 'container-full' -%}
+    {% when '3' %}
+    	{%- assign banner_width = 'container' -%}
+{%- endcase -%}
+<div class="g-banner-image-text-2 {{ css_animations_class }}" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="{{ banner_width }}">
+    <div class="equalize">
+      {% for block in section.blocks %}
+      {%- case block.settings.width -%}
+      {% when '1' %}
+      {% assign featured_banner_width = 'col-sm-3 col-xs-12' %}
+      {% when '2' %}
+      {% assign featured_banner_width = 'col-sm-4 col-xs-12' %}
+      {% when '3' %}
+      {% assign featured_banner_width = 'col-sm-6 col-xs-12' %}
+      {% when '4' %}
+      {% assign featured_banner_width = 'col-sm-8 col-xs-12' %}
+      {% when '5' %}
+      {% assign featured_banner_width = 'col-sm-12 col-xs-12' %}
+      {%- endcase -%}
+      {% case block.type %}
+      {% when 'banner1' %}
+      <div class="{{ featured_banner_width }}" style="padding: 0; {% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}">
+        <div class="col-relative">
+          <div class="banner--image-2">
+            {% if block.settings.image != blank %}
+			<img src="{{ block.settings.image | img_url: 'master', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+            {% else %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg svg-height-600' }}
+            {% endif %}
+          </div>
+          <div {% if block.settings.image != blank %}class="banner--info"{% else %}style="height: 100%;"{% endif %}>
+            <div class="table-banner">
+              <div class="table-cell-banner text-left">
+                <div class="box-banner-img-text">
+                  {% if block.settings.title != blank %}
+                  <div class="title" {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</div>
+                  {% endif %} 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% when 'banner2' %}
+      <div class="{{ featured_banner_width }}" style="padding: 0; {% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}">
+        <div class="col-relative">
+          <div class="banner--image-2">
+            {% if block.settings.image != blank %}
+			<img src="{{ block.settings.image | img_url: 'master', format: 'pjpg' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+            {% endif %}
+          </div>
+          <div {% if block.settings.image != blank %}class="banner--info"{% else %}style="height: 100%;"{% endif %}>
+            <div class="table-banner">
+              <div class="table-cell-banner text-left">
+                <div class="box-banner-img-text-2">
+                  {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                  {{ block.settings.text }}
+                  {% endif %}
+                  {% if block.settings.name != blank %}
+                  <div class="name-black">{{ block.settings.name }}</div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Banner image & Text",
+    "class": "globo_banner_image_text",
+    "max_blocks": 8,
+    "presets": [
+      {
+        "name": "Banner image & Text",
+        "category": "Text",
+        "blocks" : [
+          {
+            "type": "banner1"
+          },
+          {
+            "type": "banner2"
+          },
+          {
+            "type": "banner2"
+          },
+          {
+            "type": "banner1"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "select",
+        "id": "use_width",
+        "label": "Banner width",
+        "options": [
+          { "value": "1", "label": "Use full width" },
+          { "value": "2", "label": "Use padding" },
+          { "value": "3", "label": "Use container" }
+        ],
+        "default": "1"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "banner1",
+      "name": "Block image text 1",
+      "settings": [
+         {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "3",
+        "options": [
+             {
+               "value": "1",
+               "label": "25%"
+             },
+             {
+               "value": "2",
+               "label": "33.33333%"
+             },
+             {
+               "value": "3",
+               "label": "50%"
+             },
+             {
+               "value": "4",
+               "label": "66.66666%"
+             },
+             {
+               "value": "5",
+               "label": "100%"
+             }
+           ]
+         },
+         {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+		  "default": "#fdf6ef"
+         },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Many skilled<br>craftsmen"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color",
+			"default": "#ffffff"
+         }
+      ]
+    },
+    {
+      "type": "banner2",
+      "name": "Block image text 2",
+      "settings": [
+         {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "3",
+        "options": [
+             {
+               "value": "1",
+               "label": "25%"
+             },
+             {
+               "value": "2",
+               "label": "33.33333%"
+             },
+             {
+               "value": "3",
+               "label": "50%"
+             },
+             {
+               "value": "4",
+               "label": "66.66666%"
+             },
+             {
+               "value": "5",
+               "label": "100%"
+             }
+           ]
+         },
+         {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+		  "default": "#fdf6ef"
+         },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Great Candy Store"
+         },
+         {
+            "type": "html",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, interdum urna. Nam ac elit a ante commodo tristique. Duis lacus urna, condimentum a vehicula hendrerit ac nisi<\/p><p>Hendrerit ac nisi Lorem ipsum dolor sit amet. Tristique. Duis lacus urna, condimentum a vehicula a, hendrerit ac nisi Lorem ipsum dolor sit.<\/p>"
+         },
+         {
+            "type": "textarea",
+            "id": "name",
+            "label": "Name",
+            "default": "<span>JONT HENRRY<\/span> - CEO NESOS"
+         }
+      ]
+    }
+  ]
+  }
+{% endschema %}

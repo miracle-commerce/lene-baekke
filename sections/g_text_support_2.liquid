@@ -1,0 +1,158 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+<div class="g-text-support-2 wow fadeIn" style="{% if section.settings.bg_color != blank %}background-color: {{ section.settings.bg_color }};{% endif %}{% if section.settings.margin != blank %}margin: {{ section.settings.margin }};{% endif %}{% if section.settings.padding != blank %}padding: {{ section.settings.padding }};{% endif %}{% if section.settings.use_center %}text-align: center;{% endif %}">
+  <div class="{% if section.settings.use_container %}container{% else %}container-full{% endif %}">
+    <div class="row">
+      {% for block in section.blocks %}
+      <div class="col-md-3 col-sm-6 col-xs-12 {{ css_animations_class }}" {% if forloop.index == 2 %}data-wow-delay="0.2s"{% endif %} {% if forloop.index == 3 %}data-wow-delay="0.6s"{% endif %} {% if forloop.index == 4 %}data-wow-delay="0.8s"{% endif %}>
+        {% if block.settings.image != blank %}
+        <div class="img">
+          <img class="lazy" data-src="{{ block.settings.image | img_url: 'small' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+        </div>
+        {% endif %}
+        <div class="{% if block.settings.image != blank %}text-has-image{% else %}text{% endif %}">
+          {% if block.settings.title != blank %}
+          <h4 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</h4>
+          {% endif %}
+          {% if block.settings.text != blank %}
+          <p class="subtitle" {% if block.settings.subtitle_color != blank %}style="color: {{ block.settings.subtitle_color }};"{% endif %}>{{ block.settings.text }}</p>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Block text support 2",
+    "class": "globo_text_support_2",
+	"max_blocks": 4,
+  	"presets": [
+      {
+        "name": "Block text support 2",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "block_text_support"
+          },
+          {
+            "type": "block_text_support"
+          },
+          {
+            "type": "block_text_support"
+          },
+          {
+            "type": "block_text_support"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "select",
+        "id": "css_animations",
+        "label": "CSS Animation",
+        "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "9"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_container",
+        "label": "Use container?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "use_center",
+        "label": "Use center?",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "padding",
+        "label": "Padding: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      }
+
+    ],
+  	"blocks": [
+      {
+        "type": "block_text_support",
+        "name": "Block text support 2",
+        "settings": [
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Free Shipping"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color"
+         },
+         {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "GREAT FROM HEBES"
+         },
+         {
+            "type": "color",
+            "id": "subtitle_color",
+            "label": "Subtitle color"
+         }
+        ]
+      }
+    ]
+  }
+{% endschema %}

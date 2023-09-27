@@ -1,0 +1,183 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+<div class="g-text-support-bg g-text-support container-full wow fadeIn" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="content-g-text-support-bg" style="{% if section.settings.bg_color != blank %}background-color: {{ section.settings.bg_color }};{% endif %} {% if section.settings.padding != blank %}padding: {{ section.settings.padding }};{% endif %}">
+    <div class="container">
+      {% if section.settings.title != blank %}
+      <h3 class="text-center" {% if section.settings.title_color != blank %}style="color: {{ section.settings.title_color }};"{% endif %}>{{ section.settings.title }}</h3>
+      {% endif %}
+      <div class="row">
+        {% for block in section.blocks %}
+        <div class="col-md-4 col-sm-6 col-xs-12 {{ css_animations_class }}" {% if forloop.index == 2 %}data-wow-delay="0.2s"{% endif %} {% if forloop.index == 3 %}data-wow-delay="0.6s"{% endif %}>
+          {% if block.settings.heading != blank %}
+          <h2 {% if block.settings.heading_color != blank %}style="color: {{ block.settings.heading_color }};"{% endif %}>{{ block.settings.heading }}</h2>
+          {% endif %}
+          <div class="text">
+            {% if block.settings.title != blank %}
+            <h5 {% if block.settings.title_color != blank %}style="color: {{ block.settings.title_color }};"{% endif %}>{{ block.settings.title }}</h5>
+            {% endif %}
+            {% if block.settings.subtitle != blank %}
+            <div class="subtitle" {% if block.settings.subtitle_color != blank %}style="color: {{ block.settings.subtitle_color }};"{% endif %}>{{ block.settings.subtitle }}</div>
+            {% endif %}
+            {% if block.settings.text != blank %}
+            <p {% if block.settings.text_color != blank %}style="color: {{ block.settings.text_color }};"{% endif %}>{{ block.settings.text }}</p>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Block text support bg",
+    "class": "globo_text_support_bg",
+	"max_blocks": 3,
+  	"presets": [
+      {
+        "name": "Block text support bg",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "block_text_support"
+          },
+          {
+            "type": "block_text_support"
+          },
+          {
+            "type": "block_text_support"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "9"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#606da6"
+      },
+      {
+        "type": "text",
+        "id": "padding",
+        "label": "Padding: (top-right-bottom-left)",
+		"default": "120px 0",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "HEBES STORE"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Title color",
+        "default": "#ffffff"
+      }
+    ],
+  	"blocks": [
+      {
+        "type": "block_text_support",
+        "name": "Block text support",
+        "settings": [
+         {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "F"
+         },
+         {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color",
+            "default": "#ffffff"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Free Shipping"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title color",
+            "default": "#ffffff"
+         },
+         {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "ALL ORDER OVER $30"
+         },
+         {
+            "type": "color",
+            "id": "subtitle_color",
+            "label": "Subtitle color",
+            "default": "#ffffff"
+         },
+         {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "Nam ac elit a ante commodo tristique. Duis lacus urna hicula a ac nisi Lorem ipsum."
+         },
+         {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#ffffff"
+         }
+        ]
+      }
+    ]
+  }
+{% endschema %}

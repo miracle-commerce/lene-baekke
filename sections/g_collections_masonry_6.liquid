@@ -1,0 +1,258 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.use_width -%}
+    {% when '1' %}
+      	{%- assign width_collections = 'g-fullwwidth' -%}
+    {% when '2' %}
+    	{%- assign width_collections = 'container-full' -%}
+    {% when '3' %}
+    	{%- assign width_collections = 'container' -%}
+{%- endcase -%}
+
+<div class="g-collections-masonry-6 {{ css_animations_class }}" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="{{ width_collections }}">
+    {% if section.settings.title != blank %}
+    <h2 class="text-center">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="categories-masonry">
+      {% for block in section.blocks %}
+      {%- case block.settings.width -%}
+      {% when '1' %}
+      {% assign columns_width = 'col-md-3 col-sm-6 col-xs-12' %}
+      {% when '2' %}
+      {% assign columns_width = 'col-md-6 col-sm-6 col-xs-12' %}
+      {%- endcase -%}
+      <div class="{{ columns_width }} categories-grid-item {% if forloop.last == 4 %}categories-grid-item_4{% endif %}">
+        <div class="col-relative">
+          <div class="categories-item--thumbnail">
+            {% if block.settings.image != blank %}
+           	<img src="{{ block.settings.image | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.image.alt }}" />
+            {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="categories-item--info">
+            <div class="child-categories-item--info">
+              {% if block.settings.title != blank %}
+              <h3 style="{% if block.settings.title_color != blank %}color: {{ block.settings.title_color }};{% endif %}{% if block.settings.title_fontsize != blank %}font-size: {{ block.settings.title_fontsize }}px;{% endif %}">{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.subtitle != blank %}
+              <div class="subtitle" {% if block.settings.subtitle_color != blank %}style="color: {{ block.settings.subtitle_color }};"{% endif %}>{{ block.settings.subtitle }}</div>
+              {% endif %}
+            </div>
+          </div>
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="overflow-link">
+              <svg data-name="button view" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+                <metadata><?xpacket begin="﻿" ?>
+                  <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01">
+                    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+                      <rdf:Description rdf:about=""/>
+                    </rdf:RDF>
+                  </x:xmpmeta>
+                  <?xpacket end="w"?></metadata>
+                <defs>
+                  <filter x="-39" y="-39" width="129" height="129" filterUnits="userSpaceOnUse">
+                    <feOffset result="offset" in="SourceAlpha"/>
+                    <feGaussianBlur result="blur" stdDeviation="6.164"/>
+                    <feFlood result="flood" flood-color="#96b0cb" flood-opacity="0.31"/>
+                    <feComposite result="composite" operator="in" in2="blur"/>
+                    <feBlend result="blend" in="SourceGraphic"/>
+                  </filter>
+                </defs>
+                <circle data-name="Ellipse bg" class="cls-1" cx="25" cy="25" r="25" style="fill: {{ block.settings.button_bg }};" />
+                <path class="cls-2" d="M24,15h1V35H24V15ZM15,26V25H35v1H15Z" style="fill: {{ block.settings.button_color }};" />
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div> 
+  </div>
+</div>
+<div class="clearfix"></div>
+{% schema %}
+  {
+    "name": "Collections masonry 6",
+    "class": "globo_collections_masonry_6",
+	"max_blocks": 10,
+  	"presets": [
+      {
+        "name": "Collections masonry 6",
+        "category": "Columns masonry",
+        "blocks": [
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          },
+          {
+            "type": "image_link"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "select",
+        "id": "use_width",
+        "label": "Slideshow width",
+        "options": [
+          { "value": "1", "label": "Use full width" },
+          { "value": "2", "label": "Use padding" },
+          { "value": "3", "label": "Use container" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Our Products"
+      }
+    ],
+  	"blocks": [
+      {
+        "type": "image_link",
+        "name": "Block image text link",
+        "settings": [
+         {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "default": "2",
+          "options": [
+               {
+                 "value": "1",
+                 "label": "25%"
+               },
+               {
+                 "value": "2",
+                 "label": "50%"
+               }
+             ]
+         },
+         {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+         },
+         {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#ffffff"
+         },
+         {
+            "type": "color",
+            "id": "button_bg",
+            "label": "Button background color",
+            "default": "#f7941d"
+         },
+         {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+         },
+         {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+		  "default": "Wood Chair 2018"
+         },
+         {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color"
+         },
+         {
+          "type": "text",
+          "id": "title_fontsize",
+          "label": "Title font size",
+		  "default": "24"
+         },
+         {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+		  "default": "$ 42.00"
+         },
+         {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Subtitle color"
+         }
+        ]
+      }
+    ]
+  }
+{% endschema %}

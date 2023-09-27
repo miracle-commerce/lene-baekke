@@ -1,0 +1,808 @@
+{% if settings.show_backtotop %}
+	<div class="backtotop-container show"> <a href="#PageContainer" class="btn-backtotop btn btn-secondary"><span class="fa fa-angle-up"></span></a></div>
+{% endif %}
+
+{% if section.settings.show_footer %}
+<footer id="colophon" class="site-footer">
+    <div class="footer-top" {% if section.settings.padding != blank %}style="padding: {{ section.settings.padding }};"{% endif %}>
+        <div class="{% if section.settings.use_container %}container{% else %}container-full{% endif %}">
+            <div class="row">
+              	{%- for block in section.blocks -%}
+                {%- case block.settings.width -%}
+                {%- when '16.66667%' -%}
+                {%- assign block_width = 'col-xs-12 col-sm-6 col-md-2' -%}
+                {%- when '20%' -%}
+                {%- assign block_width = 'col-xs-12 col-sm-6 col-md-5th' -%}
+                {%- when '25%' -%}
+                {%- assign block_width = 'col-xs-12 col-sm-6 col-md-3' -%}
+                {%- when '33.33333%' -%}
+                {%- assign block_width = 'col-xs-12 col-sm-6 col-md-4' -%}
+                {%- when '41.66667%' -%}
+                {%- assign block_width = 'col-xs-12 col-sm-6 col-md-5' -%}
+                {%- when '50%' -%}
+                {%- assign block_width = 'col-xs-12 col-sm-6 col-md-6' -%}
+                {%- when '100%' -%}
+                {%- assign block_width = 'col-xs-12 col-sm-12 col-md-12' -%}
+                {%- endcase -%}
+                <div class="footer-column {{ block_width }}">
+                    <div class="footer-column-inner">
+                        {% case block.type %}
+                        {% when 'text' %}
+                          {% if block.settings.text != blank %}
+                            <div class="widget widget_text">
+                                <div class="textwidget">
+                                    <p>
+                                      	{{ block.settings.text }}
+                                    </p>
+                                </div>
+                            </div>
+                          {% endif %}
+                        {% when 'menu' %}
+                          <div class="widget widget_nav_menu {% if block.settings.show_menu_horizontal %}widget_menu_horizontal{% endif %}">
+                            <div class="widget-inner">
+                              	{% if block.settings.title != blank %}
+                                <h3 class="widget-title"><span>{{ block.settings.title }}</span></h3>
+                              	{% endif %}
+                                <div class="menu--container">
+                                    <ul class="menu">
+                                      {%- for link in linklists[block.settings.menu].links -%}
+                                        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                                      {%- else -%}
+                                        {% capture theme_settings_footer_linklist_path %}<strong>Footer</strong> > <strong>List Links</strong>{% endcapture %}
+                                        {{ 'layout.footer.instructions_for_linklist_html' | t: theme_settings_link: theme_settings_link, theme_settings_footer_linklist_path: theme_settings_footer_linklist_path }}
+                                      {%- endfor -%}
+                                    </ul>
+                                </div>
+                            </div>
+                          </div>
+                      	{% when 'logo' %}
+                          {% if block.settings.logo_footer != blank %}
+                            <div class="widget widget_text widget-logo-copyright {% if block.settings.use_center %}text-center{% endif %}">
+                              <div class="textwidget">
+                                <p>
+                                  <a href="/"><img src="{{ block.settings.logo_footer | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.logo_footer.alt | default: shop.name }}"></a>
+                                </p>
+                                {% if block.settings.copyright != blank %}
+                                <p>
+                                  {{ block.settings.copyright }}
+                                </p>
+                                {% endif %}
+                              </div>
+                            </div>
+                          {% else %}
+                            <div class="widget widget_text widget_svg-logo widget-logo-copyright {% if block.settings.use_center %}text-center{% endif %}">
+                              <div class="textwidget">
+                                <p>
+                                  <a href="/">{{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                                </p>
+                                {% if block.settings.copyright != blank %}
+                                <p>
+                                  {{ block.settings.copyright }}
+                                </p>
+                                {% endif %}
+                              </div>
+                            </div>       		
+                          {% endif %}
+                      	{% when 'newsletter' %}
+                        <div class="widget widget_newsletter">
+                          {% if block.settings.title != blank %}
+                          <h3 class="widget-title">{{ block.settings.title }}</h3>
+                          {% endif %}
+                          {% if block.settings.subtitle != blank %}
+                          <p>{{ block.settings.subtitle }}</p>
+                          {% endif %}
+                          {% form 'customer', id: 'contact-form-footer',  class:'form-newsletter' %}
+                          {{ form.errors | default_errors }}
+                          {% if form.posted_successfully? %}
+                          <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                          {% else %}
+                          <div class="input-group-newsletter">
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            <input type="email"
+                                   name="contact[email]"
+                                   id="Email-Footer"
+                                   class="mc-email field-no-label"
+                                   value="{% if customer %}{{ customer.email }}{% endif %}"
+                                   placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                                   autocorrect="off"
+                                   autocapitalize="off" {% if block.settings.bg_color_input != blank %}style="background-color: {{ block.settings.bg_color_input }};"{% endif %}>
+                            <span class="input-group__btn">
+                              <button type="submit" class="mc-submit-button btn btn-primary" name="commit" id="Subscribe-Footer">
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                              </button>
+                            </span>
+                          </div>
+                          {% endif %}
+                          {% endform %}
+                        </div>
+                        {% when 'newsletter2' %}
+                      	{% case block.settings.newsletter_style %}
+                      		{% when '1' %}
+                      		{% assign newsletter_class = "newsletter_style-dark"  %}
+                      		{% when '2' %}
+                      		{% assign newsletter_class = "newsletter_style-light"  %}
+                      	{% endcase %}
+                        <div class="widget widget_newsletter-2 {{ newsletter_class }}">
+                          {% if block.settings.heading != blank %}
+                          <h2 class="font-size-36">{{ block.settings.heading }}</h2>
+                          {% endif %}
+                          {% if block.settings.title != blank %}
+                          <h2>{{ block.settings.title }}</h2>
+                          {% endif %}
+                          {% if block.settings.subtitle != blank %}
+                          <p>{{ block.settings.subtitle }}</p>
+                          {% endif %}
+                          {% form 'customer', id: 'contact-form-footer-2',  class:'form-newsletter' %}
+                          {{ form.errors | default_errors }}
+                          {% if form.posted_successfully? %}
+                          <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                          {% else %}
+                          <div class="input-group-newsletter">
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            <input type="email"
+                                   name="contact[email]"
+                                   id="Email-Footer-2"
+                                   class="mc-email field-no-label"
+                                   value="{% if customer %}{{ customer.email }}{% endif %}"
+                                   placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                                   autocorrect="off"
+                                   autocapitalize="off" {% if block.settings.bg_color_input != blank %}style="background-color: {{ block.settings.bg_color_input }};"{% endif %}>
+                            <span class="input-group__btn">
+                              <button type="submit" class="mc-submit-button btn btn-primary" name="commit" id="Subscribe-Footer-2">
+                                <span>{{ 'general.newsletter_form.submit' | t }}</span>
+                              </button>
+                            </span>
+                          </div>
+                          {% endif %}
+                          {% endform %}
+                        </div>
+                      	{% when 'social' %}
+                          <div class="text-right widget widget_text">
+                            <div class="textwidget">
+                              <div class="social-media-link style-default pull-right">
+                                <ul>
+                                {% if settings.social_facebook_link != blank %}
+                                  <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                                {% endif %}
+                                {% if settings.social_twitter_link != blank %}
+                                	<li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                                {% endif %}
+                                {% if settings.social_pinterest_link != blank %}
+                                	<li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                                {% endif %}
+                                {% if settings.social_instagram_link != blank %}
+                                	<li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                                {% endif %}
+                                {% if settings.social_behance_link != blank %}
+                                	<li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                              	{% endif %}
+                                {% if settings.social_tumblr_link != blank %}
+									<li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                                {% endif %}
+                                {% if settings.social_snapchat_link != blank %}
+									<li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                                {% endif %}
+                                {% if settings.social_youtube_link != blank %}
+									<li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                                {% endif %}
+                                {% if settings.social_vimeo_link != blank %}
+									<li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                                {% endif %}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                      	{% when 'html' %}
+                          <div class="widget widget_text widget-logo-copyright">
+                            <div class="textwidget content-widget-html">
+                              {% if block.settings.logo_footer != blank %}
+                              <p>
+                                <a href="/"><img src="{{ block.settings.logo_footer | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.logo_footer.alt | default: shop.name }}"></a>
+                              </p>
+                              {% endif %}
+                              {{  block.settings.content_html }}
+                              <div class="social-media-link style-default clearfix">
+                                <ul>
+                                  {% if settings.social_facebook_link != blank %}
+                                  <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                                  {% endif %}
+                                  {% if settings.social_twitter_link != blank %}
+                                  <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                                  {% endif %}
+                                  {% if settings.social_pinterest_link != blank %}
+                                  <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                                  {% endif %}
+                                  {% if settings.social_instagram_link != blank %}
+                                  <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                                  {% endif %}
+                                  {% if settings.social_behance_link != blank %}
+                                  <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                                  {% endif %}
+                                  {% if settings.social_tumblr_link != blank %}
+                                  <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                                  {% endif %}
+                                  {% if settings.social_snapchat_link != blank %}
+                                  <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                                  {% endif %}
+                                  {% if settings.social_youtube_link != blank %}
+                                  <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                                  {% endif %}
+                                  {% if settings.social_vimeo_link != blank %}
+                                  <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                                  {% endif %}
+                                </ul>
+                              </div>
+                              {% if block.settings.copyright != blank %}
+                              <p>
+                                {{ block.settings.copyright }}
+                              </p>
+                              {% endif %}
+                            </div>
+                          </div>
+                          {% when 'html2' %}
+                          <div class="widget widget_text widget-logo-copyright">
+                            <div class="textwidget content-widget-html2 text-center">
+                              {% if block.settings.logo_footer != blank %}
+                              <p>
+                                <a href="/"><img src="{{ block.settings.logo_footer | img_url: 'master' | split:'?' | first }}" alt="{{ block.settings.logo_footer.alt | default: shop.name }}"></a>
+                              </p>
+                              {% endif %}
+                              {% if block.settings.text_below_logo_footer != blank %}
+                              <p><strong>{{ block.settings.text_below_logo_footer }}</strong></p>
+                              {% endif %}
+                              <div class="social-media-link style-default clearfix">
+                                <ul>
+                                  {% if settings.social_facebook_link != blank %}
+                                  <li><a href="{{ settings.social_facebook_link | escape }}" class="facebook" title="Facebook" target="_blank" rel="nofollow">Facebook</a></li>
+                                  {% endif %}
+                                  {% if settings.social_twitter_link != blank %}
+                                  <li><a href="{{ settings.social_twitter_link | escape }}" class="twitter" title="Twitter" target="_blank" rel="nofollow">Twitter</a></li>
+                                  {% endif %}
+                                  {% if settings.social_pinterest_link != blank %}
+                                  <li><a href="{{ settings.social_pinterest_link | escape }}" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">Pinterest</a></li>
+                                  {% endif %}
+                                  {% if settings.social_instagram_link != blank %}
+                                  <li><a href="{{ settings.social_instagram_link | escape }}" class="instagram" title="Instagram" target="_blank" rel="nofollow">Instagram</a></li>
+                                  {% endif %}
+                                  {% if settings.social_behance_link != blank %}
+                                  <li><a href="{{ settings.social_behance_link | escape }}" class="behance" title="Behance" target="_blank" rel="nofollow">Behance</a></li>
+                                  {% endif %}
+                                  {% if settings.social_tumblr_link != blank %}
+                                  <li><a href="{{ settings.social_tumblr_link | escape }}" class="tumblr" title="Tumblr" target="_blank" rel="nofollow">Tumblr</a></li>
+                                  {% endif %}
+                                  {% if settings.social_snapchat_link != blank %}
+                                  <li><a href="{{ settings.social_snapchat_link | escape }}" class="snapchat" title="Snapchat" target="_blank" rel="nofollow">Snapchat</a></li>
+                                  {% endif %}
+                                  {% if settings.social_youtube_link != blank %}
+                                  <li><a href="{{ settings.social_youtube_link | escape }}" class="youtube" title="Youtube" target="_blank" rel="nofollow">Youtube</a></li>
+                                  {% endif %}
+                                  {% if settings.social_vimeo_link != blank %}
+                                  <li><a href="{{ settings.social_vimeo_link | escape }}" class="vimeo" title="Vimeo" target="_blank" rel="nofollow">Vimeo</a></li>
+                                  {% endif %}
+                                </ul>
+                              </div>
+                              {{  block.settings.content_html }}
+                              {% if block.settings.copyright != blank %}
+                              <p class="copyright">
+                                {{ block.settings.copyright }}
+                              </p>
+                              {% endif %}
+                            </div>
+                          </div>  
+                      	{% endcase %}
+                    </div>
+                </div>
+              	{%- endfor -%}
+            </div>
+        </div>
+    </div>
+</footer>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_footer",
+        "label": "Show footer?",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_container",
+        "label": "Use container?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "padding",
+        "label": "Padding: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      }
+    ],
+    "max_blocks": 9,
+    "blocks": [
+      {
+        "type": "logo",
+        "name": "Add Logo & copyright",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "use_center",
+            "label": "Use content center?",
+            "default": false
+          },
+         {
+           "type": "image_picker",
+           "id": "logo_footer",
+           "label": "Custom logo",
+           "info": "115px wide .png recommended"
+         },
+         {
+           "type": "textarea",
+           "id": "copyright",
+           "label": "Copyright",
+           "default": "© 2018 Hebes - All Rights Reserved"
+         },
+         {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "20%",
+            "options": [
+              {
+                "value": "16.66667%",
+                "label": "16.66667%"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33.33333%",
+                "label": "33.33333%"
+              },
+              {
+                "value": "41.66667%",
+                "label": "41.66667%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Footer Text",
+        "settings": [
+           {
+              "type": "textarea",
+              "id": "text",
+              "label": "Text",
+              "default": "contact@globosoftware.net<br>+455 45 454555"
+           },
+           {
+              "type": "select",
+              "id": "width",
+              "label": "Container width",
+              "default": "20%",
+              "options": [
+                {
+                  "value": "16.66667%",
+                  "label": "16.66667%"
+                },
+                {
+                  "value": "20%",
+                  "label": "20%"
+                },
+                {
+                  "value": "25%",
+                  "label": "25%"
+                },
+                {
+                  "value": "33.33333%",
+                  "label": "33.33333%"
+                },
+                {
+                  "value": "41.66667%",
+                  "label": "41.66667%"
+                },
+                {
+                  "value": "50%",
+                  "label": "50%"
+                },
+                {
+                  "value": "100%",
+                  "label": "100%"
+                }
+              ]
+            }
+        ]
+      },
+      {
+        "type": "menu",
+        "name": "Add Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Quick links"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Add menu"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_menu_horizontal",
+            "label": "Use menu horizontal?",
+			"default": false
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "20%",
+            "options": [
+              {
+                "value": "16.66667%",
+                "label": "16.66667%"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33.33333%",
+                "label": "33.33333%"
+              },
+              {
+                "value": "41.66667%",
+                "label": "41.66667%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Add Newsletter",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "GET 20% OFF"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Subscribe to our newsletter"
+          },
+          {
+            "type": "color",
+            "id": "bg_color_input",
+            "label": "Background color input"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "20%",
+            "options": [
+              {
+                "value": "16.66667%",
+                "label": "16.66667%"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33.33333%",
+                "label": "33.33333%"
+              },
+              {
+                "value": "41.66667%",
+                "label": "41.66667%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "newsletter2",
+        "name": "Add Newsletter 2",
+        "settings": [
+          {
+            "type": "select",
+            "id": "newsletter_style",
+            "label": "Newsletter style",
+            "default": "1",
+            "options": [
+              {
+                "value": "1",
+                "label": "Dark"
+              },
+              {
+                "value": "2",
+                "label": "Light"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Newsletter"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Get Discount 30% Off"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle",
+            "default": "Get 20% discount with notified about the latest news and updates. No spam, we promise!"
+          },
+          {
+            "type": "color",
+            "id": "bg_color_input",
+            "label": "Background color input"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "16.66667%",
+                "label": "16.66667%"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33.33333%",
+                "label": "33.33333%"
+              },
+              {
+                "value": "41.66667%",
+                "label": "41.66667%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "social",
+        "name": "Add Social",
+        "settings": [
+           {
+              "type": "select",
+              "id": "width",
+              "label": "Container width",
+              "default": "20%",
+              "options": [
+                {
+                  "value": "16.66667%",
+                  "label": "16.66667%"
+                },
+                {
+                  "value": "20%",
+                  "label": "20%"
+                },
+                {
+                  "value": "25%",
+                  "label": "25%"
+                },
+                {
+                  "value": "33.33333%",
+                  "label": "33.33333%"
+                },
+                {
+                  "value": "41.66667%",
+                  "label": "41.66667%"
+                },
+                {
+                  "value": "50%",
+                  "label": "50%"
+                },
+                {
+                  "value": "100%",
+                  "label": "100%"
+                }
+              ]
+            }
+        ]
+      },
+      {
+        "type": "html",
+        "name": "Add content html",
+        "settings": [
+         {
+           "type": "image_picker",
+           "id": "logo_footer",
+           "label": "Custom logo",
+           "info": "115px wide .png recommended"
+         },
+         {
+           "type": "html",
+           "id": "content_html",
+           "label": "Content html",
+           "default": "<p><strong>We ship every where! Free in the US<\/strong><\/p><ul><li>contact@globosoftware.net<br>+455 45 454555<\/li><li>004 Riley Street, Surry<br>Hills 2050 Sydney, Australia<\/li><\/ul>"
+         },
+         {
+           "type": "textarea",
+           "id": "copyright",
+           "label": "Copyright",
+           "default": "© 2018 Nesos - All Rights Reserved"
+         },
+         {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "50%",
+            "options": [
+              {
+                "value": "16.66667%",
+                "label": "16.66667%"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33.33333%",
+                "label": "33.33333%"
+              },
+              {
+                "value": "41.66667%",
+                "label": "41.66667%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "html2",
+        "name": "Add content html 2",
+        "settings": [
+         {
+           "type": "image_picker",
+           "id": "logo_footer",
+           "label": "Custom logo",
+           "info": "115px wide .png recommended"
+         },
+         {
+           "type": "textarea",
+           "id": "text_below_logo_footer",
+           "label": "Text below logo",
+           "default": "We ship every where! Free in the US"
+         },
+         {
+           "type": "html",
+           "id": "content_html",
+           "label": "Content html",
+		   "default": "<ul><li>contact@globosoftware.net<\/li><li>+455 45 454555<\/li><li>004 Riley Street, Surry Hills 2050 Sydney, Australia<\/li><\/ul>"
+         },
+         {
+           "type": "textarea",
+           "id": "copyright",
+           "label": "Copyright",
+           "default": "© 2018 Nesos - All Rights Reserved"
+         },
+         {
+            "type": "select",
+            "id": "width",
+            "label": "Container width",
+            "default": "100%",
+            "options": [
+              {
+                "value": "16.66667%",
+                "label": "16.66667%"
+              },
+              {
+                "value": "20%",
+                "label": "20%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33.33333%",
+                "label": "33.33333%"
+              },
+              {
+                "value": "41.66667%",
+                "label": "41.66667%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              },
+              {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}

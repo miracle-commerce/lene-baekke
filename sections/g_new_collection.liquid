@@ -1,0 +1,198 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+<div class="g-new-collection wow fadeIn" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <h2 class="title-section">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+    <div class="heading-rotate-section">{{ section.settings.heading }}</div>
+    {% endif %}
+    <div class="row">
+      {% for block in section.blocks %}
+      <div class="col-md-12 col-sm-12 col-xs-12 col-item-new-collection {{ css_animations_class }}" {% if forloop.index == 2 %}data-wow-delay="0.2s"{% elsif forloop.index == 3  %}data-wow-delay="0.4s"{% elsif forloop.index == 4  %}data-wow-delay="0.6s"{% elsif forloop.index == 5  %}data-wow-delay="0.8s"{% elsif forloop.index == 6  %}data-wow-delay="1s"{% endif %}>
+        {% case block.settings.style %}
+        {% when '1' %}
+        <div class="item-new-collection">
+          <div class="max-width-700">
+            <div class="image {% if block.settings.use_image_shadow  %}image-shadow image-shadow-large{% else %}image-shadow image-no-shadow{% endif %}">	
+              {% if block.settings.image != blank %}
+              <a href="{{ block.settings.button_link }}"><img data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="lazy" /><span class="icon-plus">{% include 'icon-plus' %}</span></a>
+              {% else %}
+              {{ 'image' | placeholder_svg_tag }}
+              {% endif %}   
+            </div>
+            <div class="text {% if block.settings.use_text_bottom %}text-below-bottom{% endif %}">
+              {% if block.settings.title != blank %}
+              <h3><a href="{{ block.settings.button_link }}">{{ block.settings.title }}</a></h3>
+              {% endif %}
+              {% if block.settings.price != blank %}
+              <div class="price">{{ block.settings.price }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% when '2' %}
+        <div class="item-new-collection">
+          <div class="max-width-470 pull-right">
+            <div class="image text-right {% if block.settings.use_image_shadow  %}image-shadow image-shadow-large{% else %}image-shadow image-no-shadow{% endif %}">	
+              {% if block.settings.image != blank %}
+              <a href="{{ block.settings.button_link }}"><img data-src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="lazy" /><span class="icon-plus">{% include 'icon-plus' %}</span></a>
+              {% else %}
+              {{ 'image' | placeholder_svg_tag }}
+              {% endif %}   
+            </div>
+            <div class="text {% if block.settings.use_text_bottom %}text-below-bottom{% endif %}">
+              {% if block.settings.title != blank %}
+              <h3><a href="{{ block.settings.button_link }}">{{ block.settings.title }}</a></h3>
+              {% endif %}
+              {% if block.settings.price != blank %}
+              <div class="price">{{ block.settings.price }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endcase %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Block new collection",
+    "class": "globo_new_collection",
+	"max_blocks": 6,
+  	"presets": [
+      {
+        "name": "Block new collection",
+        "category": "Categories & Banner",
+        "blocks": [
+          {
+            "type": "block_new_collection"
+          },
+          {
+            "type": "block_new_collection"
+          },
+          {
+            "type": "block_new_collection"
+          },
+          {
+            "type": "block_new_collection"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "select",
+        "id": "css_animations",
+        "label": "CSS Animation",
+        "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "9"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Featured<br>Item"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "The Best<br>Fashion"
+      }
+    ],
+  	"blocks": [
+      {
+        "type": "block_new_collection",
+        "name": "Block new collection",
+        "settings": [
+         {
+            "type": "select",
+            "id": "style",
+            "label": "Style",
+            "options": [
+              { "value": "1", "label": "Style 1" },
+              { "value": "2", "label": "Style 2" }
+            ],
+            "default": "1"
+         },
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+         },
+         {
+            "type": "checkbox",
+            "id": "use_image_shadow",
+            "label": "Use image shadow?",
+            "default": false
+         },
+         {
+            "type": "checkbox",
+            "id": "use_text_bottom",
+            "label": "Use text bottom?",
+            "default": false
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Shoes Romance Women 2018"
+         },
+         {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+         },
+         {
+            "type": "text",
+            "id": "price",
+            "label": "Price",
+            "default": "$ 42.00"
+         }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,112 @@
+<div class="page-width-content template-page-about3 template-page-contact2">
+  <div class="container-full">
+    <div class="row equalize">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="image">
+            {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: '775x980' }}" alt="{{ section.settings.image.alt }}" />
+            {% else %}
+          	{{ 'image' | placeholder_svg_tag }}
+            {% endif %}
+        </div>
+        <div class="text-about">
+          {% if section.settings.title != blank %}
+          <div class="title">{{ section.settings.title }}</div>
+          {% endif %}
+          {% if section.settings.heading != blank %}
+          <h1>{{ section.settings.heading }}</h1>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="custom-block-column-about3">
+          {% if section.settings.title_right != blank %}
+          <h3>{{ section.settings.title_right }}</h3>
+          {% endif %}
+          {% if section.settings.text != blank %}
+          <p><strong>{{ section.settings.text }}</strong></p>
+          {% endif %}
+          {% if section.settings.title_form_contact != blank %}
+          <h3>{{ section.settings.title_form_contact }}</h3>
+          {% endif %}
+          <div class="grid">
+            <div class="contact-form form-vertical">
+              {% form 'contact' %}
+
+              {% if form.posted_successfully? %}
+              <p class="note form-success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+              {% endif %}
+
+              {{ form.errors | default_errors }}
+
+              <input type="text" id="ContactFormName" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="{{ 'contact.form.name' | t }}">
+
+              <input type="email" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}" placeholder="{{ 'contact.form.email' | t }}">
+
+              <input type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'contact.form.phone' | t }}">
+
+              <textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+              <input type="submit" class="btn" value="{{ 'contact.form.submit' | t }}">
+
+              {% endform %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Contact page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left content"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+		"default": "CONECT WITH US"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+		"default": "Contact Us"
+      },
+      {
+        "type": "header",
+        "content": "Right content"
+      },
+      {
+        "type": "text",
+        "id": "title_right",
+        "label": "Title right",
+		"default": "No. 342 - London Oxford Street,<br>012 United Kingdom."
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text",
+		"default": "Email: contact@globosoftware.net<br>Phone: +(034) 334 55634"
+      },
+      {
+        "type": "text",
+        "id": "title_form_contact",
+        "label": "Title form contact",
+		"default": "Get In Touch With Us"
+      }
+    ]
+  }
+{% endschema %}

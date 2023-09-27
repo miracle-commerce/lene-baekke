@@ -1,0 +1,215 @@
+{%- case section.settings.css_animations -%}
+    {% when '1' %}
+      	{%- assign css_animations_class = '' -%}
+    {% when '2' %}
+    	{%- assign css_animations_class = 'wow fadeIn' -%}
+    {% when '3' %}
+    	{%- assign css_animations_class = 'wow fadeInDown' -%}
+    {% when '4' %}
+    	{%- assign css_animations_class = 'wow fadeInDownBig' -%}
+    {% when '5' %}
+    	{%- assign css_animations_class = 'wow fadeInLeft' -%}
+    {% when '6' %}
+    	{%- assign css_animations_class = 'wow fadeInLeftBig' -%}
+    {% when '7' %}
+    	{%- assign css_animations_class = 'wow fadeInRight' -%}
+    {% when '8' %}
+    	{%- assign css_animations_class = 'wow fadeInRightBig' -%}
+    {% when '9' %}
+    	{%- assign css_animations_class = 'wow fadeInUp' -%}
+    {% when '10' %}
+    	{%- assign css_animations_class = 'wow fadeInUpBig' -%}
+{%- endcase -%}
+
+{%- case section.settings.use_width -%}
+    {% when '1' %}
+      	{%- assign width_instagram = 'g-fullwwidth' -%}
+    {% when '2' %}
+    	{%- assign width_instagram = 'container-full' -%}
+    {% when '3' %}
+    	{%- assign width_instagram = 'container' -%}
+{%- endcase -%}
+
+{%- case section.settings.title_style -%}
+    {% when '1' %}
+      	{%- assign title_class = 'title-style-1' -%}
+    {% when '2' %}
+    	{%- assign title_class = 'title-style-2' -%}
+{%- endcase -%}
+<div class="g--instagram_feed {{ css_animations_class }}" {% if section.settings.margin != blank %}style="margin: {{ section.settings.margin }};"{% endif %}>
+  <div class="{{ width_instagram }}">
+    
+    <div class="globo-heading text-center">
+      {% if section.settings.title != blank %}
+      	<h4 class="{{ title_class }}">{{ section.settings.title }}</h4>
+      {% endif %}
+      {% if section.settings.name != blank %}
+      	<a href="{{ section.settings.link_to_instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i> {{ section.settings.name }}</a>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+    
+    <div id="la_instagram_feed{{ section.id }}" class="la-instagram-feeds instagram-grayscale">
+      <div class="instagram-feed-inner">
+        <input type="hidden" id="g-token-{{ section.id }}" value="{{ section.settings.accessToken }}">
+        <div class="globo-instagram clearfix" data-id="{{ section.id }}">
+          <div id="g-instafeed-{{ section.id }}" class="g-instafeed-slick-{{ section.id }} instagram--with-padding" data-limit="{{ section.settings.limit }}" data-sort-by="{{ section.settings.sort }}" data-slick='{"slidesToShow": "{{ section.settings.sidetoshow }}", "autoplay": true, "arrows": false,"responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 3}},{"breakpoint": 480,"settings":{"slidesToShow": 1}}]}'>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Instagram Feed",
+    "class": "globo_instagram_feed",
+    "presets": [
+      {
+        "name": "Instagram Feed",
+        "category": "Instagram"
+      }
+    ],
+    "settings": [
+      {
+      "type": "select",
+      "id": "css_animations",
+      "label": "CSS Animation",
+      "options": [
+          { "value": "1", "label": "None" },
+          { "value": "2", "label": "fadeIn" },
+          { "value": "3", "label": "fadeInDown" },
+          { "value": "4", "label": "fadeInDownBig" },
+          { "value": "5", "label": "fadeInLeft" },
+          { "value": "6", "label": "fadeInLeftBig" },
+          { "value": "7", "label": "fadeInRight" },
+          { "value": "8", "label": "fadeInRightBig" },
+          { "value": "9", "label": "fadeInUp" },
+          { "value": "10", "label": "fadeInUpBig" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margin: (top-right-bottom-left)",
+        "info": "Ex: 10px 0 30px 0"
+      },
+      {
+        "type": "select",
+        "id": "use_width",
+        "label": "Slideshow width",
+        "options": [
+          { "value": "1", "label": "Use full width" },
+          { "value": "2", "label": "Use padding" },
+          { "value": "3", "label": "Use container" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "text",
+        "id": "accessToken",
+        "label": "Access Token:",
+        "default": "7608181471.3a81a9f.7aa83c93a1e5412783f3a5cf5fa46b51",
+		"info": "Use when Get Image from: 'Access Token'. [Where do I find Access Token?](http:\/\/instagram.pixelunion.net\/)"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "FROM INSTAGRAM"
+      },
+      {
+        "type": "select",
+        "id": "title_style",
+        "label": "Title style",
+        "options": [
+          { "value": "1", "label": "Title style 1" },
+          { "value": "2", "label": "Title style 2" }
+        ],
+        "default": "1"
+      },
+      {
+        "type": "text",
+        "id": "name",
+        "label": "Name instagram",
+        "default": "@globotheme.net"
+      },
+      {
+        "type": "url",
+        "id": "link_to_instagram",
+        "label": "Link to instagram"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "STYLISH, DESIGNER, INTERACTIVE, SIMPLIFIED AND<br \/> PERSONAL TOUCH TO INTEROR DESIGN"
+      },
+      {
+        "type": "text",
+        "id": "limit",
+        "label": "Limit: (integer)(Max: 33)",
+        "default": "20"
+      },
+      {
+        "type": "select",
+        "id": "sort",
+        "label": "Sort by",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "Default"
+          },
+          {
+            "value": "most-recent",
+            "label": "Newest to oldest"
+          },
+          {
+            "value": "least-recent",
+            "label": "Oldest to newest"
+          },
+          {
+            "value": "most-liked",
+            "label": "Highest # of likes to lowest"
+          },
+          {
+            "value": "least-liked",
+            "label": "Lowest # likes to highest"
+          },
+          {
+            "value": "most-commented",
+            "label": "Highest # of comments to lowest"
+          },
+          {
+            "value": "least-commented",
+            "label": "Lowest # of comments to highest"
+          },
+          {
+            "value": "random",
+            "label": "Random order"
+          }
+        ]
+      },
+      {
+       "type": "header",
+       "content": "Settings Slider"
+      },
+      {
+        "type": "text",
+        "id": "speed",
+        "label": "Speed: (integer)",
+        "default": "300"
+      },
+      {
+        "type": "text",
+        "id": "sidetoshow",
+        "label": "Slides to show: (integer)",
+        "default": "5"
+      }
+    ]
+  }
+{% endschema %}
